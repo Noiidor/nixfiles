@@ -6,6 +6,7 @@
     homeDirectory = "/home/noi";
 
     packages = with pkgs; [
+      kitty
     ];
 
     stateVersion = "24.05";
@@ -39,6 +40,10 @@
       defaultEditor = true;
     };
 
+    kitty = {
+      enable = true;
+    };
+
     git = {
       enable = true;
       userName = "noi";
@@ -47,6 +52,8 @@
         init.defaultBranch = "master";
       };
     };
+
+    bruno.enable = true;
 
     home-manager.enable = true;   
   };

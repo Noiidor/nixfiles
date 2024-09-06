@@ -10,6 +10,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.opengl.enable = true;
+
   networking.hostName = "noi-nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -69,9 +71,6 @@
     shell = pkgs.zsh;
   };
 
-  programs.firefox.enable = true;
-  programs.hyprland.enable = true;
-  programs.zsh.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -80,7 +79,14 @@
     neovim
     zsh
     git
+    bruno
   ];
+
+  programs = {
+    firefox.enable = true;
+    hyprland.enable = true;
+    zsh.enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
