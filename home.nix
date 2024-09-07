@@ -7,6 +7,7 @@
 
     packages = with pkgs; [
       kitty
+      bruno
     ];
 
     stateVersion = "24.05";
