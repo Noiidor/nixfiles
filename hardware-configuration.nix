@@ -7,25 +7,24 @@
   imports = [ ];
 
   boot.initrd.availableKernelModules = [ "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
   boot.kernelParams = [ "nomodeset" ];
-  
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e58b54cb-beec-4be0-af4a-b53896698758";
+    { device = "/dev/disk/by-uuid/ffdc6484-7f86-4ec9-9535-c7e6d437a915";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C14D-438A";
+    { device = "/dev/disk/by-uuid/4A64-E8C0";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/be2e4882-cee4-4f2f-9a26-4c38f70dd2a2"; }
+    [ { device = "/dev/disk/by-uuid/e8295175-d680-4878-bc43-79fb5616d59f"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

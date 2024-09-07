@@ -53,8 +53,6 @@
       };
     };
 
-    bruno.enable = true;
-
     home-manager.enable = true;   
   };
 

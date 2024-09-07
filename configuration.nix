@@ -79,7 +79,6 @@
     neovim
     zsh
     git
-    bruno
   ];
 
   programs = {
