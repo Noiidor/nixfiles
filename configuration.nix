@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -37,7 +38,6 @@
     };
   };
   services.desktopManager.plasma6.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -65,7 +65,7 @@
   users.users.noi = {
     isNormalUser = true;
     description = "Noidor";
-    extraGroups = [ "networkmanager" "wheel" "video"];
+    extraGroups = ["networkmanager" "wheel" "video"];
     shell = pkgs.zsh;
   };
 
@@ -91,7 +91,7 @@
   #   enableSSHSupport = true;
   # };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   services.openssh.enable = true;
 
@@ -101,6 +101,5 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "24.05"; 
-
+  system.stateVersion = "24.05";
 }

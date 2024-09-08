@@ -1,6 +1,8 @@
-{ config, pkgs, ... }: 
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home = {
     username = "noi";
     homeDirectory = "/home/noi";
@@ -10,7 +12,6 @@
     ];
 
     stateVersion = "24.05";
-
   };
 
   programs = {
@@ -32,7 +33,7 @@
       enableVteIntegration = true;
 
       initExtra = ''
-	PROMPT="%F{blue}%~ %(?.%F{green}.%F{red})%#%f "
+        PROMPT="%F{blue}%~ %(?.%F{green}.%F{red})%#%f "
       '';
     };
 
@@ -49,7 +50,6 @@
       };
     };
 
-    home-manager.enable = true;   
+    home-manager.enable = true;
   };
-
 }

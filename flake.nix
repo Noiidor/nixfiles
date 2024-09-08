@@ -1,5 +1,4 @@
 {
-
   description = "My default flake.";
 
   inputs = {
@@ -9,24 +8,26 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  outputs = { self, nixpkgs, home-manager, ...}:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  }: let
     system = "x86_64-linux";
-  in
-  {
+  in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
+        modules = [./configuration.nix];
       };
     };
 
     homeConfigurations.noi = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home.nix ];
+      modules = [./home.nix];
     };
   };
 }
