@@ -10,7 +10,7 @@ pushd ~/nixfiles/ > /dev/null
 
 if git diff --quiet '*.nix'; then
     echo "No changed detected, exiting."
-    popd
+    popd > /dev/null
     exit 0
 fi
 
