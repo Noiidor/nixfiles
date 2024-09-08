@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# A rebuild script that commits on a successful build. Taken from 0atman gist.
+
+set -e
+
+$EDITOR ~/nixfiles/configuration.nix
+
+pushd ~/nixfiles/
+
+if git diff --quiet '*.nix'; then
+    echo "No changed detected, exiting."
+    popd
+    exit 0
+fi
+
+alejandra . &>/dev/null \
+    || (alejandra . ; echo "Formatting failed!" && exit 1)
+
+git diff -U0 '*.nix'
+
+echo "NixOS rebuilding..."
+
+sudo nixos-rebuild switch &>rebuild.log || (cat rebuild.log | grep --color error && exit 1)
+
+current=$(nixos-rebuild list-generations | grep current)
+
+git commit -am "$current"
+
+popd
