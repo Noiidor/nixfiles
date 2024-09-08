@@ -7,7 +7,6 @@
 
     packages = with pkgs; [
       kitty
-      bruno
     ];
 
     stateVersion = "24.05";
@@ -39,10 +38,6 @@
 
     neovim = {
       defaultEditor = true;
-    };
-
-    kitty = {
-      enable = true;
     };
 
     git = {
