@@ -6,7 +6,7 @@ set -e
 
 $EDITOR ~/nixfiles/configuration.nix
 
-pushd ~/nixfiles/
+pushd ~/nixfiles/ > /dev/null
 
 if git diff --quiet '*.nix'; then
     echo "No changed detected, exiting."
@@ -23,8 +23,10 @@ echo "NixOS rebuilding..."
 
 sudo nixos-rebuild switch --flake . &>rebuild.log || (cat rebuild.log | grep --color error && exit 1)
 
+echo "Build successful!"
+
 current=$(nixos-rebuild list-generations | grep current)
 
 git commit -am "$current"
 
-popd
+popd > /dev/null
