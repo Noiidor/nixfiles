@@ -11,6 +11,10 @@
       kitty
     ];
 
+    sessionPath = [
+      "$HOME/nixfiles/scripts"
+    ];
+
     stateVersion = "24.05";
   };
 
@@ -23,8 +27,8 @@
       shellAliases = {
         ll = "ls -l";
         ff = "fastfetch";
-        rebuild = "sudo nixos-rebuild switch --flake ~/nixfiles";
-        home-rebuild = "home-manager switch --flake ~/nixfiles";
+        #rebuild = "sudo nixos-rebuild switch --flake ~/nixfiles";
+        #home-rebuild = "home-manager switch --flake ~/nixfiles";
         nixconf = "nvim ~/nixfiles/configuration.nix";
         homeconf = "nvim ~/nixfiles/home.nix";
         flakeconf = "nvim ~/nixfiles/flake.nix";
@@ -38,6 +42,7 @@
     };
 
     neovim = {
+      enable = true;
       defaultEditor = true;
     };
 
