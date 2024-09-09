@@ -15,6 +15,8 @@
     git
     alejandra
     flatpak
+    go
+    python3
   ];
 
   # Bootloader.
