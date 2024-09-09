@@ -7,7 +7,6 @@
     username = "noi";
     homeDirectory = "/home/noi";
 
-    #test
     packages = with pkgs; [
       kitty # try to remove
     ];
