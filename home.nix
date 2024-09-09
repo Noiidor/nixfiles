@@ -11,6 +11,7 @@
       kitty
       obsidian
       bruno
+      spotify
     ];
 
     sessionPath = [
