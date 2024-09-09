@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
   home = {
     username = "noi";
     homeDirectory = "/home/noi";
@@ -59,4 +58,6 @@
 
     home-manager.enable = true;
   };
+
+  nixpkgs.config.allowUnfree = true;
 }
