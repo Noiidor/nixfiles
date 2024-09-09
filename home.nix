@@ -29,11 +29,11 @@
       shellAliases = {
         ll = "ls -l";
         ff = "fastfetch";
-        #rebuild = "sudo nixos-rebuild switch --flake ~/nixfiles";
-        #home-rebuild = "home-manager switch --flake ~/nixfiles";
-        nixconf = "nvim ~/nixfiles/configuration.nix";
-        homeconf = "nvim ~/nixfiles/home.nix";
-        flakeconf = "nvim ~/nixfiles/flake.nix";
+        nix-rebuild = "sudo nixos-rebuild switch --flake ~/nixfiles";
+        home-rebuild = "home-manager switch --flake ~/nixfiles";
+        nixconf = "$EDITOR ~/nixfiles/configuration.nix";
+        homeconf = "$EDITOR ~/nixfiles/home.nix";
+        flakeconf = "$EDITOR ~/nixfiles/flake.nix";
       };
 
       enableVteIntegration = true;
