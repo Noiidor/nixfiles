@@ -4,7 +4,29 @@
 
 set -e
 
-$EDITOR ~/nixfiles/configuration.nix
+rebuild_type=0
+conf_path=~/nixfiles/
+while getopts 'sh' OPTION; do
+    case "$OPTION" in
+	s)
+	    echo "debug: option s"
+	    rebuild_type=0
+	    conf_path=${conf_path}configuration.nix
+	    ;;
+	h)
+	    echo "debug: option h"
+	    rebuild_type=1
+	    conf_path=${conf_path}home.nix
+	    ;;
+	?)
+	    echo "supported flags: [-s] [-h] [-f]"
+	    exit 1
+	    ;;
+    esac
+shift
+done
+
+$EDITOR $conf_path
 
 pushd ~/nixfiles/ > /dev/null
 
@@ -21,7 +43,18 @@ git diff -U0 '*.nix'
 
 echo "NixOS rebuilding..."
 
-sudo nixos-rebuild switch --flake . &>rebuild.log || (cat rebuild.log | grep --color error && exit 1)
+case "$rebuild_type" in
+    0)
+	sudo nixos-rebuild switch --flake . &>rebuild.log || (cat rebuild.log | grep --color error && exit 1)
+	;;
+    1)
+	home-manager switch --flake . &>rebuild.log || (cat rebuild.log | grep --color error && exit 1)
+	;;
+    *)
+	echo "Invalid rebuild type."
+	exit 1
+	;;
+esac
 
 echo "Build successful!"
 

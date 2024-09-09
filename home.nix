@@ -8,7 +8,7 @@
     homeDirectory = "/home/noi";
 
     packages = with pkgs; [
-      kitty
+      kitty # try to remove
     ];
 
     sessionPath = [
