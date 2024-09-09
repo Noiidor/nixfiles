@@ -8,8 +8,9 @@
     homeDirectory = "/home/noi";
 
     packages = with pkgs; [
-      kitty # try to remove
+      kitty
       obsidian
+      bruno
     ];
 
     sessionPath = [

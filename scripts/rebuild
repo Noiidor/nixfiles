@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# A rebuild script that commits on a successful build. Taken from 0atman gist.
+# A rebuild script that commits on a successful build. Taken from 0atman gist and modified.
 
 set -e
 
