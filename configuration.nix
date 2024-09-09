@@ -7,6 +7,16 @@
     ./hardware-configuration.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    home-manager
+    fastfetch
+    neovim
+    zsh
+    git
+    alejandra
+    flatpak
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -72,16 +82,8 @@
   programs.firefox.enable = true;
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
-  nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    home-manager
-    fastfetch
-    neovim
-    zsh
-    git
-    alejandra
-  ];
+  nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
