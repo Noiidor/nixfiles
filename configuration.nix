@@ -17,6 +17,7 @@
     flatpak
     go
     python3
+    docker
   ];
 
   # Bootloader.
