@@ -9,12 +9,10 @@ conf_path=~/nixfiles/
 while getopts 'sh' OPTION; do
     case "$OPTION" in
 	s)
-	    echo "debug: option s"
 	    rebuild_type=0
 	    conf_path=${conf_path}configuration.nix
 	    ;;
 	h)
-	    echo "debug: option h"
 	    rebuild_type=1
 	    conf_path=${conf_path}home.nix
 	    ;;
@@ -23,7 +21,6 @@ while getopts 'sh' OPTION; do
 	    exit 1
 	    ;;
     esac
-shift
 done
 
 $EDITOR $conf_path

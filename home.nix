@@ -3,12 +3,14 @@
   pkgs,
   ...
 }: {
+  nixpkgs.config.allowUnfree = true;
   home = {
     username = "noi";
     homeDirectory = "/home/noi";
 
     packages = with pkgs; [
       kitty # try to remove
+      obsidian
     ];
 
     sessionPath = [
