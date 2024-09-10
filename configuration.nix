@@ -18,6 +18,7 @@
     go
     python3
     docker
+    postgresql_16
   ];
 
   # Bootloader.
