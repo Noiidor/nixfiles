@@ -15,6 +15,7 @@
       dbeaver-bin
       qbittorrent
       telegram-desktop
+      discord
     ];
 
     sessionPath = [
