@@ -14,6 +14,7 @@
       spotify
       dbeaver-bin
       qbittorrent
+      telegram-desktop
     ];
 
     sessionPath = [
