@@ -20,6 +20,7 @@
     docker
     postgresql_16
     kubectl
+    gparted
   ];
 
   # Bootloader.
