@@ -13,6 +13,7 @@
       bruno
       spotify
       dbeaver-bin
+      qbittorrent
     ];
 
     sessionPath = [
