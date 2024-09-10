@@ -16,6 +16,7 @@
       qbittorrent
       telegram-desktop
       discord
+      mpc-qt
     ];
 
     sessionPath = [
