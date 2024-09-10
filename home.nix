@@ -12,6 +12,7 @@
       obsidian
       bruno
       spotify
+      dbeaver-bin
     ];
 
     sessionPath = [
