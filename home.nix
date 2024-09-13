@@ -15,7 +15,7 @@
       dbeaver-bin
       qbittorrent
       telegram-desktop
-      discord
+      vesktop
       mpc-qt
     ];
 
