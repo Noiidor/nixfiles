@@ -86,9 +86,16 @@
     shell = pkgs.zsh;
   };
 
-  programs.firefox.enable = true;
-  programs.hyprland.enable = true;
-  programs.zsh.enable = true;
+  programs = {
+    firefox.enable = true;
+    hyprland.enable = true;
+    zsh.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
 
