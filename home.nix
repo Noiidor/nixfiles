@@ -17,6 +17,7 @@
       telegram-desktop
       vesktop
       mpc-qt
+      lutris
     ];
 
     sessionPath = [
