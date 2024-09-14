@@ -18,7 +18,6 @@
       vesktop
       mpc-qt
       lutris
-      steam
     ];
 
     sessionPath = [
