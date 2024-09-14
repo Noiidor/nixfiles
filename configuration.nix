@@ -22,6 +22,7 @@
     kubectl
     gparted
     libadwaita
+    ntfs3g
   ];
 
   # Bootloader.
