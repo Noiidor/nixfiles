@@ -21,6 +21,7 @@
     postgresql_16
     kubectl
     gparted
+    libadwaita
   ];
 
   # Bootloader.
