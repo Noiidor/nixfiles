@@ -27,6 +27,8 @@
     stateVersion = "24.05";
   };
 
+  xdg.configFile.nvim.source = ./neovim;
+
   programs = {
     zsh = {
       enable = true;
