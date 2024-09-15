@@ -25,12 +25,14 @@
     ntfs3g
     testdisk
     ventoy
+    ffmpeg
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["ntfs"];
+  boot.kernel.sysctl."kernel.sysrq" = 502;
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
