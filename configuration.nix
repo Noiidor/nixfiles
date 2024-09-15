@@ -27,6 +27,7 @@
     ventoy
     ffmpeg
     gnumake
+    fzf
   ];
 
   # Bootloader.
