@@ -24,6 +24,7 @@
     libadwaita
     ntfs3g
     testdisk
+    ventoy
   ];
 
   # Bootloader.
