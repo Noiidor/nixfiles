@@ -26,6 +26,7 @@
     testdisk
     ventoy
     ffmpeg
+    gnumake
   ];
 
   # Bootloader.
