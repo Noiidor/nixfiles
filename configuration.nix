@@ -23,6 +23,7 @@
     gparted
     libadwaita
     ntfs3g
+    testdisk
   ];
 
   # Bootloader.
