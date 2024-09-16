@@ -23,6 +23,7 @@
 
     sessionPath = [
       "$HOME/nixfiles/scripts"
+      "$HOME/go/bin"
     ];
 
     stateVersion = "24.05";
