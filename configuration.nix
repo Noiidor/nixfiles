@@ -28,6 +28,8 @@
     ffmpeg
     gnumake
     fzf
+    protobuf_26
+    buf
   ];
 
   # Bootloader.
