@@ -64,9 +64,9 @@
         init.defaultBranch = "master";
 
         url = {
-          "git@gitlab.com:hezzl" = {
+          "git@gitlab.com:" = {
             insteadOf = [
-              "gitlab.com/hezzl"
+              "https://gitlab.com/"
             ];
           };
         };
