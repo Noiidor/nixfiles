@@ -62,6 +62,14 @@
       userEmail = "noidor2019@gmail.com";
       extraConfig = {
         init.defaultBranch = "master";
+
+        url = {
+          "git@gitlab.com:hezzl" = {
+            insteadOf = [
+              "gitlab.com/hezzl"
+            ];
+          };
+        };
       };
     };
 
