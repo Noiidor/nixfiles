@@ -40,6 +40,8 @@
     protoc-gen-validate
     protoc-gen-doc
     dig
+    unzip
+    libgcc
   ];
 
   # Bootloader.
