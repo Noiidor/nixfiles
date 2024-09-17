@@ -42,6 +42,8 @@
     dig
     unzip
     libgcc
+    ripgrep
+    wl-clipboard
   ];
 
   # Bootloader.
