@@ -19,6 +19,7 @@
       mpc-qt
       lutris
       vscode
+      postman
     ];
 
     sessionPath = [
