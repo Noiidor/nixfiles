@@ -39,6 +39,7 @@
     protoc-gen-connect-go
     protoc-gen-validate
     protoc-gen-doc
+    dig
   ];
 
   # Bootloader.
