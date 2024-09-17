@@ -30,6 +30,15 @@
     fzf
     protobuf_26
     buf
+    go-tools
+    gopls
+    delve
+    grpc-gateway
+    protoc-gen-go
+    protoc-gen-go-grpc
+    protoc-gen-connect-go
+    protoc-gen-validate
+    protoc-gen-doc
   ];
 
   # Bootloader.
