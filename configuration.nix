@@ -41,9 +41,9 @@
     protoc-gen-doc
     dig
     unzip
-    libgcc
     ripgrep
     wl-clipboard
+    mtr
   ];
 
   # Bootloader.
