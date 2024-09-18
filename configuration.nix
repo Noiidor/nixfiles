@@ -52,9 +52,12 @@
   boot.supportedFilesystems = ["ntfs"];
   boot.kernel.sysctl."kernel.sysrq" = 502;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;
-  networking.nameservers = ["8.8.8.8"];
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+    networkmanager.dns = "none";
+    nameservers = ["8.8.8.8" "8.8.8.4" "1.1.1.1" "1.0.0.1"];
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   time.timeZone = "Asia/Ho_Chi_Minh";
