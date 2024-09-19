@@ -61,10 +61,10 @@
 
   networking = {
     hostName = "nixos";
-    networkmanager.enable = true;
+    networkmanager.enable = false;
     #networkmanager.dns = "none";
     #nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
-    #wireless.enable = true; # Enables wireless support via wpa_supplicant.
+    wireless.enable = true; # Enables wireless support via wpa_supplicant.
   };
 
   time.timeZone = "Asia/Ho_Chi_Minh";
