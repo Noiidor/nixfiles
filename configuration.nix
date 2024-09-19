@@ -46,6 +46,8 @@
       ripgrep
       wl-clipboard
       mtr
+      wirelesstools
+      toybox
     ])
     ++
     # List of unstable(rolling-release) packages
