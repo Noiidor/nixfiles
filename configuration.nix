@@ -65,6 +65,7 @@
     #networkmanager.dns = "none";
     #nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
     wireless.enable = true; # Enables wireless support via wpa_supplicant.
+    wireless.userControlled.enable = true;
   };
 
   time.timeZone = "Asia/Ho_Chi_Minh";
