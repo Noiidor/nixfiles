@@ -61,9 +61,9 @@
 
   networking = {
     hostName = "nixos";
-    networkmanager.enable = true;
-    networkmanager.dns = "none";
-    nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
+    networkmanager.enable = false;
+    #networkmanager.dns = "none";
+    #nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
