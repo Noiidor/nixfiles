@@ -22,6 +22,7 @@
       vscode
       postman
       gimp
+      inkscape
     ];
 
     sessionPath = [
