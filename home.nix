@@ -21,6 +21,7 @@
       lutris
       vscode
       postman
+      gimp
     ];
 
     sessionPath = [
