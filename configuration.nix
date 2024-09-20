@@ -47,6 +47,7 @@
       wl-clipboard
       mtr
       wirelesstools
+      nerdfonts
     ])
     ++
     # List of unstable(rolling-release) packages
