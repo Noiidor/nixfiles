@@ -48,9 +48,10 @@
       mtr
       wirelesstools
     ])
-    ++ (with pkgs-unstable; [
-      neovim
-    ]);
+    ++
+    # List of unstable(rolling-release) packages
+    (with pkgs-unstable; [
+      ]);
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

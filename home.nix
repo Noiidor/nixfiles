@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   home = {
@@ -55,6 +56,7 @@
 
     neovim = {
       enable = true;
+      package = pkgs-unstable.neovim-unwrapped;
       defaultEditor = true;
     };
 
