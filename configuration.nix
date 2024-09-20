@@ -9,51 +9,45 @@
   ];
 
   # List of stable packages
-  environment.systemPackages =
-    (with pkgs; [
-      home-manager
-      fastfetch
-      zsh
-      git
-      alejandra
-      flatpak
-      go
-      python3
-      docker
-      postgresql_16
-      kubectl
-      gparted
-      libadwaita
-      ntfs3g
-      testdisk
-      ventoy
-      ffmpeg
-      gnumake
-      fzf
-      protobuf_26
-      buf
-      go-tools
-      gopls
-      delve
-      grpc-gateway
-      protoc-gen-go
-      protoc-gen-go-grpc
-      protoc-gen-connect-go
-      protoc-gen-validate
-      protoc-gen-doc
-      dig
-      unzip
-      ripgrep
-      wl-clipboard
-      mtr
-      wirelesstools
-      toybox
-    ])
-    ++
-    # List of unstable(rolling-release) packages
-    (with pkgs-unstable; [
-      neovim
-    ]);
+  environment.systemPackages = with pkgs; [
+    home-manager
+    fastfetch
+    zsh
+    git
+    alejandra
+    flatpak
+    go
+    python3
+    docker
+    postgresql_16
+    kubectl
+    gparted
+    libadwaita
+    ntfs3g
+    testdisk
+    ventoy
+    ffmpeg
+    gnumake
+    fzf
+    protobuf_26
+    buf
+    go-tools
+    gopls
+    delve
+    grpc-gateway
+    protoc-gen-go
+    protoc-gen-go-grpc
+    protoc-gen-connect-go
+    protoc-gen-validate
+    protoc-gen-doc
+    dig
+    unzip
+    ripgrep
+    wl-clipboard
+    mtr
+    wirelesstools
+    pkgs-unstable.neovim
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
