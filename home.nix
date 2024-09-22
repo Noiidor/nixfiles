@@ -4,6 +4,8 @@
   pkgs-unstable,
   ...
 }: {
+  imports = [ ./modules/nvim/nvim.nix ];
+
   home = {
     username = "noi";
     homeDirectory = "/home/noi";
@@ -54,12 +56,6 @@
       initExtra = ''
         PROMPT="%F{blue}%~ %(?.%F{green}.%F{red})%#%f "
       '';
-    };
-
-    neovim = {
-      enable = true;
-      package = pkgs-unstable.neovim-unwrapped;
-      defaultEditor = true;
     };
 
     git = {

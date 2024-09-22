@@ -34,7 +34,9 @@
 
     homeConfigurations.noi = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      modules = [./home.nix];
+      modules = [
+        ./home.nix 
+      ];
       extraSpecialArgs = {
         inherit pkgs-unstable;
       };

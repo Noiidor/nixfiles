@@ -29,7 +29,6 @@
       ventoy
       ffmpeg
       gnumake
-      fzf
       protobuf_26
       buf
       go-tools
@@ -43,7 +42,6 @@
       protoc-gen-doc
       dig
       unzip
-      ripgrep
       wl-clipboard
       mtr
       wirelesstools
