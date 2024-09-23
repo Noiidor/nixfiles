@@ -11,41 +11,55 @@
   ]);
 
   programs.neovim = {
-      enable = true;
-      package = pkgs-unstable.neovim-unwrapped;
-      defaultEditor = true;
-      vimAlias = true;
-      viAlias = true;
-      # Stable nvim plugins
-      plugins = (with pkgs.vimPlugins; [
-	telescope-nvim
-	vim-sleuth
-	gitsigns-nvim
-	which-key-nvim
-	plenary-nvim
-	telescope-ui-select-nvim
-	telescope-fzf-native-nvim
-	nvim-web-devicons
+    enable = true;
+    package = pkgs-unstable.neovim-unwrapped;
+    defaultEditor = true;
+    vimAlias = true;
+    viAlias = true;
+    # Stable nvim plugins
+    plugins = (with pkgs.vimPlugins; [
+      vim-sleuth
+      gitsigns-nvim
+      which-key-nvim
+      plenary-nvim
+      nvim-web-devicons
 
-	nvim-lspconfig
-        nvim-cmp
-	luasnip
-	cmp_luasnip
-	cmp-nvim-lsp
-	cmp-path
-	conform-nvim
+      # Telescope
+      telescope-nvim
+      telescope-ui-select-nvim
+      telescope-fzf-native-nvim
+      telescope-file-browser-nvim
 
-	tokyonight-nvim
+      # LSP
+      nvim-lspconfig
+      nvim-cmp
+      luasnip
+      cmp_luasnip
+      cmp-nvim-lsp
+      cmp-path
 
-	todo-comments-nvim
-	mini-nvim
-	fidget-nvim
-      ])
-      ++
-      # Unstable nvim plugins
-      (with pkgs-unstable.vimPlugins; [
-	nvim-treesitter.withAllGrammars
-      ]);
+      # Format
+      conform-nvim
+
+      # Theme
+      tokyonight-nvim
+      cyberdream-nvim
+      kanagawa-nvim
+      onedark-nvim
+      onedarker-nvim
+      miasma-nvim
+      nightfox-nvim
+
+      # Utils
+      todo-comments-nvim
+      mini-nvim
+      fidget-nvim
+    ])
+    ++
+    # Unstable nvim plugins
+    (with pkgs-unstable.vimPlugins; [
+      nvim-treesitter.withAllGrammars
+    ]);
   };
 
   xdg.configFile.nvim = {

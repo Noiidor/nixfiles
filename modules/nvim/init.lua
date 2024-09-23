@@ -103,6 +103,8 @@ vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
+vim.wo.wrap = false
+vim.wo.linebreak = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
@@ -156,7 +158,11 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 15
+vim.opt.sidescrolloff = 15
 
+vim.g.loaded_netrwPlugin = 0
+
+vim.opt.jumpoptions = "stack,view"
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
@@ -173,10 +179,14 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+
+vim.keymap.set("n", "<leader>to", function()
+	vim.opt.scrolloff = 999 - vim.o.scrolloff
+end)
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -225,26 +235,45 @@ require("telescope").setup({
 -- Enable Telescope extensions if they are installed
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
+pcall(require("telescope").load_extension, "file_browser")
 
 -- See `:help telescope.builtin`
 local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>f", function()
+	require("telescope").extensions.file_browser.file_browser({
+		cwd = require("telescope.utils").buffer_dir(),
+		grouped = true,
+		hidden = true,
+		hijack_netrw = true,
+		auto_depth = true,
+	})
+end, { desc = "[F]ile Browser" })
+
+vim.keymap.set("n", "<leader>e", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+-- vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
 vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+-- vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+-- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+vim.keymap.set("n", "<leader>r", builtin.resume, { desc = "Search [R]esume" })
+vim.keymap.set("n", "<leader>t", builtin.treesitter, { desc = "Search [T]reesitter" })
+-- vim.keymap.set("n", "<leader>f", builtin.current_buffer_fuzzy_find, { desc = "Current Buf [F]zf" })
+vim.keymap.set("n", "<leader>r", builtin.oldfiles, { desc = "[S]earch [R]ecent Files" })
 vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
--- Slightly advanced example of overriding default behavior and theme
+vim.keymap.set("n", "<leader>pl", function()
+	builtin.planets({
+		show_pluto = true,
+		show_moon = true,
+	})
+end, { desc = "Search [PL]anets" })
+
 vim.keymap.set("n", "<leader>/", function()
 	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		winblend = 10,
-		previewer = false,
+		previewer = true,
 	}))
 end, { desc = "[/] Fuzzily search in current buffer" })
 
@@ -329,7 +358,14 @@ require("mini.animate").setup()
 
 require("mini.pairs").setup()
 
-require("mini.indentscope").setup()
+local indentscope = require("mini.indentscope")
+indentscope.setup({
+	draw = {
+		delay = 0,
+		animation = indentscope.gen_animation.none(),
+	},
+	symbol = "│",
+})
 
 -- Add/delete/replace surroundings (brackets, quotes, etc.)
 --
@@ -502,8 +538,50 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --  By default, Neovim doesn't support everything that is in the LSP specification.
 --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
 --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local on_attach = function(client, bufnr)
+	-- Enable completion triggered by <c-x><c-o>
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+	-- Mappings.
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set("n", "rn", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+end
+
+local cmp = require("cmp")
+
+cmp.setup({
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	mapping = cmp.mapping.preset.insert({
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+	}),
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "ultisnips" },
+	}, {
+		{ name = "buffer" },
+	}),
+})
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -555,15 +633,21 @@ lspconfig.lua_ls.setup({
 			-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
 			-- diagnostics = { disable = { 'missing-fields' } },
 		},
+		diagnostics = {
+			-- Get the language server to recognize the `vim` global
+			globals = { "vim" },
+		},
 	},
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
 
-vim.lsp.start({
-	name = "lua-language-server",
-	cmd = { "lua-language-server" },
-	root_dir = vim.fs.dirname(vim.fs.find({ ".git", ".vim", "nvim" }, { upward = true })[1]),
-	settings = { Lua = { diagnostics = { globals = { "vim" } } } },
-})
+-- vim.lsp.start({
+-- 	name = "lua-language-server",
+-- 	cmd = { "lua-language-server" },
+-- 	root_dir = vim.fs.dirname(vim.fs.find({ ".git", ".vim", "nvim" }, { upward = true })[1]),
+-- 	settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+-- })
 
 lspconfig.gopls.setup({
 	settings = {
@@ -577,4 +661,6 @@ lspconfig.gopls.setup({
 			usePlaceholders = true,
 		},
 	},
+	capabilities = capabilities,
+	on_attach = on_attach,
 })

@@ -32,6 +32,7 @@
       protobuf_26
       buf
       go-tools
+      gotools
       gopls
       delve
       grpc-gateway
