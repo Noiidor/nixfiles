@@ -313,10 +313,20 @@ animate.setup({
 require("mini.pairs").setup()
 
 local minifiles = require("mini.files")
-minifiles.setup()
+minifiles.setup({
+	mappings = {
+		close = "<Esc>",
+	},
+	options = {
+		permanent_delete = false,
+	},
+	windows = {
+		preview = true,
+		width_nofocus = 20,
+	},
+})
 
 vim.keymap.set("n", "-", minifiles.open, { desc = "Open file browser" })
-vim.keymap.set("n", "<BS>", minifiles.close, { desc = "Close file browser" })
 
 local indentscope = require("mini.indentscope")
 indentscope.setup({
