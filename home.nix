@@ -49,6 +49,7 @@
         nixconf = "$EDITOR ~/nixfiles/configuration.nix";
         homeconf = "$EDITOR ~/nixfiles/home.nix";
         flakeconf = "$EDITOR ~/nixfiles/flake.nix";
+        nv = "nvim";
       };
 
       enableVteIntegration = true;

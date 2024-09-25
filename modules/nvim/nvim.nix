@@ -30,13 +30,15 @@
       telescope-fzf-native-nvim
       telescope-file-browser-nvim
 
-      # LSP
+      # LSP and snippets
       nvim-lspconfig
       nvim-cmp
-      luasnip
       cmp_luasnip
       cmp-nvim-lsp
+      cmp-nvim-lua
+      cmp-buffer
       cmp-path
+      luasnip
 
       # Format
       conform-nvim
