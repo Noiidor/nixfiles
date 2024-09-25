@@ -319,6 +319,7 @@ minifiles.setup({
 	},
 	options = {
 		permanent_delete = false,
+		use_as_default_explorer = false,
 	},
 	windows = {
 		preview = true,
@@ -348,7 +349,7 @@ statusline.setup({ use_icons = vim.g.have_nerd_font })
 
 -- Formatters config
 require("conform").setup({
-	notify_on_error = false,
+	notify_on_error = true,
 	format_on_save = function(bufnr)
 		-- Disable "format_on_save lsp_fallback" for languages that don't
 		-- have a well standardized coding style. You can add additional
@@ -361,7 +362,7 @@ require("conform").setup({
 			lsp_format_opt = "fallback"
 		end
 		return {
-			timeout_ms = 500,
+			timeout_ms = 1000,
 			lsp_format = lsp_format_opt,
 		}
 	end,
@@ -369,9 +370,16 @@ require("conform").setup({
 		lua = { "stylua" },
 		go = { "goimports", "gofmt" },
 		nix = { "alejandra" },
+		sql = { "sleek" },
 		-- You can use 'stop_after_first' to run the first available formatter from the list
 		-- javascript = { "prettierd", "prettier", stop_after_first = true },
 	},
+	-- formatters = {
+	-- 	sleek = {
+	-- 		command = "sleek",
+	-- 		args = { "$FILENAME" },
+	-- 	},
+	-- },
 })
 
 require("nvim-treesitter.configs").setup({
@@ -393,6 +401,15 @@ require("todo-comments").setup({
 })
 
 require("fidget").setup({})
+
+local twilight = require("twilight")
+twilight.setup({})
+
+vim.keymap.set("n", "<leader>ze", twilight.toggle, { desc = "Toggle [ZE]n mode" })
+
+local dashboard = require("alpha.themes.dashboard")
+dashboard.file_icons_provider = "devicons"
+require("alpha").setup(dashboard.opts)
 
 -- LSP
 
@@ -559,6 +576,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- }
 
 local lspconfig = require("lspconfig")
+local lspconfigs = require("lspconfig.configs")
 
 lspconfig.lua_ls.setup({
 	settings = {
@@ -593,3 +611,19 @@ lspconfig.gopls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
+
+-- lspconfigs.postgres_lsp = {
+-- 	default_config = {
+-- 		name = "postgres_lsp",
+-- 		cmd = { "postgres_lsp" },
+-- 		filetypes = { "sql" },
+-- 		single_file_support = true,
+-- 		root_dir = lspconfig.util.find_git_ancestor,
+-- 	},
+-- }
+--
+-- lspconfig.postgres_lsp.setup({})
+
+lspconfig.sqls.setup({})
+
+lspconfig.nil_ls.setup({})

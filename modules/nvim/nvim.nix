@@ -1,14 +1,20 @@
-{config, pkgs, pkgs-unstable, ...}: 
-
 {
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
   # Stable user packages
-  home.packages = (with pkgs; [
+  home.packages = with pkgs; [
     fd
     ripgrep
     nil
     stylua
     lua-language-server
-  ]);
+    postgres-lsp
+    sqls
+    sleek
+  ];
 
   programs.neovim = {
     enable = true;
@@ -17,56 +23,58 @@
     vimAlias = true;
     viAlias = true;
     # Stable nvim plugins
-    plugins = (with pkgs.vimPlugins; [
-      vim-sleuth
-      gitsigns-nvim
-      which-key-nvim
-      plenary-nvim
-      nvim-web-devicons
+    plugins =
+      (with pkgs.vimPlugins; [
+        vim-sleuth
+        gitsigns-nvim
+        which-key-nvim
+        plenary-nvim
+        nvim-web-devicons
 
-      # Telescope
-      telescope-nvim
-      telescope-ui-select-nvim
-      telescope-fzf-native-nvim
-      telescope-file-browser-nvim
+        # Telescope
+        telescope-nvim
+        telescope-ui-select-nvim
+        telescope-fzf-native-nvim
+        telescope-file-browser-nvim
 
-      # LSP and snippets
-      nvim-lspconfig
-      nvim-cmp
-      cmp_luasnip
-      cmp-nvim-lsp
-      cmp-nvim-lua
-      cmp-buffer
-      cmp-path
-      luasnip
+        # LSP and snippets
+        nvim-lspconfig
+        nvim-cmp
+        cmp_luasnip
+        cmp-nvim-lsp
+        cmp-nvim-lua
+        cmp-buffer
+        cmp-path
+        luasnip
 
-      # Format
-      conform-nvim
+        # Format
+        conform-nvim
 
-      # Theme
-      tokyonight-nvim
-      cyberdream-nvim
-      kanagawa-nvim
-      onedark-nvim
-      onedarker-nvim
-      miasma-nvim
-      nightfox-nvim
+        # Visual
+        tokyonight-nvim
+        cyberdream-nvim
+        kanagawa-nvim
+        onedark-nvim
+        onedarker-nvim
+        miasma-nvim
+        nightfox-nvim
+        twilight-nvim
+        alpha-nvim
 
-      # Utils
-      todo-comments-nvim
-      mini-nvim
-      fidget-nvim
-    ])
-    ++
-    # Unstable nvim plugins
-    (with pkgs-unstable.vimPlugins; [
-      nvim-treesitter.withAllGrammars
-    ]);
+        # Utils
+        todo-comments-nvim
+        mini-nvim
+        fidget-nvim
+      ])
+      ++
+      # Unstable nvim plugins
+      (with pkgs-unstable.vimPlugins; [
+        nvim-treesitter.withAllGrammars
+      ]);
   };
 
   xdg.configFile.nvim = {
     recursive = true;
     source = ./.;
   };
-
 }

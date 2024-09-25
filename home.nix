@@ -4,7 +4,7 @@
   pkgs-unstable,
   ...
 }: {
-  imports = [ ./modules/nvim/nvim.nix ];
+  imports = [./modules/nvim/nvim.nix];
 
   home = {
     username = "noi";
@@ -58,6 +58,13 @@
         PROMPT="%F{blue}%~ %(?.%F{green}.%F{red})%#%f "
       '';
     };
+
+    # tmux = {
+    #   enable = true;
+    #   shell = "$SHELL";
+    #   clock24 = true;
+    #   keyMode = "vi";
+    # }
 
     git = {
       enable = true;
