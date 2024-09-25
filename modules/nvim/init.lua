@@ -71,6 +71,7 @@ Kickstart Guide:
     plugins or Neovim features used in Kickstart.
 
 --]]
+--
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -142,6 +143,10 @@ vim.opt.jumpoptions = "stack,view"
 
 -- Theme config
 vim.cmd.colorscheme("tokyonight-night")
+
+local dashboard = require("alpha.themes.dashboard")
+dashboard.file_icons_provider = "devicons"
+require("alpha").setup(dashboard.opts)
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -406,10 +411,6 @@ local twilight = require("twilight")
 twilight.setup({})
 
 vim.keymap.set("n", "<leader>ze", twilight.toggle, { desc = "Toggle [ZE]n mode" })
-
-local dashboard = require("alpha.themes.dashboard")
-dashboard.file_icons_provider = "devicons"
-require("alpha").setup(dashboard.opts)
 
 -- LSP
 
