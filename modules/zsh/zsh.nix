@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  ...
 }: {
   programs.zsh = {
     enable = true;
