@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
+  ...
 }: {
   programs.tmux = {
     enable = true;
