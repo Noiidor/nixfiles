@@ -11,5 +11,6 @@
     keyMode = "vi";
     prefix = "C-Space";
     baseIndex = 1;
+    escapeTime = 10;
   };
 }

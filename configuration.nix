@@ -58,6 +58,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["ntfs"];
   boot.kernel.sysctl."kernel.sysrq" = 502;
+  zramSwap = {
+    enable = true;
+    algorithm = "lz4";
+  };
 
   networking = {
     hostName = "nixos";

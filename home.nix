@@ -2,8 +2,11 @@
   config,
   pkgs,
   pkgs-unstable,
+  inputs,
   ...
-}: {
+}: let
+  aagl = inputs.aagl;
+in {
   imports = [
     ./modules/nvim/nvim.nix
     ./modules/tmux/tmux.nix
@@ -14,22 +17,27 @@
     username = "noi";
     homeDirectory = "/home/noi";
 
-    packages = with pkgs; [
-      kitty
-      obsidian
-      bruno
-      spotify
-      dbeaver-bin
-      qbittorrent
-      telegram-desktop
-      vesktop
-      mpc-qt
-      lutris
-      vscode
-      postman
-      gimp
-      inkscape
-    ];
+    packages =
+      (with pkgs; [
+        kitty
+        obsidian
+        bruno
+        spotify
+        dbeaver-bin
+        qbittorrent
+        telegram-desktop
+        vesktop
+        mpc-qt
+        lutris
+        vscode
+        postman
+        gimp
+        inkscape
+        obs-studio
+      ])
+      ++ (with aagl; [
+        # the-honkers-railway-launcher
+      ]);
 
     sessionPath = [
       "$HOME/nixfiles/scripts"
@@ -40,35 +48,7 @@
   };
 
   programs = {
-    # zsh = {
-    #   enable = true;
-    #   enableCompletion = true;
-    #   autosuggestion.enable = true;
-    #   syntaxHighlighting.enable = true;
-    #   shellAliases = {
-    #     ll = "ls -l";
-    #     ff = "fastfetch";
-    #     nix-rebuild = "sudo nixos-rebuild switch --flake ~/nixfiles";
-    #     home-rebuild = "home-manager switch --flake ~/nixfiles";
-    #     nixconf = "$EDITOR ~/nixfiles/configuration.nix";
-    #     homeconf = "$EDITOR ~/nixfiles/home.nix";
-    #     flakeconf = "$EDITOR ~/nixfiles/flake.nix";
-    #     nv = "nvim";
-    #   };
-    #
-    #   enableVteIntegration = true;
-    #
-    #   initExtra = ''
-    #     PROMPT="%F{blue}%~ %(?.%F{green}.%F{red})%#%f "
-    #   '';
-    # };
-
-    # tmux = {
-    #   enable = true;
-    #   shell = "$SHELL";
-    #   clock24 = true;
-    #   keyMode = "vi";
-    # }
+    # honkers-railway-launcher.enable = true;
 
     git = {
       enable = true;
