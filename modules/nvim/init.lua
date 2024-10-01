@@ -231,7 +231,7 @@ vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect T
 vim.keymap.set("n", "<leader>ws", builtin.live_grep, { desc = "[W]orkspace [S]earch(grep)" })
 -- vim.keymap.set("n", "<leader>r", builtin.resume, { desc = "Search [R]esume" })
 vim.keymap.set("n", "<leader>t", builtin.treesitter, { desc = "Search [T]reesitter" })
-vim.keymap.set("n", "<leader>r", builtin.oldfiles, { desc = "[S]earch [R]ecent Files" })
+vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "[S]earch [R]ecent Files" })
 vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 -- NOTE: Secret :)
@@ -302,7 +302,10 @@ require("which-key").setup({
 })
 
 -- Gitsigns config
-require("gitsigns").setup()
+require("gitsigns").setup({
+	current_line_blame = true,
+})
+
 
 -- Mini config
 require("mini.ai").setup({ n_lines = 500 })
@@ -441,7 +444,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Jump to the type of the word under your cursor.
 		--  Useful when you're not sure what type a variable is and you want to see
 		--  the definition of its *type*, not where it was *defined*.
-		map("<leader>T", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+		map("gt", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 
 		-- Fuzzy find all the symbols in your current workspace.
 		--  Similar to document symbols, except searches over your entire project.

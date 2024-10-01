@@ -25,11 +25,14 @@
     # Stable nvim plugins
     plugins =
       (with pkgs.vimPlugins; [
+        # General
         vim-sleuth
-        gitsigns-nvim
         which-key-nvim
         plenary-nvim
         nvim-web-devicons
+
+        #Git
+        gitsigns-nvim
 
         # Telescope
         telescope-nvim
@@ -60,11 +63,12 @@
         nightfox-nvim
         twilight-nvim
         alpha-nvim
+        todo-comments-nvim
+        fidget-nvim
 
         # Utils
-        todo-comments-nvim
         mini-nvim
-        fidget-nvim
+        vim-tmux-navigator
       ])
       ++
       # Unstable nvim plugins

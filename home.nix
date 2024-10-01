@@ -3,6 +3,7 @@
   pkgs,
   pkgs-unstable,
   inputs,
+  system,
   ...
 }: let
   aagl = inputs.aagl;
@@ -34,10 +35,11 @@ in {
         gimp
         inkscape
         obs-studio
+        lazygit
       ])
-      ++ (with aagl; [
-        # the-honkers-railway-launcher
-      ]);
+      ++ [
+        aagl.packages.${system}.the-honkers-railway-launcher
+      ];
 
     sessionPath = [
       "$HOME/nixfiles/scripts"

@@ -52,6 +52,7 @@
         # }
       ];
       extraSpecialArgs = {
+        inherit system;
         inherit pkgs-unstable;
         inherit inputs;
       };
