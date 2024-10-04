@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./modules/hyprland/hyprland.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -147,7 +148,6 @@
 
   programs = {
     firefox.enable = true;
-    hyprland.enable = true;
     zsh.enable = true;
     steam = {
       enable = true;
