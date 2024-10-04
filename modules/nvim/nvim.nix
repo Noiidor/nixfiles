@@ -65,6 +65,7 @@
         alpha-nvim
         todo-comments-nvim
         fidget-nvim
+        base16-nvim
 
         # Utils
         mini-nvim

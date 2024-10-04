@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
   # List of stable packages
   environment.systemPackages =
     (with pkgs; [
@@ -53,7 +54,7 @@
     (with pkgs-unstable; [
       ]);
 
-  # Bootloader.
+  # BOOT
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["ntfs"];
@@ -61,8 +62,10 @@
   zramSwap = {
     enable = true;
     algorithm = "lz4";
+    memoryPercent = 100;
   };
 
+  # NETWORKING
   networking = {
     hostName = "nixos";
     networkmanager = {
@@ -79,6 +82,14 @@
     #nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
   };
 
+  services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
   time.timeZone = "Asia/Ho_Chi_Minh";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -94,7 +105,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the KDE Plasma Desktop Environment.
+  # Desktop Environment
   services.displayManager = {
     sddm = {
       enable = true;
@@ -103,7 +114,7 @@
   };
   services.desktopManager.plasma6.enable = true;
 
-  # Configure keymap in X11
+  # Configure keymap
   services.xserver.xkb = {
     layout = "us,ru";
     variant = "";
@@ -129,7 +140,7 @@
 
   users.users.noi = {
     isNormalUser = true;
-    description = "Noidor";
+    description = "Noi";
     extraGroups = ["networkmanager" "wheel" "video"];
     shell = pkgs.zsh;
   };
@@ -143,15 +154,19 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
+    nh = {
+      enable = true;
+      flake = "/home/noi/nixfiles";
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 5d --keep 5";
+    };
   };
 
   stylix = {
     enable = true;
-    image = ./stylix/wallpaper.png;
+    image = ./modules/stylix/wallpaper.png;
     polarity = "dark";
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -162,14 +177,6 @@
   # };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "24.05";
 }

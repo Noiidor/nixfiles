@@ -144,7 +144,7 @@ vim.opt.sidescrolloff = 15
 vim.opt.jumpoptions = "stack,view"
 
 -- Theme config
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("base16-hardcore")
 
 local dashboard = require("alpha.themes.dashboard")
 dashboard.file_icons_provider = "devicons"

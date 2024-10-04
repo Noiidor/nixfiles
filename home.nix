@@ -21,7 +21,6 @@ in {
 
     packages =
       (with pkgs; [
-        kitty
         obsidian
         bruno
         spotify
@@ -36,7 +35,16 @@ in {
         gimp
         inkscape
         obs-studio
+
+        # TUI
         lazygit
+        pspg
+
+        # CLI utils
+        cbonsai
+        lux
+        cava
+        pgcli
       ])
       ++ [
         aagl-pkgs.the-honkers-railway-launcher
@@ -47,11 +55,24 @@ in {
       "$HOME/go/bin"
     ];
 
+    sessionVariables = {
+      PSQL_PAGER = "pspg -X";
+    };
+
     stateVersion = "24.05";
   };
 
   programs = {
     kitty.enable = true;
+
+    htop = {
+      enable = true;
+      settings = {
+        tree_view = 1;
+      };
+    };
+
+    btop.enable = true;
 
     git = {
       enable = true;
