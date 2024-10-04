@@ -6,12 +6,13 @@
   system,
   ...
 }: let
-  aagl = inputs.aagl;
+  aagl-pkgs = inputs.aagl.packages.${system};
 in {
   imports = [
     ./modules/nvim/nvim.nix
     ./modules/tmux/tmux.nix
     ./modules/zsh/zsh.nix
+    ./modules/stylix/stylix.nix
   ];
 
   home = {
@@ -38,7 +39,7 @@ in {
         lazygit
       ])
       ++ [
-        aagl.packages.${system}.the-honkers-railway-launcher
+        aagl-pkgs.the-honkers-railway-launcher
       ];
 
     sessionPath = [
@@ -50,7 +51,7 @@ in {
   };
 
   programs = {
-    # honkers-railway-launcher.enable = true;
+    kitty.enable = true;
 
     git = {
       enable = true;

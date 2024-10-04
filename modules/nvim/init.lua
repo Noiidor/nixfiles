@@ -88,6 +88,8 @@ vim.g.loaded_netrwPlugin = 0
 vim.wo.wrap = false
 vim.wo.linebreak = false
 
+vim.o.tabstop = 4
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -305,7 +307,6 @@ require("which-key").setup({
 require("gitsigns").setup({
 	current_line_blame = true,
 })
-
 
 -- Mini config
 require("mini.ai").setup({ n_lines = 500 })

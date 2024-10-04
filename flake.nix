@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:danth/stylix/release-24.05";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     aagl.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -28,7 +33,10 @@
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [./configuration.nix];
+        modules = [
+          ./configuration.nix
+          inputs.stylix.nixosModules.stylix
+        ];
         specialArgs = {
           inherit pkgs-unstable;
         };
@@ -39,17 +47,7 @@
       inherit pkgs;
       modules = [
         ./home.nix
-        # {
-        #   imports = [inputs.aagl.nixosModules.default];
-        #   # nix.settings = inputs.aagl.nixConfig; # Set up Cachix
-        #   # programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
-        #   # programs.anime-games-launcher.enable = true;
-        #   # programs.anime-borb-launcher.enable = true;
-        #   programs.honkers-railway-launcher.enable = true;
-        #   # programs.honkers-launcher.enable = true;
-        #   # programs.wavey-launcher.enable = true;
-        #   # programs.sleepy-launcher.enable = true;
-        # }
+        inputs.stylix.homeManagerModules.stylix
       ];
       extraSpecialArgs = {
         inherit system;
