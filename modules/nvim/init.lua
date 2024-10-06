@@ -380,15 +380,24 @@ require("conform").setup({
 		go = { "goimports", "gofmt" },
 		nix = { "alejandra" },
 		sql = { "sleek" },
+		json = { "biome" },
+		jsonc = { "biome" },
+		js = { "biome" },
+		ts = { "biome" },
+		jsx = { "biome" },
+		tsx = { "biome" },
+		html = { "biome" },
+		css = { "biome" },
+		graphql = { "biome" },
 		-- You can use 'stop_after_first' to run the first available formatter from the list
 		-- javascript = { "prettierd", "prettier", stop_after_first = true },
 	},
-	-- formatters = {
-	-- 	sleek = {
-	-- 		command = "sleek",
-	-- 		args = { "$FILENAME" },
-	-- 	},
-	-- },
+	formatters = {
+		sleek = {
+			command = "sleek",
+			args = { "$FILENAME" },
+		},
+	},
 })
 
 require("nvim-treesitter.configs").setup({

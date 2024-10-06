@@ -45,6 +45,11 @@ in {
         lux
         cava
         pgcli
+        eza
+        bat
+        sl
+        cmatrix
+        aalib
       ])
       ++ [
         aagl-pkgs.the-honkers-railway-launcher

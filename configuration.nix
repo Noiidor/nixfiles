@@ -49,6 +49,8 @@
       mtr
       wirelesstools
       nerdfonts
+      libnotify
+      jq
     ])
     ++
     # List of unstable(rolling-release) packages
@@ -133,6 +135,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
     #jack.enable = true;
   };
 
@@ -166,6 +169,7 @@
     enable = true;
     image = ./modules/stylix/wallpaper.png;
     polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
   };
 
   # Some programs need SUID wrappers, can be configured further or are

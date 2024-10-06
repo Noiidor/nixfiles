@@ -14,6 +14,7 @@
     postgres-lsp
     sqls
     sleek
+    biome
   ];
 
   programs.neovim = {
