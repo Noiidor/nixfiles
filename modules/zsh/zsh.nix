@@ -18,6 +18,7 @@
       homeconf = "$EDITOR ~/nixfiles/home.nix";
       flakeconf = "$EDITOR ~/nixfiles/flake.nix";
       nv = "nvim";
+      ez = "eza -l --icons=auto";
     };
 
     enableVteIntegration = true;

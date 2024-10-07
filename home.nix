@@ -28,13 +28,17 @@ in {
         qbittorrent
         telegram-desktop
         vesktop
-        mpc-qt
         lutris
         vscode
         postman
+        obs-studio
+
+        # Media
+        mpc-qt
         gimp
         inkscape
-        obs-studio
+        imv
+        feh
 
         # TUI
         lazygit
@@ -70,6 +74,11 @@ in {
   programs = {
     kitty.enable = true;
 
+    mpv = {
+      enable = true;
+      scripts = [pkgs.mpvScripts.uosc];
+    };
+
     htop = {
       enable = true;
       settings = {
@@ -97,6 +106,17 @@ in {
     };
 
     home-manager.enable = true;
+  };
+
+  xdg.mimeApps.enable = true;
+  xdg.mimeApps.defaultApplications = {
+    "image/png" = "imv.desktop";
+    "image/jpeg" = "imv.desktop";
+    "image/webp" = "imv.desktop";
+    "image/gif" = "mpv.desktop";
+    "video/mp4" = "mpv.desktop";
+    "video/mpeg" = "mpv.desktop";
+    "video/webm" = "mpv.desktop";
   };
 
   nixpkgs.config.allowUnfree = true;

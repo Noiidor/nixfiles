@@ -9,7 +9,6 @@
     xwayland.enable = true;
   };
   programs.hyprlock.enable = true;
-
   services.hypridle.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -18,6 +17,7 @@
     swww
     rofi-wayland
     pavucontrol
+    pwvucontrol
     playerctl
     brightnessctl
     wlogout
@@ -36,6 +36,7 @@
     dmenu
     helvum
     networkmanagerapplet
+    iniparser
   ];
 
   xdg.portal.enable = true;
