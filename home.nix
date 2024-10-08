@@ -79,15 +79,6 @@ in {
   programs = {
     kitty.enable = true;
 
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-
-    gamemode.enable = true;
-
     firefox.enable = true;
 
     mpv = {
