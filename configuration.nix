@@ -150,13 +150,7 @@
   };
 
   programs = {
-    firefox.enable = true;
     zsh.enable = true;
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
     nh = {
       enable = true;
       flake = "/home/noi/nixfiles";

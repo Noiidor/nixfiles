@@ -21,17 +21,21 @@ in {
 
     packages =
       (with pkgs; [
-        obsidian
+        # Work
         bruno
-        spotify
         dbeaver-bin
-        qbittorrent
-        telegram-desktop
-        vesktop
-        lutris
         vscode
         postman
-        obs-studio
+
+        # Applications and gaming
+        lutris
+        vesktop
+        telegram-desktop
+        spotify
+        qbittorrent
+        obsidian
+        bottles
+        mangohud
 
         # Media
         mpc-qt
@@ -39,6 +43,7 @@ in {
         inkscape
         imv
         feh
+        obs-studio
 
         # TUI
         lazygit
@@ -73,6 +78,17 @@ in {
 
   programs = {
     kitty.enable = true;
+
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
+
+    gamemode.enable = true;
+
+    firefox.enable = true;
 
     mpv = {
       enable = true;
