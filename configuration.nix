@@ -21,7 +21,6 @@
       flatpak
       go
       python3
-      docker
       postgresql_16
       kubectl
       gparted
@@ -32,11 +31,12 @@
       ffmpeg
       gnumake
       protobuf_26
-      buf
       go-tools
       gotools
       gopls
       delve
+      golangci-lint
+      go-migrate
       grpc-gateway
       protoc-gen-go
       protoc-gen-go-grpc
@@ -51,6 +51,8 @@
       nerdfonts
       libnotify
       jq
+      minikube
+      kubernetes
     ])
     ++
     # List of unstable(rolling-release) packages
@@ -62,6 +64,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["ntfs"];
   boot.kernel.sysctl."kernel.sysrq" = 502;
+  boot.kernelParams = ["cgroup_enable=cpuset" "cgroup_enable=memory" "cgroup_memory=1"];
   zramSwap = {
     enable = true;
     algorithm = "lz4";
@@ -86,6 +89,15 @@
   };
 
   services.openssh.enable = true;
+
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -145,7 +157,7 @@
   users.users.noi = {
     isNormalUser = true;
     description = "Noi";
-    extraGroups = ["networkmanager" "wheel" "video"];
+    extraGroups = ["networkmanager" "wheel" "video" "docker"];
     shell = pkgs.zsh;
   };
 

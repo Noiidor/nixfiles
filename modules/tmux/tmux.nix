@@ -11,7 +11,7 @@
     # keyMode = "vi";
     prefix = "M-Space";
     baseIndex = 1;
-    escapeTime = 10;
+    escapeTime = 5;
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       # {

@@ -15,6 +15,8 @@
     sqls
     sleek
     biome
+    pyright
+    python312Packages.debugpy
   ];
 
   programs.neovim = {
@@ -50,6 +52,13 @@
         cmp-buffer
         cmp-path
         luasnip
+
+        # Debugging
+        nvim-dap
+        nvim-dap-go
+        nvim-dap-python
+        nvim-dap-ui
+        nvim-dap-virtual-text
 
         # Format
         conform-nvim

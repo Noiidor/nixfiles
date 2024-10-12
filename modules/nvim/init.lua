@@ -626,6 +626,8 @@ lspconfig.gopls.setup({
 	on_attach = on_attach,
 })
 
+lspconfig.pyright.setup({})
+
 -- lspconfigs.postgres_lsp = {
 -- 	default_config = {
 -- 		name = "postgres_lsp",
@@ -641,3 +643,67 @@ lspconfig.gopls.setup({
 lspconfig.sqls.setup({})
 
 lspconfig.nil_ls.setup({})
+
+-- Debugging
+
+local dap = require("dap")
+
+vim.keymap.set("n", "<M-F5>", dap.continue, { desc = "Stop/Start debugging session" })
+vim.keymap.set("n", "<M-j>", dap.step_over, { desc = "Debug: step over" })
+vim.keymap.set("n", "<M-l>", dap.step_into, { desc = "Debug: step into" })
+vim.keymap.set("n", "<M-h>", dap.step_out, { desc = "Debug: step out" })
+vim.keymap.set("n", "<M-k>", dap.toggle_breakpoint, { desc = "Debug: toggle breakpoint" })
+
+vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#f92672" })
+vim.fn.sign_define("DapBreakpoint", {
+	text = "",
+	texthl = "DapBreakpoint",
+	linehl = "",
+	numhl = "DapBreakpoint",
+})
+vim.fn.sign_define("DapStopped", {
+	text = "",
+	texthl = "DapBreakpoint",
+	linehl = "",
+	numhl = "DapBreakpoint",
+})
+
+local keymap_restore = {}
+dap.listeners.after["event_initialized"]["me"] = function()
+	for _, buf in pairs(vim.api.nvim_list_bufs()) do
+		local keymaps = vim.api.nvim_buf_get_keymap(buf, "n")
+		for _, keymap in pairs(keymaps) do
+			if keymap.lhs == "K" then
+				table.insert(keymap_restore, keymap)
+				vim.api.nvim_buf_del_keymap(buf, "n", "K")
+			end
+		end
+	end
+	vim.api.nvim_set_keymap("n", "K", '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+end
+
+dap.listeners.after["event_terminated"]["me"] = function()
+	for _, keymap in pairs(keymap_restore) do
+		vim.api.nvim_buf_set_keymap(keymap.buffer, keymap.mode, keymap.lhs, keymap.rhs, { silent = keymap.silent == 1 })
+	end
+	keymap_restore = {}
+end
+
+-- DAP extensions
+require("nvim-dap-virtual-text").setup()
+require("dap-go").setup()
+
+local dapui = require("dapui")
+dapui.setup()
+dap.listeners.before.attach.dapui_config = function()
+	dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+	dapui.close()
+end

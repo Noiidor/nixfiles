@@ -20,6 +20,7 @@ in {
     homeDirectory = "/home/noi";
 
     packages =
+      # Stable packages
       (with pkgs; [
         # Work
         bruno
@@ -47,6 +48,7 @@ in {
 
         # TUI
         lazygit
+        lazydocker
         pspg
 
         # CLI utils
@@ -59,7 +61,22 @@ in {
         sl
         cmatrix
         aalib
+        fzf
       ])
+      # Unstable packages
+      ++ (with pkgs-unstable; [
+        # Work
+
+        # Applications and gaming
+
+        # Media
+
+        # TUI
+
+        # CLI utils
+        buf
+      ])
+      # Other
       ++ [
         aagl-pkgs.the-honkers-railway-launcher
       ];
@@ -78,6 +95,7 @@ in {
 
   programs = {
     kitty.enable = true;
+    zoxide.enable = true;
 
     firefox.enable = true;
 
