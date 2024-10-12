@@ -142,6 +142,7 @@ in {
     "video/mp4" = "mpv.desktop";
     "video/mpeg" = "mpv.desktop";
     "video/webm" = "mpv.desktop";
+    "video/mkv" = "mpv.desktop";
   };
 
   nixpkgs.config.allowUnfree = true;

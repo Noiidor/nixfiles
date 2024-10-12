@@ -690,7 +690,7 @@ dap.listeners.after["event_terminated"]["me"] = function()
 end
 
 -- DAP extensions
-require("nvim-dap-virtual-text").setup()
+-- require("nvim-dap-virtual-text").setup()
 require("dap-go").setup()
 
 local dapui = require("dapui")
