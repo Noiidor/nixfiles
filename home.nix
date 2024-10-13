@@ -106,7 +106,6 @@ in {
         adblock
         hidePodcasts
         copyToClipboard
-        betterGenres
         autoSkip
         fullAppDisplay
         keyboardShortcut
@@ -114,6 +113,7 @@ in {
       ];
       enabledCustomApps = with spicePkgs.apps; [
         ncsVisualizer
+        lyricsPlus
       ];
       theme = spicePkgs.themes.comfy;
       colorScheme = "hikari";
