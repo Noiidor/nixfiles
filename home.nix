@@ -12,7 +12,6 @@ in {
     ./modules/tmux/tmux.nix
     ./modules/zsh/zsh.nix
     ./modules/stylix/stylix.nix
-    ./modules/spicetify/spicetify.nix
   ];
 
   home = {
@@ -32,7 +31,7 @@ in {
         lutris
         vesktop
         telegram-desktop
-        spotify
+        # spotify
         qbittorrent
         obsidian
         bottles
@@ -93,11 +92,32 @@ in {
     stateVersion = "24.05";
   };
 
-  programs = {
+  programs = let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  in {
     kitty.enable = true;
     zoxide.enable = true;
 
     firefox.enable = true;
+
+    spicetify = {
+      enable = true;
+      enabledExtensions = with spicePkgs.extensions; [
+        adblock
+        hidePodcasts
+        copyToClipboard
+        betterGenres
+        autoSkip
+        fullAppDisplay
+        keyboardShortcut
+        songStats
+      ];
+      enabledCustomApps = with spicePkgs.apps; [
+        ncsVisualizer
+      ];
+      theme = spicePkgs.themes.comfy;
+      colorScheme = "hikari";
+    };
 
     mpv = {
       enable = true;

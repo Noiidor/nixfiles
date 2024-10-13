@@ -1,5 +1,7 @@
 {
   config,
+  lib,
+  specialArgs,
   pkgs,
   pkgs-unstable,
   inputs,
