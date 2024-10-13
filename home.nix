@@ -13,6 +13,7 @@ in {
     ./modules/tmux/tmux.nix
     ./modules/zsh/zsh.nix
     ./modules/stylix/stylix.nix
+    ./modules/spicetify/spicetify.nix
   ];
 
   home = {

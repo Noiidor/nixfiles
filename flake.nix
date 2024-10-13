@@ -15,8 +15,15 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-    aagl.inputs.nixpkgs.follows = "nixpkgs";
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -48,6 +55,7 @@
       modules = [
         ./home.nix
         inputs.stylix.homeManagerModules.stylix
+        inputs.spicetify-nix.homeManagerModules.default
       ];
       extraSpecialArgs = {
         inherit system;

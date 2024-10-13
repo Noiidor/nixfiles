@@ -13,23 +13,23 @@
   # List of stable packages
   environment.systemPackages =
     (with pkgs; [
-      home-manager
-      fastfetch
+      # Shell
       zsh
-      git
-      alejandra
-      flatpak
+
+      # CLI
+      fastfetch
+      gnumake
+      dig
+      unzip
+
+      # TUI
+      mtr
+
+      # Programming
       go
-      python3
       postgresql_16
       kubectl
-      gparted
-      libadwaita
-      ntfs3g
-      testdisk
-      ventoy
-      ffmpeg
-      gnumake
+      alejandra
       protobuf_26
       go-tools
       gotools
@@ -43,21 +43,39 @@
       protoc-gen-connect-go
       protoc-gen-validate
       protoc-gen-doc
-      dig
-      unzip
-      wl-clipboard
-      mtr
-      wirelesstools
-      nerdfonts
-      libnotify
       jq
       minikube
       kubernetes
+      git
+
+      # System
+      home-manager
+      wirelesstools
+      wl-clipboard
+
+      # Disks
+      gparted
+      ntfs3g
+      testdisk
+      ventoy
+
+      # Lib
+      libadwaita
+      libnotify
+      ffmpeg
+
+      # Fonts
+      nerdfonts
+
+      # Other
+      flatpak
     ])
     ++
     # List of unstable(rolling-release) packages
     (with pkgs-unstable; [
-      ]);
+      # Programmung
+      python3
+    ]);
 
   # BOOT
   boot.loader.systemd-boot.enable = true;

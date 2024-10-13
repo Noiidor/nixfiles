@@ -652,7 +652,7 @@ vim.keymap.set("n", "<M-F5>", dap.continue, { desc = "Stop/Start debugging sessi
 vim.keymap.set("n", "<M-j>", dap.step_over, { desc = "Debug: step over" })
 vim.keymap.set("n", "<M-l>", dap.step_into, { desc = "Debug: step into" })
 vim.keymap.set("n", "<M-h>", dap.step_out, { desc = "Debug: step out" })
-vim.keymap.set("n", "<M-k>", dap.toggle_breakpoint, { desc = "Debug: toggle breakpoint" })
+vim.keymap.set("n", "<M-b>", dap.toggle_breakpoint, { desc = "Debug: toggle breakpoint" })
 
 vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#f92672" })
 vim.fn.sign_define("DapBreakpoint", {
@@ -662,7 +662,7 @@ vim.fn.sign_define("DapBreakpoint", {
 	numhl = "DapBreakpoint",
 })
 vim.fn.sign_define("DapStopped", {
-	text = "",
+	text = "",
 	texthl = "DapBreakpoint",
 	linehl = "",
 	numhl = "DapBreakpoint",
@@ -692,6 +692,7 @@ end
 -- DAP extensions
 -- require("nvim-dap-virtual-text").setup()
 require("dap-go").setup()
+require("dap-python").setup("python")
 
 local dapui = require("dapui")
 dapui.setup()
