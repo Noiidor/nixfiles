@@ -3,10 +3,9 @@
   pkgs,
   pkgs-unstable,
   inputs,
-  system,
   ...
 }: let
-  aagl-pkgs = inputs.aagl.packages.${system};
+  aagl-pkgs = inputs.aagl.packages.${pkgs.system};
 in {
   imports = [
     ./modules/nvim/nvim.nix

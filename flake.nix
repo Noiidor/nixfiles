@@ -58,7 +58,6 @@
         inputs.spicetify-nix.homeManagerModules.default
       ];
       extraSpecialArgs = {
-        inherit system;
         inherit pkgs-unstable;
         inherit inputs;
       };
