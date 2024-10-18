@@ -8,15 +8,25 @@
   home.packages = with pkgs; [
     fd
     ripgrep
-    nil
+
+    # Format
     stylua
+    biome
+
+    # LSP
+    nil
     lua-language-server
     postgres-lsp
     sqls
     sleek
-    biome
     pyright
+    docker-compose-language-service
+    dockerfile-language-server-nodejs
+    gopls
+
+    # Debug
     python312Packages.debugpy
+    delve
   ];
 
   programs.neovim = {

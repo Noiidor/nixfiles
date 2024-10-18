@@ -644,6 +644,19 @@ lspconfig.sqls.setup({})
 
 lspconfig.nil_ls.setup({})
 
+lspconfig.docker_compose_language_service.setup({})
+
+local function set_filetype(pattern, filetype)
+	vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+		pattern = pattern,
+		command = "set filetype=" .. filetype,
+	})
+end
+
+set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
+
+lspconfig.dockerls.setup({})
+
 -- Debugging
 
 local dap = require("dap")

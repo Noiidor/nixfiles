@@ -33,16 +33,6 @@
       protobuf_26
       go-tools
       gotools
-      gopls
-      delve
-      golangci-lint
-      go-migrate
-      grpc-gateway
-      protoc-gen-go
-      protoc-gen-go-grpc
-      protoc-gen-connect-go
-      protoc-gen-validate
-      protoc-gen-doc
       jq
       minikube
       kubernetes

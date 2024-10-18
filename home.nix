@@ -26,6 +26,14 @@ in {
         dbeaver-bin
         vscode
         postman
+        docker-compose
+        grpc-gateway
+        protoc-gen-go
+        protoc-gen-go-grpc
+        protoc-gen-connect-go
+        protoc-gen-validate
+        protoc-gen-doc
+        clickhouse
 
         # Applications and gaming
         lutris
@@ -61,6 +69,10 @@ in {
         cmatrix
         aalib
         fzf
+        golangci-lint
+        go-migrate
+        natscli
+        nats-top
       ])
       # Unstable packages
       ++ (with pkgs-unstable; [
