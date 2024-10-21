@@ -39,7 +39,6 @@ in {
         lutris
         vesktop
         telegram-desktop
-        # spotify
         qbittorrent
         obsidian
         bottles
@@ -49,9 +48,8 @@ in {
         mpc-qt
         gimp
         inkscape
-        imv
-        feh
         obs-studio
+        glxinfo
 
         # TUI
         lazygit
@@ -73,6 +71,7 @@ in {
         go-migrate
         natscli
         nats-top
+        wev
       ])
       # Unstable packages
       ++ (with pkgs-unstable; [
@@ -99,6 +98,15 @@ in {
 
     sessionVariables = {
       PSQL_PAGER = "pspg -X";
+
+      # Not sure if its essensial
+      GDK_BACKEND = "wayland,x11";
+      QT_QPA_PLATFORM = "wayland;xcb";
+      CLUTTER_BACKEND = "wayland";
+      XDG_CURRENT_DESKTOP = "Hyprland";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "Hyprland";
+      WLR_NO_HARDWARE_CURSORS = "1";
     };
 
     stateVersion = "24.05";
@@ -134,6 +142,10 @@ in {
     mpv = {
       enable = true;
       scripts = [pkgs.mpvScripts.uosc];
+    };
+
+    imv = {
+      enable = true;
     };
 
     htop = {
@@ -175,6 +187,26 @@ in {
     "video/mpeg" = "mpv.desktop";
     "video/webm" = "mpv.desktop";
     "video/mkv" = "mpv.desktop";
+
+    "inode/directory" = "org.gnome.Nautilus.desktop";
+
+    "text/plain" = "nvim.desktop";
+    "text/html" = "nvim.desktop";
+    "text/markdown" = "nvim.desktop";
+    "application/json" = "nvim.desktop";
+
+    "application/pdf" = "firefox.desktop";
+    "application/epub+zip" = "firefox.desktop";
+    "application/x-extension-htm" = "firefox.desktop";
+    "application/x-extension-html" = "firefox.desktop";
+    "application/x-extension-shtml" = "firefox.desktop";
+    "application/x-extension-xht" = "firefox.desktop";
+    "application/x-extension-xhtml" = "firefox.desktop";
+    "application/x-extension-xhtml+xml" = "firefox.desktop";
+    "x-scheme-handler/chrome" = "firefox.desktop";
+    "x-scheme-handler/ftp" = "firefox.desktop";
+    "x-scheme-handler/http" = "firefox.desktop";
+    "x-scheme-handler/https" = "firefox.desktop";
   };
 
   nixpkgs.config.allowUnfree = true;

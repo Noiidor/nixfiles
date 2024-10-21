@@ -16,11 +16,12 @@
       # Shell
       zsh
 
-      # CLI
+      # CLI utils
       fastfetch
       gnumake
       dig
       unzip
+      usbutils
 
       # TUI
       mtr
@@ -59,6 +60,7 @@
 
       # Other
       flatpak
+      mangohud
     ])
     ++
     # List of unstable(rolling-release) packages
@@ -173,11 +175,13 @@
     zsh.enable = true;
     steam = {
       enable = true;
-      gamescopeSession.enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
     gamemode.enable = true;
+    gamescope = {
+      enable = true;
+    };
     nh = {
       enable = true;
       flake = "/home/noi/nixfiles";
