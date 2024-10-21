@@ -682,23 +682,23 @@ vim.fn.sign_define("DapStopped", {
 })
 
 dap.listeners.after["event_initialized"]["me"] = function()
-	for _, buf in pairs(api.nvim_list_bufs()) do
-		local keymaps = api.nvim_buf_get_keymap(buf, "n")
+	for _, buf in pairs(vim.api.nvim_list_bufs()) do
+		local keymaps = vim.api.nvim_buf_get_keymap(buf, "n")
 		for _, keymap in pairs(keymaps) do
 			if keymap.lhs == "K" then
-				api.nvim_buf_del_keymap(buf, "n", "K")
+				vim.api.nvim_buf_del_keymap(buf, "n", "K")
 			end
 		end
 	end
-	api.nvim_set_keymap("n", "K", '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+	vim.api.nvim_set_keymap("n", "K", '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
 end
 
 dap.listeners.after["event_terminated"]["me"] = function()
-	for _, buf in pairs(api.nvim_list_bufs()) do
-		local keymaps = api.nvim_buf_get_keymap(buf, "n")
+	for _, buf in pairs(vim.api.nvim_list_bufs()) do
+		local keymaps = vim.api.nvim_buf_get_keymap(buf, "n")
 		for _, keymap in pairs(keymaps) do
 			if keymap.lhs == "K" then
-				api.nvim_buf_del_keymap(buf, "n", "K")
+				vim.api.nvim_buf_del_keymap(buf, "n", "K")
 			end
 		end
 	end
