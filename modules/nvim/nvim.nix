@@ -10,15 +10,15 @@
     ripgrep
 
     # Format
-    stylua
-    biome
+    stylua # lua
+    biome # json, js
+    sleek # sql
 
     # LSP
-    nil
+    nil # nix
     lua-language-server
     postgres-lsp
     sqls
-    sleek
     pyright
     docker-compose-language-service
     dockerfile-language-server-nodejs
@@ -26,7 +26,7 @@
 
     # Debug
     python312Packages.debugpy
-    delve
+    delve # go
   ];
 
   programs.neovim = {

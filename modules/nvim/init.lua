@@ -308,6 +308,18 @@ require("gitsigns").setup({
 	current_line_blame = true,
 })
 
+local devicons = require("nvim-web-devicons")
+
+devicons.setup({
+	override_by_extension = {
+		["go"] = {
+			icon = "",
+			color = "#00add8",
+			name = "Golang",
+		},
+	},
+})
+
 -- Mini config
 require("mini.ai").setup({ n_lines = 500 })
 

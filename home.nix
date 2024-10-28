@@ -23,9 +23,9 @@ in {
       (with pkgs; [
         # Work
         bruno
-        dbeaver-bin
         vscode
         postman
+        dbeaver-bin
         docker-compose
         grpc-gateway
         protoc-gen-go
@@ -50,6 +50,7 @@ in {
         inkscape
         obs-studio
         glxinfo
+        scribus
 
         # TUI
         lazygit
@@ -69,6 +70,7 @@ in {
         fzf
         golangci-lint
         go-migrate
+        goose
         natscli
         nats-top
         wev
@@ -97,7 +99,7 @@ in {
     ];
 
     sessionVariables = {
-      PSQL_PAGER = "pspg -X";
+      PSQL_PAGER = "pspg -X -s 1";
 
       # Not sure if its essensial
       GDK_BACKEND = "wayland,x11";
@@ -187,6 +189,7 @@ in {
     "video/mpeg" = "mpv.desktop";
     "video/webm" = "mpv.desktop";
     "video/mkv" = "mpv.desktop";
+    "video/quicktime" = "mpv.desktop";
 
     "inode/directory" = "org.gnome.Nautilus.desktop";
 
