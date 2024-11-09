@@ -45,12 +45,14 @@ in {
         mangohud
 
         # Media
-        mpc-qt
         gimp
         inkscape
         obs-studio
         glxinfo
         scribus
+        libreoffice-fresh
+        yt-dlp # video downloader
+        feh # image viewer
 
         # TUI
         lazygit
