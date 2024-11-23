@@ -59,7 +59,6 @@
       nerdfonts
 
       # Other
-      flatpak
       mangohud
     ])
     ++
@@ -196,6 +195,8 @@
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
   };
+
+  services.flatpak.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

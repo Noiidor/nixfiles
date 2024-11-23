@@ -12,6 +12,7 @@ in {
     ./modules/tmux/tmux.nix
     ./modules/zsh/zsh.nix
     ./modules/stylix/stylix.nix
+    ./modules/flatpak/flatpak.nix
   ];
 
   home = {
@@ -33,11 +34,12 @@ in {
         protoc-gen-connect-go
         protoc-gen-validate
         protoc-gen-doc
+        graphviz
         clickhouse
 
         # Applications and gaming
-        lutris
         vesktop
+        lutris
         telegram-desktop
         qbittorrent
         obsidian
@@ -116,6 +118,15 @@ in {
     stateVersion = "24.05";
   };
 
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
+
   programs = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
@@ -167,6 +178,10 @@ in {
       userEmail = "noidor2019@gmail.com";
       extraConfig = {
         init.defaultBranch = "master";
+
+        pull = {
+          rebase = true;
+        };
 
         url = {
           "git@gitlab.com:" = {

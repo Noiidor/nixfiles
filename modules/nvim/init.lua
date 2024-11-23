@@ -673,10 +673,12 @@ lspconfig.dockerls.setup({})
 
 local dap = require("dap")
 
-vim.keymap.set("n", "<M-F5>", dap.continue, { desc = "Stop/Start debugging session" })
-vim.keymap.set("n", "<M-j>", dap.step_over, { desc = "Debug: step over" })
-vim.keymap.set("n", "<M-l>", dap.step_into, { desc = "Debug: step into" })
+vim.keymap.set("n", "<F5>", dap.continue, { desc = "Start/continue debug session" })
+vim.keymap.set("n", "M-<F5>", dap.terminate, { desc = "Debug: terminate session" })
 vim.keymap.set("n", "<M-h>", dap.step_out, { desc = "Debug: step out" })
+vim.keymap.set("n", "<M-j>", dap.step_over, { desc = "Debug: step over" })
+vim.keymap.set("n", "<M-k>", dap.step_back, { desc = "Debug: step back" })
+vim.keymap.set("n", "<M-l>", dap.step_into, { desc = "Debug: step into" })
 vim.keymap.set("n", "<M-b>", dap.toggle_breakpoint, { desc = "Debug: toggle breakpoint" })
 
 vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#f92672" })
