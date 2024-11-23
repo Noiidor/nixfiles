@@ -201,6 +201,11 @@ require("telescope").setup({
 	},
 })
 
+-- local border_color = vim.api.nvim_get_hl(vim.api.nvim_get_hl_id_by_name("CursorLine"), {})
+
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#303030" })
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#303030" })
+
 -- Enable Telescope extensions if they are installed
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
@@ -674,7 +679,8 @@ lspconfig.dockerls.setup({})
 local dap = require("dap")
 
 vim.keymap.set("n", "<F5>", dap.continue, { desc = "Start/continue debug session" })
-vim.keymap.set("n", "M-<F5>", dap.terminate, { desc = "Debug: terminate session" })
+vim.keymap.set("n", "<F4>", dap.run_last, { desc = "Start debug session with last arguments" })
+vim.keymap.set("n", "<M-F5>", dap.terminate, { desc = "Debug: terminate session" })
 vim.keymap.set("n", "<M-h>", dap.step_out, { desc = "Debug: step out" })
 vim.keymap.set("n", "<M-j>", dap.step_over, { desc = "Debug: step over" })
 vim.keymap.set("n", "<M-k>", dap.step_back, { desc = "Debug: step back" })
@@ -725,7 +731,69 @@ require("dap-go").setup()
 require("dap-python").setup("python")
 
 local dapui = require("dapui")
-dapui.setup()
+dapui.setup({
+	controls = {
+		element = "repl",
+		enabled = true,
+		icons = {
+			disconnect = "",
+			pause = "",
+			play = "",
+			run_last = "",
+			step_back = "",
+			step_into = "",
+			step_out = "",
+			step_over = "",
+			terminate = "",
+		},
+	},
+	element_mappings = {},
+	expand_lines = true,
+	floating = {
+		border = "single",
+		mappings = {
+			close = { "q", "<Esc>" },
+		},
+	},
+	force_buffers = true,
+	icons = {
+		collapsed = "",
+		current_frame = "",
+		expanded = "",
+	},
+	layouts = {
+		{
+			elements = { {
+				id = "scopes",
+				size = 1,
+			} },
+			position = "left",
+			size = 45,
+		},
+		{
+			elements = {
+				{
+					id = "repl",
+					size = 1,
+				},
+			},
+			position = "bottom",
+			size = 20,
+		},
+	},
+	mappings = {
+		edit = "e",
+		expand = { "<CR>", "<2-LeftMouse>" },
+		open = "o",
+		remove = "d",
+		repl = "r",
+		toggle = "t",
+	},
+	render = {
+		indent = 1,
+		max_value_lines = 100,
+	},
+})
 dap.listeners.before.attach.dapui_config = function()
 	dapui.open()
 end
