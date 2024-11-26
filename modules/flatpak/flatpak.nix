@@ -10,7 +10,7 @@
 
   services.flatpak = {
     packages = [
-      "io.github.zen_browser.zen"
+      # "io.github.zen_browser.zen"
     ];
     update.onActivation = true;
     update.auto = {

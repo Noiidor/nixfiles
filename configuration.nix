@@ -27,13 +27,10 @@
       mtr
 
       # Programming
-      go
       postgresql_16
       kubectl
       alejandra
       protobuf_26
-      go-tools
-      gotools
       jq
       minikube
       kubernetes

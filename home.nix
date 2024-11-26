@@ -22,20 +22,31 @@ in {
     packages =
       # Stable packages
       (with pkgs; [
-        # Work
+        # Programming
         bruno
         vscode
         postman
         dbeaver-bin
         docker-compose
+        graphviz
+        clickhouse
+        go-migrate
+        goose
+        natscli
+        nats-top
+        pgcli
+
+        # Golang
+        go
+        go-tools
+        gotools
         grpc-gateway
         protoc-gen-go
         protoc-gen-go-grpc
         protoc-gen-connect-go
         protoc-gen-validate
         protoc-gen-doc
-        graphviz
-        clickhouse
+        golangci-lint
 
         # Applications and gaming
         vesktop
@@ -65,19 +76,13 @@ in {
         cbonsai
         lux
         cava
-        pgcli
         eza
         bat
         sl
         cmatrix
         aalib
         fzf
-        golangci-lint
-        go-migrate
-        goose
-        natscli
-        nats-top
-        wev
+        wev # wayland actions
       ])
       # Unstable packages
       ++ (with pkgs-unstable; [
