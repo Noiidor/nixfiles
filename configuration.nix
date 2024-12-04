@@ -53,7 +53,6 @@
       ffmpeg
 
       # Fonts
-      nerdfonts
 
       # Other
       mangohud
@@ -64,6 +63,11 @@
       # Programmung
       python3
     ]);
+
+  fonts.packages = with pkgs; [
+    nerdfonts
+    liberation_ttf
+  ];
 
   # BOOT
   boot.loader.systemd-boot.enable = true;

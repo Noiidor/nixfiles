@@ -14,6 +14,7 @@
     escapeTime = 5;
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
+      resurrect
       # {
       #   plugin = dracula;
       #   extraConfig = ''
@@ -29,6 +30,8 @@
       set -g status-position top
 
       set -g default-terminal "screen-256color"
+
+      set -g @resurrect-strategy-nvim "session"
     '';
   };
 }
