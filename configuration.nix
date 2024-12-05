@@ -67,6 +67,10 @@
   fonts.packages = with pkgs; [
     nerdfonts
     liberation_ttf
+    helvetica-neue-lt-std
+    times-newer-roman
+    arkpandora_ttf
+    gelasio
   ];
 
   # BOOT
@@ -190,12 +194,12 @@
     };
   };
 
-  stylix = {
-    enable = true;
-    image = ./modules/stylix/wallpaper.png;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
-  };
+  # stylix = {
+  #   enable = true;
+  #   image = ./modules/stylix/wallpaper.png;
+  #   polarity = "dark";
+  #   # base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
+  # };
 
   services.flatpak.enable = true;
 

@@ -8,7 +8,7 @@
     enable = true;
     image = ./wallpaper.png;
     polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
     targets.kitty.enable = true;
 
     cursor = {

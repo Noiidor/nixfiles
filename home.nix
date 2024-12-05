@@ -11,7 +11,7 @@ in {
     ./modules/nvim/nvim.nix
     ./modules/tmux/tmux.nix
     ./modules/zsh/zsh.nix
-    ./modules/stylix/stylix.nix
+    # ./modules/stylix/stylix.nix
     ./modules/flatpak/flatpak.nix
   ];
 
@@ -130,34 +130,38 @@ in {
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-hyprland
     ];
+    config.common.default = "*";
   };
 
   programs = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
-    kitty.enable = true;
+    kitty = {
+      enable = true;
+      package = pkgs-unstable.kitty;
+    };
     zoxide.enable = true;
 
     firefox.enable = true;
 
-    spicetify = {
-      enable = true;
-      enabledExtensions = with spicePkgs.extensions; [
-        adblock
-        hidePodcasts
-        copyToClipboard
-        autoSkip
-        fullAppDisplay
-        keyboardShortcut
-        songStats
-      ];
-      enabledCustomApps = with spicePkgs.apps; [
-        ncsVisualizer
-        lyricsPlus
-      ];
-      theme = spicePkgs.themes.comfy;
-      colorScheme = "hikari";
-    };
+    # spicetify = {
+    #   enable = true;
+    #   enabledExtensions = with spicePkgs.extensions; [
+    #     adblock
+    #     hidePodcasts
+    #     copyToClipboard
+    #     autoSkip
+    #     fullAppDisplay
+    #     keyboardShortcut
+    #     songStats
+    #   ];
+    #   enabledCustomApps = with spicePkgs.apps; [
+    #     ncsVisualizer
+    #     lyricsPlus
+    #   ];
+    #   # theme = spicePkgs.themes.comfy;
+    #   colorScheme = "hikari";
+    # };
 
     mpv = {
       enable = true;
