@@ -2,8 +2,12 @@
   config,
   pkgs,
   pkgs-unstable,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.stylix.homeManagerModules.stylix
+  ];
   stylix = {
     enable = true;
     image = ./wallpaper.png;

@@ -56,8 +56,6 @@
       inherit pkgs;
       modules = [
         ./home.nix
-        inputs.stylix.homeManagerModules.stylix
-        inputs.spicetify-nix.homeManagerModules.default
       ];
       extraSpecialArgs = {
         inherit pkgs-unstable;

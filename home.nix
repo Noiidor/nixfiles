@@ -13,6 +13,7 @@ in {
     ./modules/zsh/zsh.nix
     # ./modules/stylix/stylix.nix
     ./modules/flatpak/flatpak.nix
+    ./modules/spicetify/spicetify.nix
   ];
 
   home = {
@@ -133,9 +134,10 @@ in {
     config.common.default = "*";
   };
 
-  programs = let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-  in {
+  # programs = let
+  #   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  # in
+  programs = {
     kitty = {
       enable = true;
       package = pkgs-unstable.kitty;
