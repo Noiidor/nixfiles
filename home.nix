@@ -57,6 +57,7 @@ in {
         obsidian
         bottles
         mangohud
+        zoom-us
 
         # Media
         gimp
