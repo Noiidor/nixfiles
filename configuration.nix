@@ -52,8 +52,6 @@
       libnotify
       ffmpeg
 
-      # Fonts
-
       # Other
       mangohud
     ])
@@ -143,11 +141,12 @@
   };
   services.desktopManager.plasma6.enable = true;
 
-  # Configure keymap
-  services.xserver.xkb = {
-    layout = "us,ru";
-    variant = "";
-    options = "grp:alt_shift_toggle";
+  services.xserver = {
+    xkb = {
+      layout = "us,ru";
+      variant = "";
+      options = "grp:alt_shift_toggle";
+    };
   };
 
   # Enable CUPS to print documents.
@@ -213,5 +212,5 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }
