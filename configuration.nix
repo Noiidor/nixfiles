@@ -2,6 +2,8 @@
   config,
   pkgs,
   pkgs-unstable,
+  system,
+  inputs,
   ...
 }: {
   imports = [
@@ -153,7 +155,11 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+
+  hardware = {
+    pulseaudio.enable = false;
+    graphics.enable = true;
+  };
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

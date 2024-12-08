@@ -2,11 +2,15 @@
   config,
   pkgs,
   pkgs-unstable,
+  inputs,
+  system,
   ...
 }: {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
@@ -21,8 +25,8 @@
     playerctl
     brightnessctl
     wlogout
-    gnome.nautilus
-    gnome.sushi
+    nautilus
+    sushi
     hyprpicker
     xwaylandvideobridge
     overskride

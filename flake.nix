@@ -5,6 +5,8 @@
     nixpkgs.url = "nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
+    hyprland-legacy.url = "nixpkgs/add0443ee587a0c44f22793b8c8649a0dbc3bb00";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,13 +43,14 @@
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
         modules = [
           ./configuration.nix
           inputs.stylix.nixosModules.stylix
         ];
         specialArgs = {
+          inherit system;
           inherit pkgs-unstable;
+          inherit inputs;
         };
       };
     };
