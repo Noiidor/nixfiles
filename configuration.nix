@@ -99,7 +99,7 @@
       0.0.0.0 hkrpg-log-upload-os.hoyoverse.com
     '';
     #networkmanager.dns = "none";
-    #nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
+    nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
   };
 
   services.openssh.enable = true;
@@ -169,6 +169,8 @@
     wireplumber.enable = true;
     #jack.enable = true;
   };
+
+  services.ratbagd.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;

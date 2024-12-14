@@ -36,6 +36,7 @@ in {
         natscli
         nats-top
         pgcli
+        glab
 
         # Golang
         go
@@ -58,6 +59,7 @@ in {
         bottles
         mangohud
         zoom-us
+        piper
 
         # Media
         gimp
@@ -68,6 +70,7 @@ in {
         libreoffice-fresh
         yt-dlp # video downloader
         feh # image viewer
+        shotcut # video editing
 
         # TUI
         lazygit
@@ -119,9 +122,10 @@ in {
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
+      WLR_NO_HARDWARE_CURSORS = "1";
     };
 
-    stateVersion = "24.05";
+    stateVersion = "24.11";
   };
 
   xdg.portal = {
@@ -168,6 +172,9 @@ in {
     mpv = {
       enable = true;
       scripts = [pkgs.mpvScripts.uosc];
+      config = {
+        loop-file = "inf";
+      };
     };
 
     imv = {
