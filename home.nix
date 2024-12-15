@@ -28,7 +28,6 @@ in {
         vscode
         postman
         dbeaver-bin
-        docker-compose
         graphviz
         clickhouse
         go-migrate
