@@ -395,6 +395,7 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		go = { "goimports", "gofmt" },
+		odin = { "odinfmt" },
 		nix = { "alejandra" },
 		sql = { "sleek" },
 		json = { "biome" },
@@ -656,6 +657,8 @@ lspconfig.pyright.setup({})
 -- }
 --
 -- lspconfig.postgres_lsp.setup({})
+--
+lspconfig.ols.setup({})
 
 lspconfig.sqls.setup({})
 

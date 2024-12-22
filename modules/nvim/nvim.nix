@@ -22,7 +22,6 @@
     pyright
     docker-compose-language-service
     dockerfile-language-server-nodejs
-    gopls
 
     # Debug
     python312Packages.debugpy

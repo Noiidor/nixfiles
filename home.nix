@@ -39,6 +39,7 @@ in {
 
         # Golang
         go
+        gopls
         go-tools
         gotools
         grpc-gateway
@@ -48,6 +49,10 @@ in {
         protoc-gen-validate
         protoc-gen-doc
         golangci-lint
+
+        # OdinLang
+        odin
+        ols
 
         # Applications and gaming
         vesktop
