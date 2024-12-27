@@ -64,6 +64,7 @@ in {
         mangohud
         zoom-us
         piper
+        baobab # Disk usage analyzer
 
         # Media
         gimp
