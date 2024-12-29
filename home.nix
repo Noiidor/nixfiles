@@ -109,6 +109,7 @@ in {
       ])
       # Other
       ++ [
+        inputs.ghostty.packages.${pkgs.system}.default
         aagl-pkgs.the-honkers-railway-launcher
       ];
 
