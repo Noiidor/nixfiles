@@ -14,6 +14,7 @@ in {
     # ./modules/stylix/stylix.nix
     ./modules/flatpak/flatpak.nix
     ./modules/spicetify/spicetify.nix
+    ./modules/ghostty/ghostty.nix
   ];
 
   home = {
@@ -109,7 +110,6 @@ in {
       ])
       # Other
       ++ [
-        inputs.ghostty.packages.${pkgs.system}.default
         aagl-pkgs.the-honkers-railway-launcher
       ];
 
