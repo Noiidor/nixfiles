@@ -4,9 +4,7 @@
   pkgs-unstable,
   inputs,
   ...
-}: let
-  aagl-pkgs = inputs.aagl.packages.${pkgs.system};
-in {
+}: {
   imports = [
     ./modules/nvim/nvim.nix
     ./modules/tmux/tmux.nix
@@ -111,7 +109,8 @@ in {
       ])
       # Other
       ++ [
-        aagl-pkgs.the-honkers-railway-launcher
+        inputs.aagl.packages.${pkgs.system}.the-honkers-railway-launcher
+        inputs.zen-browser.packages.${pkgs.system}.default
       ];
 
     sessionPath = [
