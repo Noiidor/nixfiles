@@ -66,6 +66,7 @@
         baobab # Disk usage analyzer
 
         # Media
+        yazi # File manager
         gimp
         inkscape
         obs-studio
