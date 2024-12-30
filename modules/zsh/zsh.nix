@@ -10,15 +10,10 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      ll = "ls -l";
+      ez = "eza -la --icons=auto";
       ff = "fastfetch";
-      nix-rebuild = "sudo nixos-rebuild switch --flake ~/nixfiles";
-      home-rebuild = "home-manager switch --flake ~/nixfiles";
-      nixconf = "$EDITOR ~/nixfiles/configuration.nix";
-      homeconf = "$EDITOR ~/nixfiles/home.nix";
-      flakeconf = "$EDITOR ~/nixfiles/flake.nix";
       nv = "nvim";
-      ez = "eza -l --icons=auto";
+      yz = "yazi";
     };
 
     enableVteIntegration = true;

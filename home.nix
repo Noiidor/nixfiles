@@ -154,27 +154,7 @@
       package = pkgs-unstable.kitty;
     };
     zoxide.enable = true;
-
     firefox.enable = true;
-
-    # spicetify = {
-    #   enable = true;
-    #   enabledExtensions = with spicePkgs.extensions; [
-    #     adblock
-    #     hidePodcasts
-    #     copyToClipboard
-    #     autoSkip
-    #     fullAppDisplay
-    #     keyboardShortcut
-    #     songStats
-    #   ];
-    #   enabledCustomApps = with spicePkgs.apps; [
-    #     ncsVisualizer
-    #     lyricsPlus
-    #   ];
-    #   # theme = spicePkgs.themes.comfy;
-    #   colorScheme = "hikari";
-    # };
 
     mpv = {
       enable = true;
