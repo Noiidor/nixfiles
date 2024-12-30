@@ -77,6 +77,7 @@ in {
         yt-dlp # video downloader
         feh # image viewer
         shotcut # video editing
+        unrar
 
         # TUI
         lazygit
