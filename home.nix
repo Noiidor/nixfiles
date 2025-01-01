@@ -220,18 +220,15 @@
     "text/markdown" = "nvim.desktop";
     "application/json" = "nvim.desktop";
 
-    "application/pdf" = "firefox.desktop";
-    "application/epub+zip" = "firefox.desktop";
-    "application/x-extension-htm" = "firefox.desktop";
-    "application/x-extension-html" = "firefox.desktop";
-    "application/x-extension-shtml" = "firefox.desktop";
-    "application/x-extension-xht" = "firefox.desktop";
-    "application/x-extension-xhtml" = "firefox.desktop";
-    "application/x-extension-xhtml+xml" = "firefox.desktop";
-    "x-scheme-handler/chrome" = "firefox.desktop";
-    "x-scheme-handler/ftp" = "firefox.desktop";
-    "x-scheme-handler/http" = "firefox.desktop";
-    "x-scheme-handler/https" = "firefox.desktop";
+    "application/x-extension-htm" = "zen.desktop";
+    "application/x-extension-html" = "zen.desktop";
+    "application/x-extension-shtml" = "zen.desktop";
+    "application/x-extension-xht" = "zen.desktop";
+    "application/x-extension-xhtml" = "zen.desktop";
+    "x-scheme-handler/chrome" = "zen.desktop";
+    "x-scheme-handler/http" = "zen.desktop";
+    "x-scheme-handler/https" = "zen.desktop";
+    "application/xhtml+xml" = "zen.desktop";
   };
 
   nixpkgs.config.allowUnfree = true;
