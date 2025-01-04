@@ -94,6 +94,7 @@
         aalib
         fzf
         wev # wayland actions
+        win2xcur
       ])
       # Unstable packages
       ++ (with pkgs-unstable; [

@@ -1,6 +1,6 @@
 theme = Hardcore
 font-family = "JetBraintsMono Nerd Font Mono"
 
-# custom-shader = /home/noi/shader.glsl
+custom-shader = /home/noi/shader.glsl
 
 gtk-titlebar = false
