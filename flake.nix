@@ -27,12 +27,10 @@
 
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zen-browser = {

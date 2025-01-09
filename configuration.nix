@@ -159,6 +159,7 @@
   hardware = {
     pulseaudio.enable = false;
     graphics.enable = true;
+    bluetooth.enable = true;
   };
   security.rtkit.enable = true;
   services.pipewire = {
