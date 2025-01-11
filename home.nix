@@ -64,6 +64,8 @@
         zoom-us
         piper
         baobab # Disk usage analyzer
+        bitwarden-desktop
+        bitwarden-cli
 
         # Media
         yazi # File manager
@@ -174,6 +176,10 @@
       settings = {
         tree_view = 1;
       };
+    };
+
+    wofi = {
+      enable = true;
     };
 
     btop.enable = true;
