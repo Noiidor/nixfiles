@@ -13,6 +13,7 @@
     ./modules/flatpak/flatpak.nix
     ./modules/spicetify/spicetify.nix
     ./modules/ghostty/ghostty.nix
+    ./modules/themes/default.nix
   ];
 
   home = {
@@ -66,6 +67,7 @@
         baobab # Disk usage analyzer
         bitwarden-desktop
         bitwarden-cli
+        keyguard
 
         # Media
         yazi # File manager
@@ -97,6 +99,9 @@
         fzf
         wev # wayland actions
         win2xcur
+
+        # Other
+        kdePackages.qt6ct
       ])
       # Unstable packages
       ++ (with pkgs-unstable; [
@@ -145,7 +150,7 @@
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-hyprland
     ];
-    config.common.default = "*";
+    config.common.default = "hyprland;gtk";
   };
 
   # programs = let
