@@ -99,6 +99,7 @@
         fzf
         wev # wayland actions
         win2xcur
+        qrencode
 
         # Other
         kdePackages.qt6ct
