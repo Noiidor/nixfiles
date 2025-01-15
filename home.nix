@@ -100,6 +100,7 @@
         wev # wayland actions
         win2xcur
         qrencode
+        nmap
 
         # Other
         kdePackages.qt6ct

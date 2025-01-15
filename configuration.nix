@@ -42,6 +42,7 @@
       home-manager
       wirelesstools
       wl-clipboard
+      wireguard-tools
 
       # Disks
       gparted
