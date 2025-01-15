@@ -10,10 +10,14 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      ez = "eza -la --icons=auto";
+      ez = "eza -a --icons=auto";
       ff = "fastfetch";
       nv = "nvim";
       yz = "yazi";
+      kc = "kubectl";
+      g = "git";
+      gic = "git commit -am";
+      gia = "git add .";
     };
 
     enableVteIntegration = true;
