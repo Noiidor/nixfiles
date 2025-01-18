@@ -101,6 +101,7 @@
         win2xcur
         qrencode
         nmap
+        hollywood
 
         # Other
         kdePackages.qt6ct
@@ -243,6 +244,7 @@
     "x-scheme-handler/http" = "zen.desktop";
     "x-scheme-handler/https" = "zen.desktop";
     "application/xhtml+xml" = "zen.desktop";
+    "application/pdf" = "zen.desktop";
   };
 
   nixpkgs.config.allowUnfree = true;
