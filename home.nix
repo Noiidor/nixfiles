@@ -119,6 +119,7 @@
         # TUI
 
         # CLI utils
+        astroterm
         buf
       ])
       # Other
