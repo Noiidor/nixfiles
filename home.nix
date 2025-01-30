@@ -68,6 +68,9 @@
         bitwarden-desktop
         bitwarden-cli
         keyguard
+        mullvad
+        mullvad-vpn
+        mullvad-closest
 
         # Media
         yazi # File manager
