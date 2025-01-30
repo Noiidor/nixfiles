@@ -85,6 +85,8 @@
         lazydocker
         pspg
         pgcli
+        mods # LLM frontend
+        wishlist # SSH picker
 
         # CLI utils
         cbonsai
@@ -100,6 +102,7 @@
         qrencode
         nmap
         hollywood
+        charm-freeze # Generate terminal images
 
         # Other
         kdePackages.qt6ct

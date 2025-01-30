@@ -19,7 +19,11 @@
       gic = "git commit -am";
       gia = "git add .";
       gis = "git status";
-      gid = "git diff";
+      gidi = "git diff";
+      gich = "git checkout";
+      gipul = "git pull";
+      gipus = "git push";
+      ai = "mods";
     };
 
     enableVteIntegration = true;
