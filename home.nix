@@ -25,16 +25,13 @@
       (with pkgs; [
         # Programming
         bruno
-        vscode
-        postman
         dbeaver-bin
         graphviz
-        clickhouse
+        clickhouse-cli
         go-migrate
         goose
         natscli
         nats-top
-        pgcli
         glab
 
         # Golang
@@ -56,7 +53,6 @@
 
         # Applications and gaming
         vesktop
-        lutris
         telegram-desktop
         qbittorrent
         obsidian
@@ -88,6 +84,7 @@
         lazygit
         lazydocker
         pspg
+        pgcli
 
         # CLI utils
         cbonsai
@@ -100,7 +97,6 @@
         aalib
         fzf
         wev # wayland actions
-        win2xcur
         qrencode
         nmap
         hollywood
