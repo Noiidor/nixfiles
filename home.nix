@@ -68,7 +68,6 @@
         bitwarden-desktop
         bitwarden-cli
         keyguard
-        mullvad
         mullvad-vpn
         mullvad-closest
 
@@ -120,7 +119,6 @@
         # TUI
 
         # CLI utils
-        astroterm
         buf
       ])
       # Other

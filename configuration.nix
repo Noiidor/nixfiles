@@ -107,6 +107,7 @@
   };
 
   services.openssh.enable = true;
+  services.mullvad-vpn.enable = true;
 
   virtualisation.docker = {
     enable = true;
