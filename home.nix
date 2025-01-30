@@ -68,6 +68,8 @@
         bitwarden-desktop
         bitwarden-cli
         keyguard
+        mullvad-vpn
+        mullvad-closest
 
         # Media
         yazi # File manager
@@ -117,7 +119,6 @@
         # TUI
 
         # CLI utils
-        astroterm
         buf
       ])
       # Other
