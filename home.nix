@@ -103,6 +103,8 @@
         nmap
         hollywood
         charm-freeze # Generate terminal images
+        vhs # Generate terminal GIFs
+        glow # Render markdown in terminal
 
         # Other
         kdePackages.qt6ct
@@ -119,6 +121,7 @@
 
         # CLI utils
         astroterm
+        sequin # Decode ANSI sequences
         buf
       ])
       # Other
