@@ -34,12 +34,12 @@
       {
         name = pkgs.zsh-fzf-tab.pname;
         src = pkgs.zsh-fzf-tab.src;
-        file = "${pkgs.zsh-fzf-tab.src}/fzf-tab.plugin.zsh";
+        file = "fzf-tab.plugin.zsh";
       }
       {
         name = pkgs.zsh-powerlevel10k.pname;
         src = pkgs.zsh-powerlevel10k.src;
-        file = "${pkgs.zsh-powerlevel10k.src}/powerlevel10k.zsh-theme";
+        file = "powerlevel10k.zsh-theme";
       }
     ];
 
@@ -70,8 +70,6 @@
       zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
       zstyle ':fzf-tab:complete:z:*' fzf-preview 'ls --color $realpath'
 
-      source ${pkgs.zsh-fzf-tab.src}/fzf-tab.plugin.zsh
-      source ${pkgs.zsh-powerlevel10k.src}/powerlevel10k.zsh-theme
       [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
     '';
   };
