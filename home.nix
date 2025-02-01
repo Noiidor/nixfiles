@@ -79,6 +79,7 @@
         feh # image viewer
         shotcut # video editing
         unrar
+        kdePackages.ark # Acrhiever
 
         # TUI
         lazygit
