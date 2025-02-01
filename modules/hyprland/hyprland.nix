@@ -41,5 +41,6 @@
     helvum
     networkmanagerapplet
     iniparser
+    hyprcursor
   ];
 }

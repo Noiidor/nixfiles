@@ -4,7 +4,9 @@
   pkgs-unstable,
   inputs,
   ...
-}: {
+}: let
+  cursorSize = 48;
+in {
   imports = [
     ./modules/nvim/nvim.nix
     ./modules/tmux/tmux.nix
@@ -137,6 +139,7 @@
     ];
 
     sessionVariables = {
+      XCURSOR_SIZE = cursorSize;
       PSQL_PAGER = "pspg -X -s 1";
 
       # Not sure if its essensial
@@ -148,6 +151,25 @@
       XDG_SESSION_DESKTOP = "Hyprland";
       WLR_NO_HARDWARE_CURSORS = "1";
     };
+
+    pointerCursor = let
+      cursor = pkgs.fetchzip {
+        url = "https://github.com/Noiidor/cursors/releases/download/v1/Firefly.tar.gz";
+        sha256 = "0i04xl9c7ycd26bd3x01q00dgw33hmj24cg87xlsskarizny0v0z";
+      };
+
+      cursorConfig = {
+        gtk.enable = true;
+        x11.enable = true;
+        name = "Firefly";
+        size = cursorSize;
+        package = pkgs.runCommand "firefly-cursor-package" {} ''
+          mkdir -p $out/share/icons
+          ln -s ${cursor} $out/share/icons/Firefly
+        '';
+      };
+    in
+      cursorConfig;
 
     stateVersion = "24.11";
   };
@@ -171,7 +193,6 @@
       package = pkgs-unstable.kitty;
     };
     zoxide.enable = true;
-    firefox.enable = true;
 
     mpv = {
       enable = true;
