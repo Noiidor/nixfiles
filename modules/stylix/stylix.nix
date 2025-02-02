@@ -16,8 +16,8 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
 
     cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
+      package = pkgs.graphite-cursors;
+      name = "graphite-light-nord";
       size = 26;
     };
 

@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   pkgs,
   pkgs-unstable,
@@ -152,25 +153,29 @@ in {
       WLR_NO_HARDWARE_CURSORS = "1";
     };
 
-    # pointerCursor = {
-    #   gtk.enable = true;
-    #   x11.enable = true;
-    #   package = pkgs.stdenv.mkDerivation {
-    #     name = "customCursors";
+    # pointerCursor = let
+    #   variants = ["Firefly" "Furina-v2" "Monika"];
+    #   customCursors = pkgs.stdenv.mkDerivation {
+    #     name = "customCursor";
     #     src = pkgs.fetchzip {
-    #       url = "https://github.com/Noiidor/cursors/releases/download/v2/Furina-v2.tar.gz";
+    #       url = "https://github.com/Noiidor/cursors/archive/195efaf341d2f615fb8717e79acee1b213e0bf23.tar.gz";
     #       sha256 = "10kkxn7jxgszc4ms0262zx2714jf3p5vy5n5z4baqksz55nzwknh";
     #     };
     #     installPhase = ''
-    #       mkdir -p $out/share/icons
-    #       for dir in $src/*; do
-    #         if [ -d "$dir" ]; then
-    #           ln -s "$dir" "$out/share/icons/$(basename "$dir")"
-    #         fi
+    #       for theme in $variants; do
+    #         mkdir -p $out/share/icons/$theme
+    #         cp -R $src/$theme/{cursors,index.theme} $out/share/icons/$theme/
     #       done
     #     '';
     #   };
-    # };
+    # in
+    #   lib.mkForce {
+    #     gtk.enable = true;
+    #     x11.enable = true;
+    #     name = "Furina-v2";
+    #     size = cursorSize;
+    #     package = customCursors;
+    #   };
 
     stateVersion = "24.11";
   };
