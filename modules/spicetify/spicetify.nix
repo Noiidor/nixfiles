@@ -22,7 +22,7 @@ in {
     enabledCustomApps = with spicePkgs.apps; [
       ncsVisualizer
     ];
-    theme = spicePkgs.themes.text;
-    colorScheme = "";
+    # theme = spicePkgs.themes.text;
+    # colorScheme = "";
   };
 }

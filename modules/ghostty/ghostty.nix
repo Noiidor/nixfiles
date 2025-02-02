@@ -5,12 +5,21 @@
   inputs,
   ...
 }: {
-  home.packages = [
-    inputs.ghostty.packages.${pkgs.system}.default
-  ];
-
-  xdg.configFile.ghostty = {
-    recursive = true;
-    source = ./.;
+  programs = {
+    ghostty = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        theme = "Hardcore";
+        font-family = "JetBraintsMono Nerd Font Mono";
+        custom-shader = "/home/noi/shader.glsl";
+        gtk-titlebar = false;
+      };
+    };
   };
+
+  # xdg.configFile.ghostty = {
+  #   recursive = true;
+  #   source = ./.;
+  # };
 }

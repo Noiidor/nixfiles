@@ -10,10 +10,10 @@
   ];
   stylix = {
     enable = true;
+    autoEnable = true;
     image = ./wallpaper.png;
     polarity = "dark";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
-    targets.kitty.enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
 
     cursor = {
       package = pkgs.bibata-cursors;
@@ -47,6 +47,13 @@
         popups = 10;
         terminal = 12;
       };
+    };
+
+    iconTheme = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
     };
   };
 }

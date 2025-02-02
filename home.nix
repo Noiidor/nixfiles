@@ -11,7 +11,7 @@ in {
     ./modules/nvim/nvim.nix
     ./modules/tmux/tmux.nix
     ./modules/zsh/zsh.nix
-    # ./modules/stylix/stylix.nix
+    ./modules/stylix/stylix.nix
     ./modules/flatpak/flatpak.nix
     ./modules/spicetify/spicetify.nix
     ./modules/ghostty/ghostty.nix
@@ -108,6 +108,7 @@ in {
         charm-freeze # Generate terminal images
         vhs # Generate terminal GIFs
         glow # Render markdown in terminal
+        xcur2png
 
         # Other
         kdePackages.qt6ct
@@ -139,7 +140,6 @@ in {
     ];
 
     sessionVariables = {
-      XCURSOR_SIZE = cursorSize;
       PSQL_PAGER = "pspg -X -s 1";
 
       # Not sure if its essensial
@@ -152,24 +152,25 @@ in {
       WLR_NO_HARDWARE_CURSORS = "1";
     };
 
-    pointerCursor = let
-      cursor = pkgs.fetchzip {
-        url = "https://github.com/Noiidor/cursors/releases/download/v1/Firefly.tar.gz";
-        sha256 = "0i04xl9c7ycd26bd3x01q00dgw33hmj24cg87xlsskarizny0v0z";
-      };
-
-      cursorConfig = {
-        gtk.enable = true;
-        x11.enable = true;
-        name = "Firefly";
-        size = cursorSize;
-        package = pkgs.runCommand "firefly-cursor-package" {} ''
-          mkdir -p $out/share/icons
-          ln -s ${cursor} $out/share/icons/Firefly
-        '';
-      };
-    in
-      cursorConfig;
+    # pointerCursor = {
+    #   gtk.enable = true;
+    #   x11.enable = true;
+    #   package = pkgs.stdenv.mkDerivation {
+    #     name = "customCursors";
+    #     src = pkgs.fetchzip {
+    #       url = "https://github.com/Noiidor/cursors/releases/download/v2/Furina-v2.tar.gz";
+    #       sha256 = "10kkxn7jxgszc4ms0262zx2714jf3p5vy5n5z4baqksz55nzwknh";
+    #     };
+    #     installPhase = ''
+    #       mkdir -p $out/share/icons
+    #       for dir in $src/*; do
+    #         if [ -d "$dir" ]; then
+    #           ln -s "$dir" "$out/share/icons/$(basename "$dir")"
+    #         fi
+    #       done
+    #     '';
+    #   };
+    # };
 
     stateVersion = "24.11";
   };
