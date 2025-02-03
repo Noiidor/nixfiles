@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   pkgs-unstable,
   system,
@@ -15,11 +14,7 @@
   # List of stable packages
   environment.systemPackages =
     (with pkgs; [
-      # Shell
-      zsh
-
       # CLI utils
-      fastfetch
       gnumake
       dig
       unzip
@@ -35,7 +30,6 @@
       protobuf_26
       jq
       minikube
-      kubernetes
       git
 
       # System

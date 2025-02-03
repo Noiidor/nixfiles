@@ -93,6 +93,7 @@ in {
         wishlist # SSH picker
 
         # CLI utils
+        fastfetch
         cbonsai
         lux
         cava
