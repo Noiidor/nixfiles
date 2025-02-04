@@ -1,13 +1,9 @@
 {
-  lib,
-  config,
   pkgs,
   pkgs-unstable,
   inputs,
   ...
-}: let
-  cursorSize = 48;
-in {
+}: {
   imports = [
     ./modules/nvim/nvim.nix
     ./modules/tmux/tmux.nix
@@ -16,7 +12,7 @@ in {
     ./modules/flatpak/flatpak.nix
     ./modules/spicetify/spicetify.nix
     ./modules/ghostty/ghostty.nix
-    ./modules/themes/default.nix
+    # ./modules/themes/default.nix
   ];
 
   home = {
@@ -191,9 +187,6 @@ in {
     config.common.default = "hyprland;gtk";
   };
 
-  # programs = let
-  #   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-  # in
   programs = {
     kitty = {
       enable = true;

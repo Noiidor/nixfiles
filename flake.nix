@@ -29,10 +29,6 @@
       url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
     };
 
-    # ghostty = {
-    #   url = "github:ghostty-org/ghostty";
-    # };
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";

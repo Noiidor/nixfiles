@@ -28,6 +28,7 @@
       gipul = "git pull";
       gipus = "git push";
       ai = "mods";
+      lg = "lazygit";
     };
 
     plugins = [

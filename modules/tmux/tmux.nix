@@ -30,8 +30,6 @@
       set -g status-position top
 
       set -g default-terminal "screen-256color"
-      set -g status-bg colour236
-      set -g status-fg colour241
 
       set -g @resurrect-strategy-nvim "session"
     '';
