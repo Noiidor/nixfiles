@@ -107,6 +107,7 @@
         vhs # Generate terminal GIFs
         glow # Render markdown in terminal
         xcur2png
+        tldr
 
         # Other
         kdePackages.qt6ct
