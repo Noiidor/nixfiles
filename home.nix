@@ -50,6 +50,9 @@
         odin
         ols
 
+        # Dotnet
+        dotnet-runtime
+
         # Applications and gaming
         vesktop
         telegram-desktop
