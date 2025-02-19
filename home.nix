@@ -68,6 +68,7 @@
         keyguard
         mullvad-vpn
         mullvad-closest
+        lutris
 
         # Media
         yazi # File manager
