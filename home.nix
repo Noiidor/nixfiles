@@ -121,6 +121,8 @@
         # Work
 
         # Applications and gaming
+        wineWowPackages.waylandFull
+        winetricks
 
         # Media
 
