@@ -112,6 +112,7 @@
         glow # Render markdown in terminal
         xcur2png
         tldr
+        viddy
 
         # Other
         kdePackages.qt6ct
