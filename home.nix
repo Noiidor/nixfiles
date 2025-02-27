@@ -128,7 +128,7 @@
         # Media
 
         # TUI
-        claude-code
+        # claude-code
 
         # CLI utils
         astroterm
