@@ -90,7 +90,6 @@
         pgcli
         mods # LLM frontend
         wishlist # SSH picker
-        claude-code
 
         # CLI utils
         fastfetch
@@ -129,6 +128,7 @@
         # Media
 
         # TUI
+        claude-code
 
         # CLI utils
         astroterm
