@@ -90,6 +90,7 @@
         pgcli
         mods # LLM frontend
         wishlist # SSH picker
+        claude-code
 
         # CLI utils
         fastfetch
