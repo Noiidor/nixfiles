@@ -170,7 +170,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     wireplumber.enable = true;
-    #jack.enable = true;
+    jack.enable = true;
   };
 
   services.ratbagd.enable = true;

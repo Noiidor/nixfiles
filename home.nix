@@ -78,7 +78,6 @@
         glxinfo
         scribus
         libreoffice-fresh
-        yt-dlp # video downloader
         feh # image viewer
         shotcut # video editing
         unrar
@@ -113,6 +112,7 @@
         xcur2png
         tldr
         viddy
+        yt-dlp # video downloader
 
         # Other
         kdePackages.qt6ct
