@@ -142,8 +142,6 @@
       ];
 
     sessionPath = [
-      "$HOME/nixfiles/scripts"
-      "$HOME/go/bin"
     ];
 
     sessionVariables = {
@@ -159,30 +157,6 @@
       WLR_NO_HARDWARE_CURSORS = "1";
     };
 
-    # pointerCursor = let
-    #   variants = ["Firefly" "Furina-v2" "Monika"];
-    #   customCursors = pkgs.stdenv.mkDerivation {
-    #     name = "customCursor";
-    #     src = pkgs.fetchzip {
-    #       url = "https://github.com/Noiidor/cursors/archive/195efaf341d2f615fb8717e79acee1b213e0bf23.tar.gz";
-    #       sha256 = "10kkxn7jxgszc4ms0262zx2714jf3p5vy5n5z4baqksz55nzwknh";
-    #     };
-    #     installPhase = ''
-    #       for theme in $variants; do
-    #         mkdir -p $out/share/icons/$theme
-    #         cp -R $src/$theme/{cursors,index.theme} $out/share/icons/$theme/
-    #       done
-    #     '';
-    #   };
-    # in
-    #   lib.mkForce {
-    #     gtk.enable = true;
-    #     x11.enable = true;
-    #     name = "Furina-v2";
-    #     size = cursorSize;
-    #     package = customCursors;
-    #   };
-
     stateVersion = "24.11";
   };
 
@@ -197,10 +171,10 @@
   };
 
   programs = {
-    kitty = {
-      enable = true;
-      package = pkgs-unstable.kitty;
-    };
+    # kitty = {
+    #   enable = true;
+    #   package = pkgs-unstable.kitty;
+    # };
     zoxide.enable = true;
 
     mpv = {

@@ -1,12 +1,10 @@
 {
   pkgs,
   pkgs-unstable,
-  system,
-  inputs,
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware-configuration-laptop.nix
     ./modules/hyprland/hyprland.nix
   ];
 
@@ -55,7 +53,7 @@
     ++
     # List of unstable(rolling-release) packages
     (with pkgs-unstable; [
-      # Programmung
+      # Programming
       python3
     ]);
 
@@ -157,7 +155,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-
   hardware = {
     pulseaudio.enable = false;
     graphics.enable = true;

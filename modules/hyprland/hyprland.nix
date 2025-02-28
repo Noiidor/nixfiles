@@ -1,11 +1,4 @@
-{
-  config,
-  pkgs,
-  pkgs-unstable,
-  inputs,
-  system,
-  ...
-}: {
+{pkgs, ...}: {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;

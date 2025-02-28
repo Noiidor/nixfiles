@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  pkgs-unstable,
   inputs,
   ...
 }: {

@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -14,6 +9,7 @@
 
     shellAliases = {
       ez = "eza -a --icons=auto";
+      ezl = "eza -a --icons=auto -l -h";
       ls = "ls --color";
       ff = "fastfetch";
       nv = "nvim";

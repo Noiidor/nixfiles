@@ -1,16 +1,11 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
   ];
 
   services.flatpak = {
     packages = [
-      # "io.github.zen_browser.zen"
+      # Flatpak apps goes here
     ];
     update.onActivation = true;
     update.auto = {

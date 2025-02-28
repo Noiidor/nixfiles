@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  pkgs-unstable,
-  inputs,
-  ...
-}: {
+{...}: {
   programs = {
     ghostty = {
       enable = true;
@@ -17,9 +11,4 @@
       };
     };
   };
-
-  # xdg.configFile.ghostty = {
-  #   recursive = true;
-  #   source = ./.;
-  # };
 }
