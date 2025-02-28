@@ -128,7 +128,7 @@
         # Media
 
         # TUI
-        # claude-code
+        claude-code
 
         # CLI utils
         astroterm
@@ -249,7 +249,9 @@
       };
     };
 
-    home-manager.enable = true;
+    home-manager = {
+      enable = true;
+    };
   };
 
   xdg.mimeApps.enable = true;
