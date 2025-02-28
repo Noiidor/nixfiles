@@ -7,8 +7,6 @@
     spiceUSBRedirection.enable = true;
   };
 
-  users.users.noi.extraGroups = ["libvirtd"];
-
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];

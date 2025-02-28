@@ -1,4 +1,4 @@
-{...}: {
+{user, ...}: {
   programs = {
     ghostty = {
       enable = true;
@@ -6,7 +6,7 @@
       settings = {
         theme = "Hardcore";
         font-family = "JetBraintsMono Nerd Font Mono";
-        custom-shader = "/home/noi/shader.glsl";
+        custom-shader = "/home/${user}/shader.glsl";
         gtk-titlebar = false;
       };
     };

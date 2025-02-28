@@ -51,6 +51,7 @@
       inherit system;
       config.allowUnfree = true;
     };
+    user = "noi";
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -60,18 +61,20 @@
         ];
         specialArgs = {
           inherit system;
+          inherit user;
           inherit pkgs-unstable;
           inherit inputs;
         };
       };
     };
 
-    homeConfigurations.noi = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
         ./home.nix
       ];
       extraSpecialArgs = {
+        inherit user;
         inherit pkgs-unstable;
         inherit inputs;
       };

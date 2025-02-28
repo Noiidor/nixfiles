@@ -1,4 +1,5 @@
 {
+  user,
   pkgs,
   pkgs-unstable,
   ...
@@ -23,10 +24,6 @@
 
       # Programming
       postgresql_16
-      kubectl
-      alejandra
-      protobuf_26
-      jq
       minikube
       git
 
@@ -40,7 +37,6 @@
       gparted
       ntfs3g
       testdisk
-      ventoy
 
       # Lib
       libadwaita
@@ -48,13 +44,11 @@
       ffmpeg
 
       # Other
-      mangohud
     ])
     ++
     # List of unstable(rolling-release) packages
     (with pkgs-unstable; [
       # Programming
-      python3
     ]);
 
   environment.variables = {
@@ -175,9 +169,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  users.users.noi = {
+  users.users.${user} = {
     isNormalUser = true;
-    description = "Noi";
+    description = user;
     extraGroups = ["networkmanager" "wheel" "video" "docker"];
     shell = pkgs.zsh;
   };

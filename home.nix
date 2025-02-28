@@ -1,4 +1,5 @@
 {
+  user,
   pkgs,
   pkgs-unstable,
   inputs,
@@ -16,8 +17,8 @@
   ];
 
   home = {
-    username = "noi";
-    homeDirectory = "/home/noi";
+    username = user;
+    homeDirectory = "/home/${user}";
 
     packages =
       # Stable packages
@@ -32,6 +33,8 @@
         natscli
         nats-top
         glab
+        kubectl
+        protobuf_26
 
         # Golang
         go
@@ -49,6 +52,9 @@
         # OdinLang
         odin
         ols
+
+        # Python
+        python3
 
         # Dotnet
         dotnet-runtime
@@ -69,6 +75,7 @@
         mullvad-vpn
         mullvad-closest
         lutris
+        ventoy
 
         # Media
         yazi # File manager
@@ -113,6 +120,8 @@
         tldr
         viddy
         yt-dlp # video downloader
+        jq
+        alejandra
 
         # Other
         kdePackages.qt6ct
