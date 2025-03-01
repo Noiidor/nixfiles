@@ -12,7 +12,7 @@ Navigate to the directory, where you want to keep your configuration. I suggest 
 git clone this-repo
 ```
 
-Change user 'noi' to your username. Also change your git credentials.
+Change user variable to your username. Also change your git credentials.
 
 ```sh
 sudo nixos-rebuild switch --flake .
@@ -22,3 +22,7 @@ home-manager switch --flake .
 If downloading failed with a message about mirrors, try using a VPN.
 
 Reboot. Done.
+
+# TODO
+
+- Hyprland and waybar config

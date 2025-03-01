@@ -1,5 +1,5 @@
 {
-  description = "My default flake.";
+  description = "System flake";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.11";
@@ -43,6 +43,7 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
+    user = "noi";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -51,7 +52,6 @@
       inherit system;
       config.allowUnfree = true;
     };
-    user = "noi";
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
