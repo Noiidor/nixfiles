@@ -57,7 +57,6 @@
       nixos = nixpkgs.lib.nixosSystem {
         modules = [
           ./configuration.nix
-          inputs.stylix.nixosModules.stylix
         ];
         specialArgs = {
           inherit system;

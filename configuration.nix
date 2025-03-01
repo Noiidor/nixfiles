@@ -2,12 +2,18 @@
   user,
   pkgs,
   pkgs-unstable,
+  inputs,
   ...
 }: {
   imports = [
     ./hardware-configuration-laptop.nix
     ./modules/hyprland/hyprland.nix
+    inputs.stylix.nixosModules.stylix
   ];
+
+  # System config is a mess
+  # I dont know what half of options does, but it works
+  # TODO: Split into modules
 
   nixpkgs.config.allowUnfree = true;
   # List of stable packages
@@ -83,7 +89,7 @@
     hostName = "nixos";
     networkmanager = {
       enable = true;
-      wifi.powersave = false;
+      wifi.powersave = false; # Unstable connectivity without this
     };
     # Needed for Honkers Railway launcher
     extraHosts = ''
@@ -95,7 +101,12 @@
     nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+    };
+  };
   services.mullvad-vpn.enable = true;
 
   virtualisation.docker = {
@@ -189,9 +200,12 @@
     };
     nh = {
       enable = true;
-      flake = "/home/noi/nixfiles";
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 5d --keep 5";
+      flake = "/home/${user}/nixfiles";
+      clean = {
+        enable = true;
+        dates = "weekly";
+        extraArgs = "--keep-since 5d --keep 5";
+      };
     };
   };
 

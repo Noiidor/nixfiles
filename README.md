@@ -6,7 +6,7 @@ nix shell nixpkgs#git
 nix-shell -p git
 ```
 
-Navigate to the directory, where you want to keep your configuration. I suggest ~.
+Navigate to the directory, where you want to keep your configuration. I suggest using user home directory.
 
 ```sh
 git clone this-repo
