@@ -19,14 +19,14 @@ Navigate to the directory, where you want to keep your configuration. I suggest 
 git clone this-repo
 ```
 
-*cd into cloned repo.* You need to generate your hardware configuration. 
-You can change *hardware.nix* to any name, describing your machine.
+**cd into cloned repo.** You need to generate your hardware configuration. 
+You can change **hardware.nix** to any name, describing your machine.
 
 ```sh
 sudo nixos-generate-config --show-hardware-config > hardware.nix
 ```
 
-Change hardware configuration file import inside *configuration.nix* to filename from previous step. 
+Change hardware configuration file import inside **configuration.nix** to filename from previous step. 
 Change user variable to your username. Also change your git credentials.
 
 ```sh
