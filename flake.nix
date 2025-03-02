@@ -59,7 +59,6 @@
           ./configuration.nix
         ];
         specialArgs = {
-          inherit system;
           inherit user;
           inherit pkgs-unstable;
           inherit inputs;

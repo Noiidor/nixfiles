@@ -1,3 +1,10 @@
+# Structure
+
+- flake.nix - external inputs.
+- configuration.nix - system configuration.
+- home.nix - user configuration
+- modules/ - nix modules(user or system)
+
 # How to install?
 
 ```sh
