@@ -15,7 +15,6 @@
   # I dont know what half of options does, but it works
   # TODO: Split into modules
 
-  nixpkgs.config.allowUnfree = true;
   # List of stable packages
   environment.systemPackages =
     (with pkgs; [

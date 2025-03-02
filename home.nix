@@ -3,6 +3,7 @@
   pkgs,
   pkgs-unstable,
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -35,6 +36,8 @@
         glab
         kubectl
         protobuf_26
+        odin
+        ols
 
         # Golang
         go
@@ -48,10 +51,6 @@
         protoc-gen-validate
         protoc-gen-doc
         golangci-lint
-
-        # OdinLang
-        odin
-        ols
 
         # Python
         python3
@@ -85,7 +84,6 @@
         glxinfo
         scribus
         libreoffice-fresh
-        feh # image viewer
         shotcut # video editing
         unrar
         kdePackages.ark # Acrhiever
@@ -196,6 +194,11 @@
 
     imv = {
       enable = true;
+      settings = {
+        binds = {
+          "<Delete>" = "quit";
+        };
+      };
     };
 
     htop = {
@@ -238,35 +241,42 @@
   };
 
   xdg.mimeApps.enable = true;
-  xdg.mimeApps.defaultApplications = {
-    "image/png" = "imv.desktop";
-    "image/jpeg" = "imv.desktop";
-    "image/webp" = "imv.desktop";
-    "image/gif" = "mpv.desktop";
-    "video/mp4" = "mpv.desktop";
-    "video/mpeg" = "mpv.desktop";
-    "video/webm" = "mpv.desktop";
-    "video/mkv" = "mpv.desktop";
-    "video/quicktime" = "mpv.desktop";
-
-    "inode/directory" = "org.gnome.Nautilus.desktop";
-
-    "text/plain" = "nvim.desktop";
-    "text/html" = "nvim.desktop";
-    "text/markdown" = "nvim.desktop";
-    "application/json" = "nvim.desktop";
-
-    "application/x-extension-htm" = "zen.desktop";
-    "application/x-extension-html" = "zen.desktop";
-    "application/x-extension-shtml" = "zen.desktop";
-    "application/x-extension-xht" = "zen.desktop";
-    "application/x-extension-xhtml" = "zen.desktop";
-    "x-scheme-handler/chrome" = "zen.desktop";
-    "x-scheme-handler/http" = "zen.desktop";
-    "x-scheme-handler/https" = "zen.desktop";
-    "application/xhtml+xml" = "zen.desktop";
-    "application/pdf" = "zen.desktop";
-  };
-
-  nixpkgs.config.allowUnfree = true;
+  xdg.mimeApps.defaultApplications = let
+    apps = {
+      imv = ["image/png" "image/jpeg" "image/webp"];
+      mpv = [
+        "image/gif"
+        "video/mp4"
+        "video/mpeg"
+        "video/webm"
+        "video/mkv"
+        "video/quicktime"
+      ];
+      nvim = [
+        "text/plain"
+        "text/html"
+        "text/markdown"
+        "application/json"
+      ];
+      zen = [
+        "application/x-extension-htm"
+        "application/x-extension-html"
+        "application/x-extension-shtml"
+        "application/x-extension-xht"
+        "application/x-extension-xhtml"
+        "x-scheme-handler/chrome"
+        "x-scheme-handler/http"
+        "x-scheme-handler/https"
+        "application/xhtml+xml"
+        "application/pdf"
+      ];
+    };
+  in
+    {
+      "inode/directory" = "org.gnome.Nautilus.desktop";
+    }
+    // (lib.genAttrs apps.imv (__: "imv.desktop"))
+    // (lib.genAttrs apps.mpv (__: "mpv.desktop"))
+    // (lib.genAttrs apps.nvim (__: "nvim.desktop"))
+    // (lib.genAttrs apps.zen (__: "zen.desktop"));
 }
