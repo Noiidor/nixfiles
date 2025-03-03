@@ -118,6 +118,8 @@
         yt-dlp # video downloader
         jq
         alejandra
+        linux-manual
+        man-pages
 
         # Other
         kdePackages.qt6ct
