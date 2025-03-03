@@ -36,8 +36,6 @@
         glab
         kubectl
         protobuf_26
-        odin
-        ols
 
         # Golang
         go
@@ -127,6 +125,8 @@
       # Unstable packages
       ++ (with pkgs-unstable; [
         # Work
+        odin
+        ols
 
         # Applications and gaming
         wineWowPackages.waylandFull
@@ -275,8 +275,8 @@
     {
       "inode/directory" = "org.gnome.Nautilus.desktop";
     }
-    // (lib.genAttrs apps.imv (__: "imv.desktop"))
-    // (lib.genAttrs apps.mpv (__: "mpv.desktop"))
-    // (lib.genAttrs apps.nvim (__: "nvim.desktop"))
-    // (lib.genAttrs apps.zen (__: "zen.desktop"));
+    // (lib.genAttrs apps.imv (_: "imv.desktop"))
+    // (lib.genAttrs apps.mpv (_: "mpv.desktop"))
+    // (lib.genAttrs apps.nvim (_: "nvim.desktop"))
+    // (lib.genAttrs apps.zen (_: "zen.desktop"));
 }
