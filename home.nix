@@ -93,6 +93,7 @@
         pgcli
         mods # LLM frontend
         wishlist # SSH picker
+        nix-tree
 
         # CLI utils
         fastfetch
@@ -120,6 +121,7 @@
         alejandra
         linux-manual
         man-pages
+        nix-visualize
 
         # Other
         kdePackages.qt6ct
