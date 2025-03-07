@@ -56,6 +56,10 @@
         # Dotnet
         dotnet-runtime
 
+        # Rust
+        rustc
+        cargo
+
         # Applications and gaming
         vesktop
         telegram-desktop
