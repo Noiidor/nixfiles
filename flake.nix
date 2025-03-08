@@ -55,6 +55,7 @@
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
         modules = [
           ./configuration.nix
         ];
