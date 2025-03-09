@@ -111,10 +111,6 @@
   virtualisation.docker = {
     enable = true;
     storageDriver = "btrfs";
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
   };
 
   # Open ports in the firewall.
