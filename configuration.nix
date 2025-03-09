@@ -30,6 +30,7 @@
       # Programming
       postgresql_16
       minikube
+      k3d
       git
 
       # System
@@ -99,6 +100,11 @@
     #networkmanager.dns = "none";
     nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
   };
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [];
+  # networking.firewall.allowedUDPPorts = [];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
   services.openssh = {
     enable = true;
@@ -112,12 +118,6 @@
     enable = true;
     storageDriver = "btrfs";
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   time.timeZone = "Asia/Ho_Chi_Minh";
 
