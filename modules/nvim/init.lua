@@ -15,7 +15,8 @@ vim.g.loaded_netrwPlugin = 0
 vim.wo.wrap = false
 vim.wo.linebreak = false
 
-vim.o.tabstop = 4
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 
 -- Make line numbers default
 vim.opt.number = true
@@ -36,6 +37,7 @@ end)
 
 -- Enable break indent
 vim.opt.breakindent = true
+vim.opt.smartindent = true
 -- Save undo history
 vim.opt.undofile = true
 
@@ -263,7 +265,8 @@ animate.setup({
 	},
 })
 
-require("mini.pairs").setup()
+-- require("mini.pairs").setup()
+require("nvim-autopairs").setup({})
 
 local minifiles = require("mini.files")
 minifiles.setup({
@@ -297,6 +300,8 @@ indentscope.setup({
 -- - sr)'  - [S]urround [R]eplace [)] [']
 require("mini.surround").setup()
 
+require("better_escape").setup()
+
 local statusline = require("mini.statusline")
 statusline.setup({ use_icons = vim.g.have_nerd_font })
 
@@ -324,7 +329,7 @@ require("conform").setup({
 		go = { "goimports", "gofmt" },
 		odin = { "odinfmt" },
 		nix = { "alejandra" },
-		sql = { "sleek" },
+		sql = { "sql-formatter" },
 		json = { "biome" },
 		jsonc = { "biome" },
 		js = { "biome" },
@@ -334,6 +339,7 @@ require("conform").setup({
 		html = { "biome" },
 		css = { "biome" },
 		graphql = { "biome" },
+		yaml = { "yamlfmt" },
 		-- You can use 'stop_after_first' to run the first available formatter from the list
 		-- javascript = { "prettierd", "prettier", stop_after_first = true },
 	},
@@ -591,6 +597,24 @@ lspconfig.sqls.setup({})
 
 lspconfig.nil_ls.setup({})
 
+lspconfig.yamlls.setup({
+	settings = {
+		yaml = {
+			completion = true,
+			schemas = {
+				kubernetes = "*.yaml",
+			},
+			schemaStore = { enable = true },
+			format = {
+				enable = true,
+			},
+			editor = {
+				tabSize = 4,
+			},
+		},
+	},
+})
+
 lspconfig.docker_compose_language_service.setup({})
 
 local function set_filetype(pattern, filetype)
@@ -603,6 +627,13 @@ end
 set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 
 lspconfig.dockerls.setup({})
+
+require("nvim-treesitter.configs").setup({
+	indent = {
+		enable = true,
+		disable = { "yaml" },
+	},
+})
 
 -- Debugging
 

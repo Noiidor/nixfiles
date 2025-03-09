@@ -12,6 +12,8 @@
     stylua # lua
     biome # json, js
     sleek # sql
+    sql-formatter
+    yamlfmt
 
     # LSP
     nil # nix
@@ -21,6 +23,7 @@
     pyright
     docker-compose-language-service
     dockerfile-language-server-nodejs
+    yaml-language-server
 
     # Debug
     python312Packages.debugpy
@@ -41,6 +44,7 @@
         which-key-nvim
         plenary-nvim
         nvim-web-devicons
+        nvim-autopairs
 
         #Git
         gitsigns-nvim
@@ -88,6 +92,7 @@
         # Utils
         mini-nvim
         vim-tmux-navigator
+        better-escape-nvim
       ])
       ++
       # Unstable nvim plugins

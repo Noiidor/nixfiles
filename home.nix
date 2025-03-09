@@ -123,6 +123,7 @@
         viddy
         yt-dlp # video downloader
         jq
+        yq
         alejandra
         linux-manual
         man-pages
