@@ -35,6 +35,7 @@
         nats-top
         glab
         kubectl
+        kubectx
         protobuf_26
 
         # Golang
