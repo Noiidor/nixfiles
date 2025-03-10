@@ -37,6 +37,7 @@
         kubectl
         kubectx
         protobuf_26
+        gcc
 
         # Golang
         go

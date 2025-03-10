@@ -340,6 +340,7 @@ require("conform").setup({
 		css = { "biome" },
 		graphql = { "biome" },
 		yaml = { "yamlfmt" },
+		rs = { "rustfmt" },
 		-- You can use 'stop_after_first' to run the first available formatter from the list
 		-- javascript = { "prettierd", "prettier", stop_after_first = true },
 	},
@@ -592,6 +593,8 @@ lspconfig.pyright.setup({})
 -- lspconfig.postgres_lsp.setup({})
 --
 lspconfig.ols.setup({})
+
+lspconfig.rust_analyzer.setup({})
 
 lspconfig.sqls.setup({})
 

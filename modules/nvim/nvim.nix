@@ -14,6 +14,7 @@
     sleek # sql
     sql-formatter
     yamlfmt
+    rustfmt
 
     # LSP
     nil # nix
@@ -24,6 +25,7 @@
     docker-compose-language-service
     dockerfile-language-server-nodejs
     yaml-language-server
+    rust-analyzer
 
     # Debug
     python312Packages.debugpy
@@ -88,6 +90,7 @@
         todo-comments-nvim
         fidget-nvim
         base16-nvim
+        vim-illuminate
 
         # Utils
         mini-nvim
