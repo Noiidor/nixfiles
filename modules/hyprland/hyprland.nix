@@ -1,13 +1,13 @@
 {
   pkgs,
-  pkgs-unstable,
+  inputs,
   ...
 }: {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    package = pkgs-unstable.hyprland;
-    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
