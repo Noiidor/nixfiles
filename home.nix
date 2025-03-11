@@ -15,6 +15,7 @@
     ./modules/spicetify/spicetify.nix
     ./modules/ghostty/ghostty.nix
     # ./modules/themes/default.nix
+    ./modules/hyprpanel/hyprpanel.nix
   ];
 
   home = {
