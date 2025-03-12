@@ -130,6 +130,7 @@
         linux-manual
         man-pages
         nix-visualize
+        wf-recorder
 
         # Other
         kdePackages.qt6ct
