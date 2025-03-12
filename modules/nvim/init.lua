@@ -329,7 +329,7 @@ require("conform").setup({
 		go = { "goimports", "gofmt" },
 		odin = { "odinfmt" },
 		nix = { "alejandra" },
-		sql = { "sql-formatter" },
+		-- sql = { "sql-formatter" },
 		json = { "biome" },
 		jsonc = { "biome" },
 		js = { "biome" },
