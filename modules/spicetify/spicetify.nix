@@ -1,7 +1,7 @@
 {
   pkgs,
-  pkgs-unstable,
   inputs,
+  lib,
   ...
 }: let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
@@ -22,7 +22,8 @@ in {
     enabledCustomApps = with spicePkgs.apps; [
       ncsVisualizer
     ];
-    # theme = spicePkgs.themes.text;
-    # colorScheme = "";
+    # Remover mkForce to use Stylix theme
+    theme = lib.mkForce spicePkgs.themes.hazy;
+    colorScheme = lib.mkForce "";
   };
 }
