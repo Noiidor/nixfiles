@@ -130,7 +130,7 @@
         linux-manual
         man-pages
         nix-visualize
-        wf-recorder
+        wf-recorder # Screen recorder
 
         # Other
         kdePackages.qt6ct
