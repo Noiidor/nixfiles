@@ -1,4 +1,5 @@
 {
+  vars,
   pkgs,
   inputs,
   ...
@@ -21,9 +22,10 @@
 
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-        name = "JetBraintsMono Nerd Font Mono";
+        package = pkgs.maple-mono;
+        name = vars.fontName;
       };
+
       sansSerif = {
         package = pkgs.dejavu_fonts;
         name = "DejaVu Sans";
@@ -35,8 +37,8 @@
       };
 
       emoji = {
-        package = pkgs.noto-fonts-emoji;
-        name = "Noto Color Emoji";
+        package = pkgs.noto-fonts-monochrome-emoji;
+        name = "Noto Emoji";
       };
 
       sizes = {

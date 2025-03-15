@@ -1,5 +1,5 @@
 {
-  pkgs,
+  vars,
   inputs,
   ...
 }: {
@@ -65,7 +65,7 @@
 
         customModules = {
           cava = {
-            bars = 10;
+            bars = 12;
             showActiveOnly = true;
             showIcon = false;
             stereo = true;
@@ -111,6 +111,16 @@
             radius = "0.6em";
             background_hover_opacity = 50;
             background_opacity = 50;
+
+            windowtitle = {
+              enableBorder = true;
+            };
+
+            modules = {
+              # cava = {
+              #   spacing = "0";
+              # };
+            };
           };
 
           menus = {
@@ -129,6 +139,11 @@
                 scaling = 100;
               };
             };
+
+            popover = {
+              # background = "#1a1a1a";
+              radius = "0.6em";
+            };
           };
         };
 
@@ -145,9 +160,15 @@
         };
 
         font = {
+          name = vars.fontName;
           size = "1.3rem";
         };
       };
+    };
+
+    override = {
+      theme.bar.buttons.modules.cava.spacing = "0";
+      theme.bar.menus.popover.background = "#1a1a1a";
     };
   };
 }

@@ -62,6 +62,10 @@
       inherit system;
       config.allowUnfree = true;
     };
+
+    vars = {
+      fontName = "Maple Mono";
+    };
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -72,6 +76,7 @@
         specialArgs = {
           inherit user;
           inherit pkgs-unstable;
+          inherit vars;
           inherit inputs;
         };
       };
@@ -85,6 +90,7 @@
       extraSpecialArgs = {
         inherit user;
         inherit pkgs-unstable;
+        inherit vars;
         inherit inputs;
       };
     };
