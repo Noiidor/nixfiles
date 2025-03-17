@@ -16,7 +16,7 @@
 
       set -g status-position top
 
-      set -g default-terminal "screen-256color"
+      set -g default-terminal "xterm-ghostty"
 
       set -g @resurrect-strategy-nvim "session"
     '';
