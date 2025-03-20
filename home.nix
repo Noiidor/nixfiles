@@ -66,7 +66,6 @@
 
         # Applications and gaming
         vesktop
-        telegram-desktop
         qbittorrent
         obsidian
         bottles
@@ -145,6 +144,7 @@
         # Applications and gaming
         wineWowPackages.waylandFull
         winetricks
+        ayugram-desktop
 
         # Media
 
