@@ -63,6 +63,7 @@
         # Rust
         rustc
         cargo
+        cargo-modules # tree of project modules
 
         # Applications and gaming
         vesktop
