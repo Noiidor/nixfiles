@@ -40,6 +40,7 @@
         kubectx
         protobuf_26
         gcc
+        helix
 
         # Golang
         go
