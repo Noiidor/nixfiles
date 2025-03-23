@@ -153,10 +153,11 @@ local builtin = require("telescope.builtin")
 -- end, { desc = "[F]ile Browser" })
 
 vim.keymap.set("n", "<leader>e", builtin.diagnostics, { desc = "List [E]rrors" })
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open [D]iagnostic" })
 vim.keymap.set("n", "<leader>h", builtin.help_tags, { desc = "Search [H]elp" })
-vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+-- vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 
-vim.keymap.set("n", "<leader>ff", function()
+vim.keymap.set("n", "<leader>f", function()
 	builtin.find_files({
 		hidden = true,
 	})
@@ -164,10 +165,10 @@ end, { desc = "[F]ind [F]iles" })
 
 vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 -- vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-vim.keymap.set("n", "<leader>ws", builtin.live_grep, { desc = "[W]orkspace [S]earch(grep)" })
--- vim.keymap.set("n", "<leader>r", builtin.resume, { desc = "Search [R]esume" })
+vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "[W]orkspace [S]earch(grep)" })
+vim.keymap.set("n", "<leader>a", builtin.resume, { desc = "Search [A]gain" })
 vim.keymap.set("n", "<leader>t", builtin.treesitter, { desc = "Search [T]reesitter" })
-vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "[S]earch [R]ecent Files" })
+vim.keymap.set("n", "<leader>r", builtin.oldfiles, { desc = "Search [R]ecent Files" })
 vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 -- NOTE: Secret :)
@@ -188,6 +189,7 @@ end, { desc = "[/] Fuzzily search in current buffer" })
 
 -- Which-key config
 require("which-key").setup({
+	preset = "helix",
 	icons = {
 		-- set icon mappings to true if you have a Nerd Font
 		mappings = vim.g.have_nerd_font,
@@ -226,15 +228,15 @@ require("which-key").setup({
 	},
 
 	-- Document existing key chains
-	spec = {
-		{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-		{ "<leader>d", group = "[D]ocument" },
-		{ "<leader>r", group = "[R]ename" },
-		{ "<leader>s", group = "[S]earch" },
-		{ "<leader>w", group = "[W]orkspace" },
-		{ "<leader>t", group = "[T]oggle" },
-		{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
-	},
+	-- spec = {
+	-- 	{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
+	-- 	{ "<leader>d", group = "[D]ocument" },
+	-- 	{ "<leader>r", group = "[R]ename" },
+	-- 	{ "<leader>s", group = "[S]earch" },
+	-- 	{ "<leader>w", group = "[W]orkspace" },
+	-- 	{ "<leader>t", group = "[T]oggle" },
+	-- 	{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+	-- },
 })
 
 -- Gitsigns config
