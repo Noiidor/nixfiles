@@ -359,6 +359,7 @@ require("conform").setup({
 		graphql = { "biome" },
 		yaml = { "yamlfmt" },
 		rs = { "rustfmt" },
+		proto = { "buf format" },
 		-- You can use 'stop_after_first' to run the first available formatter from the list
 		-- javascript = { "prettierd", "prettier", stop_after_first = true },
 	},
@@ -604,6 +605,10 @@ cmp.setup.cmdline(":", {
 	matching = { disallow_symbol_nonprefix_matching = false },
 })
 
+-- ###########
+-- ### LSP ###
+-- ###########
+
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- local servers = {
@@ -720,6 +725,8 @@ set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 
 lspconfig.dockerls.setup({})
 
+lspconfig.buf_ls.setup({})
+
 require("nvim-treesitter.configs").setup({
 	indent = {
 		enable = true,
@@ -727,13 +734,15 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
--- Debugging
+-- #############
+-- ### Debug ###
+-- #############
 
 local dap = require("dap")
 
 vim.keymap.set("n", "<F5>", dap.continue, { desc = "Start/continue debug session" })
 vim.keymap.set("n", "<F4>", dap.run_last, { desc = "Start debug session with last arguments" })
-vim.keymap.set("n", "<M-F5>", dap.terminate, { desc = "Debug: terminate session" })
+vim.keymap.set("n", "<F6>", dap.terminate, { desc = "Debug: terminate session" })
 vim.keymap.set("n", "<M-h>", dap.step_out, { desc = "Debug: step out" })
 vim.keymap.set("n", "<M-j>", dap.step_over, { desc = "Debug: step over" })
 vim.keymap.set("n", "<M-k>", dap.step_back, { desc = "Debug: step back" })
