@@ -122,7 +122,11 @@ require("telescope").setup({
 		--   },
 		file_ignore_patterns = { ".git/", ".vscode/" },
 	},
-	-- pickers = {}
+	pickers = {
+		oldfiles = {
+			cwd_only = true,
+		},
+	},
 	extensions = {
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown(),
