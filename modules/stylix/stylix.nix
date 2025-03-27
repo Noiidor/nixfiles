@@ -37,8 +37,8 @@
       };
 
       emoji = {
-        package = pkgs.noto-fonts-monochrome-emoji;
-        name = "Noto Emoji";
+        package = pkgs.maple-mono;
+        name = vars.fontName;
       };
 
       sizes = {
