@@ -38,6 +38,7 @@
       wirelesstools
       wl-clipboard
       wireguard-tools
+      power-profiles-daemon
 
       # Disks
       gparted
