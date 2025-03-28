@@ -157,6 +157,7 @@
         astroterm
         sequin # Decode ANSI sequences
         buf
+        spotdl # Download music from yt/spotify
       ])
       # Other
       ++ [
