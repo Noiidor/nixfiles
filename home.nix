@@ -2,7 +2,6 @@
   config,
   user,
   pkgs,
-  pkgs-unstable,
   inputs,
   lib,
   ...
@@ -55,6 +54,10 @@
         protoc-gen-doc
         golangci-lint
 
+        # Odin
+        unstable.odin
+        unstable.ols
+
         # Python
         python3
 
@@ -83,6 +86,10 @@
         lutris
         ventoy
 
+        unstable.ayugram-desktop
+        unstable.winetricks
+        unstable.wineWowPackages.waylandFull
+
         # Media
         yazi # File manager
         gimp
@@ -103,6 +110,8 @@
         mods # LLM frontend
         wishlist # SSH picker
         nix-tree
+
+        unstable.claude-code
 
         # CLI utils
         fastfetch
@@ -133,31 +142,15 @@
         man-pages
         nix-visualize
         wf-recorder # Screen recorder
+        ripgrep
+
+        unstable.astroterm
+        unstable.sequin # Decode ANSI sequences
+        unstable.buf
+        unstable.spotdl # Download music from yt/spotify
 
         # Other
         kdePackages.qt6ct
-      ])
-      # Unstable packages
-      ++ (with pkgs-unstable; [
-        # Work
-        odin
-        ols
-
-        # Applications and gaming
-        wineWowPackages.waylandFull
-        winetricks
-        ayugram-desktop
-
-        # Media
-
-        # TUI
-        claude-code
-
-        # CLI utils
-        astroterm
-        sequin # Decode ANSI sequences
-        buf
-        spotdl # Download music from yt/spotify
       ])
       # Other
       ++ [
@@ -195,10 +188,6 @@
   };
 
   programs = {
-    # kitty = {
-    #   enable = true;
-    #   package = pkgs-unstable.kitty;
-    # };
     zoxide.enable = true;
 
     mpv = {

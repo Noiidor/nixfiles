@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
+  # pkgs-unstable,
   ...
 }: {
   # Stable user packages
@@ -34,10 +34,8 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs-unstable.neovim-unwrapped;
+    package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
-    vimAlias = true;
-    viAlias = true;
     # Stable nvim plugins
     plugins =
       (with pkgs.vimPlugins; [
@@ -99,7 +97,7 @@
       ])
       ++
       # Unstable nvim plugins
-      (with pkgs-unstable.vimPlugins; [
+      (with pkgs.unstable.vimPlugins; [
         nvim-treesitter.withAllGrammars
       ]);
   };

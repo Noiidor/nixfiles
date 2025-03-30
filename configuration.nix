@@ -1,7 +1,6 @@
 {
   user,
   pkgs,
-  pkgs-unstable,
   inputs,
   ...
 }: {
@@ -16,47 +15,41 @@
   # TODO: Split into modules
 
   # List of stable packages
-  environment.systemPackages =
-    (with pkgs; [
-      # CLI utils
-      gnumake
-      dig
-      unzip
-      usbutils
+  environment.systemPackages = with pkgs; [
+    # CLI utils
+    gnumake
+    dig
+    unzip
+    usbutils
 
-      # TUI
-      mtr
+    # TUI
+    mtr
 
-      # Programming
-      postgresql_16
-      minikube
-      k3d
-      git
+    # Programming
+    postgresql_16
+    minikube
+    k3d
+    git
 
-      # System
-      home-manager
-      wirelesstools
-      wl-clipboard
-      wireguard-tools
-      power-profiles-daemon
+    # System
+    home-manager
+    wirelesstools
+    wl-clipboard
+    wireguard-tools
+    power-profiles-daemon
 
-      # Disks
-      gparted
-      ntfs3g
-      testdisk
+    # Disks
+    gparted
+    ntfs3g
+    testdisk
 
-      # Lib
-      libadwaita
-      libnotify
-      ffmpeg
+    # Lib
+    libadwaita
+    libnotify
+    ffmpeg
 
-      # Other
-    ])
-    ++
-    # List of unstable(rolling-release) packages
-    (with pkgs-unstable; [
-      # Programming
-    ]);
+    # Other
+  ];
 
   environment.variables = {
   };

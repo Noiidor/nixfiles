@@ -54,13 +54,19 @@
   } @ inputs: let
     system = "x86_64-linux";
     user = "noi";
+
+    overlay-unstable = final: prev: {
+      unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    };
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-    };
-    pkgs-unstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
+      overlays = [
+        overlay-unstable
+      ];
     };
 
     vars = {
@@ -75,7 +81,6 @@
         ];
         specialArgs = {
           inherit user;
-          inherit pkgs-unstable;
           inherit vars;
           inherit inputs;
         };
@@ -89,7 +94,6 @@
       ];
       extraSpecialArgs = {
         inherit user;
-        inherit pkgs-unstable;
         inherit vars;
         inherit inputs;
       };
