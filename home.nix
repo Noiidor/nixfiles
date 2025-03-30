@@ -80,7 +80,7 @@
         baobab # Disk usage analyzer
         bitwarden-desktop
         bitwarden-cli
-        keyguard
+        unstable.keyguard
         mullvad-vpn
         mullvad-closest
         lutris
