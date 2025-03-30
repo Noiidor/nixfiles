@@ -11,7 +11,7 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/v0.47.2-b";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -55,17 +55,16 @@
     system = "x86_64-linux";
     user = "noi";
 
-    overlay-unstable = final: prev: {
-      unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    };
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
       overlays = [
-        overlay-unstable
+        (final: prev: {
+          unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        })
       ];
     };
 

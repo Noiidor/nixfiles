@@ -69,6 +69,8 @@
         cargo
         cargo-modules # tree of project modules
 
+        # System
+
         # Applications and gaming
         vesktop
         qbittorrent
@@ -78,7 +80,7 @@
         zoom-us
         piper
         baobab # Disk usage analyzer
-        bitwarden-desktop
+        # bitwarden-desktop
         bitwarden-cli
         unstable.keyguard
         mullvad-vpn
