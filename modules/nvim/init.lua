@@ -72,6 +72,11 @@ vim.opt.scrolloff = 15
 vim.opt.sidescrolloff = 15
 vim.opt.jumpoptions = "stack,view"
 
+vim.diagnostic.config({
+	virtual_text = true,
+	virtual_lines = { current_line = true },
+})
+
 -- Theme config
 vim.cmd.colorscheme("base16-hardcore")
 
