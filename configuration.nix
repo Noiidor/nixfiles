@@ -36,7 +36,6 @@
     wirelesstools
     wl-clipboard
     wireguard-tools
-    power-profiles-daemon
 
     # Disks
     gparted
@@ -128,8 +127,11 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  services.upower = {
-    enable = true;
+  services = {
+    upower = {
+      enable = true;
+    };
+    power-profiles-daemon.enable = true;
   };
 
   # Desktop Environment
