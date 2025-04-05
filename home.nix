@@ -1,5 +1,4 @@
 {
-  config,
   user,
   pkgs,
   inputs,
@@ -16,6 +15,7 @@
     ./modules/ghostty/ghostty.nix
     # ./modules/themes/default.nix
     ./modules/hyprpanel/hyprpanel.nix
+    ./modules/qimgv/qimgv.nix
   ];
 
   home = {
@@ -200,15 +200,6 @@
       };
     };
 
-    imv = {
-      enable = true;
-      settings = {
-        binds = {
-          "<Delete>" = "quit";
-        };
-      };
-    };
-
     htop = {
       enable = true;
       settings = {
@@ -251,9 +242,7 @@
   xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = let
     apps = {
-      imv = ["image/png" "image/jpeg" "image/webp"];
       mpv = [
-        "image/gif"
         "video/mp4"
         "video/mpeg"
         "video/webm"
@@ -283,7 +272,6 @@
     {
       "inode/directory" = "org.gnome.Nautilus.desktop";
     }
-    // (lib.genAttrs apps.imv (_: "imv.desktop"))
     // (lib.genAttrs apps.mpv (_: "mpv.desktop"))
     // (lib.genAttrs apps.nvim (_: "nvim.desktop"))
     // (lib.genAttrs apps.zen (_: "zen.desktop"));
