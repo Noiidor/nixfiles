@@ -84,11 +84,14 @@
       enable = true;
       wifi.powersave = false; # Unstable connectivity without this
     };
-    # Needed for Honkers Railway launcher
+    # Needed for Anime launchers
     extraHosts = ''
       0.0.0.0 log-upload-os.hoyoverse.com
       0.0.0.0 sg-public-data-api.hoyoverse.com
       0.0.0.0 hkrpg-log-upload-os.hoyoverse.com
+      0.0.0.0 overseauspider.yuanshen.com
+      0.0.0.0 apm-log-upload-os.hoyoverse.com
+      0.0.0.0 zzz-log-upload-os.hoyoverse.com
     '';
     #networkmanager.dns = "none";
     nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];

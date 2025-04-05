@@ -157,6 +157,7 @@
       # Other
       ++ [
         inputs.aagl.packages.${pkgs.system}.the-honkers-railway-launcher
+        inputs.aagl.packages.${pkgs.system}.sleepy-launcher
         inputs.zen-browser.packages.${pkgs.system}.default
       ];
 
