@@ -64,6 +64,9 @@
         # Dotnet
         dotnet-runtime
 
+        # Julia
+        julia
+
         # Rust
         rustc
         cargo
