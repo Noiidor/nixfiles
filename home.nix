@@ -106,6 +106,7 @@
         shotcut # video editing
         unrar
         kdePackages.ark # Acrhiever
+        pinta
 
         # TUI
         lazygit
