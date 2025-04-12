@@ -90,6 +90,7 @@
         mullvad-closest
         lutris
         ventoy
+        links2 # Terminal browser
 
         unstable.ayugram-desktop
         unstable.winetricks
