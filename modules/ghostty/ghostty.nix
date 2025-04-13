@@ -11,6 +11,7 @@
         gtk-titlebar = false;
         gtk-tabs-location = "right";
         gtk-wide-tabs = "false";
+        gtk-single-instance = true;
       };
     };
   };
