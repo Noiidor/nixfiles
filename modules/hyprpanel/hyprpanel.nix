@@ -15,7 +15,8 @@
 
     overwrite.enable = true;
 
-    theme = "rose_pine_moon";
+    # theme = "rose_pine_moon";
+    theme = "monochrome";
 
     layout = {
       "bar.layouts" = {
