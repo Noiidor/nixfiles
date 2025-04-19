@@ -13,31 +13,26 @@
   services.hypridle.enable = true;
 
   environment.systemPackages = with pkgs; [
-    waybar
-    mako
-    swww
+    mako # Notifoication daemon
+    swww # Wallpapers utility
     rofi-wayland
-    pavucontrol
-    pwvucontrol
+    pwvucontrol # Volume control
     playerctl
     brightnessctl
     wlogout
-    nautilus
-    sushi
-    hyprpicker
+    nautilus # File manager
+    sushi # File previewer for Nautilus
+    hyprpicker # Screen color picker
     xwaylandvideobridge
-    overskride
-    udiskie
+    overskride # Bluetooth GUI
+    udiskie # Udisks GUI for removable drives
+    udisks
     ags
-    hyprshot
-    hyprshade
-    networkmanager_dmenu
-    grim
-    slurp
-    dmenu
-    helvum
+    hyprshot # Screenshot utility
+    grim # Screenshot utility
+    slurp # Screen selection util
+    # hyprshade # Screen shader util
     networkmanagerapplet
-    iniparser
     hyprcursor
   ];
 }
