@@ -16,29 +16,28 @@
     overwrite.enable = true;
 
     # theme = "rose_pine_moon";
-    theme = "monochrome";
-
-    layout = {
-      "bar.layouts" = {
-        "0" = {
-          left = ["dashboard" "workspaces" "windowtitle"];
-          middle = ["media" "cava"];
-          right = ["volume" "network" "bluetooth" "battery" "systray" "clock" "kbinput" "notifications"];
-        };
-        # "1" = {
-        #   left = ["dashboard" "workspaces" "windowtitle"];
-        #   middle = ["media"];
-        #   right = ["volume" "clock" "notifications"];
-        # };
-        # "2" = {
-        #   left = ["dashboard" "workspaces" "windowtitle"];
-        #   middle = ["media"];
-        #   right = ["volume" "clock" "notifications"];
-        # };
-      };
-    };
 
     settings = {
+      layout = {
+        "bar.layouts" = {
+          "0" = {
+            left = ["dashboard" "workspaces" "windowtitle"];
+            middle = ["media" "cava"];
+            right = ["volume" "network" "bluetooth" "battery" "systray" "clock" "kbinput" "notifications"];
+          };
+          # "1" = {
+          #   left = ["dashboard" "workspaces" "windowtitle"];
+          #   middle = ["media"];
+          #   right = ["volume" "clock" "notifications"];
+          # };
+          # "2" = {
+          #   left = ["dashboard" "workspaces" "windowtitle"];
+          #   middle = ["media"];
+          #   right = ["volume" "clock" "notifications"];
+          # };
+        };
+      };
+
       bar = {
         launcher = {
           autoDetectIcon = true;
@@ -103,6 +102,7 @@
       };
 
       theme = {
+        name = "monochrome";
         bar = {
           scaling = 90;
           transparent = true;
