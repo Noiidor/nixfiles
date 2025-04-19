@@ -18,6 +18,10 @@
     ];
   };
 
+  services.udisks2 = {
+    enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     mako # Notifoication daemon
     swww # Wallpapers utility
@@ -32,7 +36,6 @@
     xwaylandvideobridge
     overskride # Bluetooth GUI
     udiskie # Udisks GUI for removable drives
-    udisks
     ags
     hyprshot # Screenshot utility
     grim # Screenshot utility
