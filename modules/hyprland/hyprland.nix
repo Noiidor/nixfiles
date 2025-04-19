@@ -12,6 +12,12 @@
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
 
+  xdg.portal = {
+    extraPortals = [
+      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     mako # Notifoication daemon
     swww # Wallpapers utility

@@ -187,16 +187,6 @@
     stateVersion = "24.11";
   };
 
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      # pkgs.xdg-desktop-portal-hyprland
-    ];
-    config.common.default = "hyprland;gtk";
-  };
-
   programs = {
     zoxide.enable = true;
 
