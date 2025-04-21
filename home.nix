@@ -151,6 +151,7 @@
         nix-visualize
         wf-recorder # Screen recorder
         ripgrep
+        thefuck
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
