@@ -43,6 +43,11 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    kirsch-font = {
+      url = "https://flakehub.com/f/molarmanful/kirsch/0.4.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
