@@ -99,7 +99,7 @@
 
         # Media
         yazi # File manager
-        gimp
+        unstable.gimp3
         inkscape
         obs-studio
         glxinfo
