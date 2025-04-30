@@ -109,6 +109,7 @@
         unrar
         kdePackages.ark # Acrhiever
         pinta
+        zathura # PDF viewer
 
         # TUI
         lazygit
