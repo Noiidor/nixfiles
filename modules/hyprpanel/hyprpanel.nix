@@ -58,7 +58,7 @@
         };
 
         workspaces = {
-          applicationIconOncePerWorkspace = false;
+          applicationIconOncePerWorkspace = true;
           showApplicationIcons = true;
           showWsIcons = true;
         };
@@ -106,12 +106,13 @@
         bar = {
           scaling = 90;
           transparent = true;
+          opacity = 70;
 
           buttons = {
             opacity = 90;
             radius = "0.6em";
             background_hover_opacity = 50;
-            background_opacity = 50;
+            background_opacity = 40;
 
             windowtitle = {
               enableBorder = true;
@@ -162,7 +163,8 @@
 
         font = {
           name = vars.fontName;
-          size = "1.3rem";
+          # label = vars.fontName;
+          size = "1.15rem";
         };
       };
     };
@@ -170,6 +172,11 @@
     override = {
       theme.bar.buttons.modules.cava.spacing = "0";
       theme.bar.menus.popover.background = "#1a1a1a";
+      theme.bar.opacity = 70;
+      theme.bar.buttons.background_opacity = 40;
+      theme.font.label = "Maple Mono";
+      theme.font.name = "Maple Mono";
+      theme.font.size = "1.15rem";
     };
   };
 }
