@@ -25,6 +25,7 @@
       gipus = "git push";
       ai = "mods";
       lg = "lazygit";
+      fuck = "thefuck";
     };
 
     plugins = [

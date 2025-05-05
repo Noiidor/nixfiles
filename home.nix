@@ -39,7 +39,6 @@
         kubectx
         protobuf_26
         gcc
-        helix
 
         # Golang
         go
@@ -94,8 +93,8 @@
         # kando # GUI pie-picker
 
         unstable.ayugram-desktop
-        unstable.winetricks
-        unstable.wineWowPackages.waylandFull
+        # unstable.winetricks
+        # unstable.wineWowPackages.waylandFull
 
         # Media
         yazi # File manager
@@ -125,13 +124,11 @@
         # CLI utils
         fastfetch
         cbonsai
-        lux
+        # lux # Video downloader
         cava
         eza
         bat
-        sl
         cmatrix
-        aalib
         fzf
         wev # wayland actions
         qrencode
@@ -140,8 +137,7 @@
         charm-freeze # Generate terminal images
         vhs # Generate terminal GIFs
         glow # Render markdown in terminal
-        xcur2png
-        tldr
+        tldr # Short manual
         viddy
         yt-dlp # video downloader
         jq
@@ -152,7 +148,7 @@
         nix-visualize
         wf-recorder # Screen recorder
         ripgrep
-        thefuck
+        tcpdump
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
@@ -160,7 +156,6 @@
         unstable.spotdl # Download music from yt/spotify
 
         # Other
-        kdePackages.qt6ct
       ])
       # Other
       ++ [
@@ -199,6 +194,8 @@
         loop-file = "inf";
       };
     };
+
+    thefuck.enable = true;
 
     htop = {
       enable = true;

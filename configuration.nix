@@ -115,7 +115,7 @@
     storageDriver = "btrfs";
   };
 
-  time.timeZone = "Asia/Ho_Chi_Minh";
+  time.timeZone = "Europe/Moscow";
 
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -191,12 +191,13 @@
   users.users.${user} = {
     isNormalUser = true;
     description = user;
-    extraGroups = ["networkmanager" "wheel" "video" "docker"];
+    extraGroups = ["networkmanager" "wheel" "video" "docker" "wireshark"];
     shell = pkgs.zsh;
   };
 
   programs = {
     zsh.enable = true;
+
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
@@ -206,6 +207,7 @@
     gamescope = {
       enable = true;
     };
+
     nh = {
       enable = true;
       flake = "/home/${user}/nixfiles";
@@ -214,6 +216,12 @@
         dates = "weekly";
         extraArgs = "--keep-since 5d --keep 5";
       };
+    };
+
+    wireshark = {
+      enable = true;
+      # dumpcap.enable = true;
+      # usbmon.enable = true;
     };
   };
 
