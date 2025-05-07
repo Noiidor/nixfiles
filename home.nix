@@ -91,6 +91,7 @@
         ventoy
         links2 # Terminal web browser
         # kando # GUI pie-picker
+        qutebrowser
 
         unstable.ayugram-desktop
         # unstable.winetricks
