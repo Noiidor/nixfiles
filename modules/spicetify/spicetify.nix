@@ -14,15 +14,13 @@ in {
       hidePodcasts
       copyToClipboard
       betterGenres
-      autoSkip
       fullAppDisplay
       beautifulLyrics
       songStats
     ];
     enabledCustomApps = with spicePkgs.apps; [
-      ncsVisualizer
     ];
-    # Remover mkForce to use Stylix theme
+    # Remove mkForce to use Stylix theme
     theme = lib.mkForce spicePkgs.themes.hazy;
     colorScheme = lib.mkForce "";
   };
