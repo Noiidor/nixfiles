@@ -91,6 +91,7 @@
         links2 # Terminal web browser
         # kando # GUI pie-picker
         qutebrowser
+        # foot
 
         unstable.ayugram-desktop
         # unstable.winetricks
@@ -149,6 +150,7 @@
         wf-recorder # Screen recorder
         ripgrep
         tcpdump
+        # espeak
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
