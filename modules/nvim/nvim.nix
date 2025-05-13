@@ -15,6 +15,7 @@
     sql-formatter
     yamlfmt
     rustfmt
+    sqlfluff
 
     # LSP
     nil # nix
