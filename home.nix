@@ -151,6 +151,7 @@
         ripgrep
         tcpdump
         # espeak
+        memtester # RAM tester
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
