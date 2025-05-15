@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     fd
     ripgrep
+    nvimpager
 
     # Format
     stylua # lua
@@ -35,6 +36,7 @@
 
   home.sessionVariables = {
     MANPAGER = "nvim +Man!";
+    PAGER = "nvimpager";
   };
 
   programs.neovim = {

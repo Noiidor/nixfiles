@@ -110,6 +110,8 @@
         kdePackages.ark # Acrhiever
         pinta
         zathura # PDF viewer
+        # nemo # Cinnamon file manager
+        # xfce.thunar # Xfce file manager
 
         # TUI
         lazygit
