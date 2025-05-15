@@ -38,6 +38,8 @@
         kubectl
         kubectx
         protobuf_26
+        gnumake
+        postgresql_16 # Needed for psql
 
         # Golang
         go
@@ -112,6 +114,8 @@
         zathura # PDF viewer
         # nemo # Cinnamon file manager
         # xfce.thunar # Xfce file manager
+        unzip
+        ffmpeg
 
         # TUI
         lazygit

@@ -17,16 +17,14 @@
   # List of stable packages
   environment.systemPackages = with pkgs; [
     # CLI utils
-    gnumake
     dig
-    unzip
     usbutils
+    inetutils
 
     # TUI
-    mtr
+    mtr # ping + traceroute
 
     # Programming
-    postgresql_16
     minikube
     k3d
     git
@@ -45,7 +43,6 @@
     # Lib
     libadwaita
     libnotify
-    ffmpeg
 
     # Other
   ];
@@ -94,20 +91,24 @@
       0.0.0.0 zzz-log-upload-os.hoyoverse.com
     '';
     #networkmanager.dns = "none";
-    nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
+    # nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
+
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [22];
+      #allowedUDPPorts = [];
+    };
   };
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [];
-  # networking.firewall.allowedUDPPorts = [];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   services.openssh = {
     enable = true;
+    ports = [22];
     settings = {
       PasswordAuthentication = false;
+      PermitRootLogin = "no";
     };
   };
+
   services.mullvad-vpn.enable = true;
 
   virtualisation.docker = {
