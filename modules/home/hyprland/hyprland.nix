@@ -34,6 +34,21 @@
     hyprcursor
   ];
 
+  systemd.user.services.reload-hypr = {
+    Unit = {
+      Description = "Reload Hyprland conf after rebuild";
+      Documentation = ["man:hyprctl(1)"];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "hyprctl reload";
+      RemainAfterExit = true;
+    };
+    Install = {
+      WantedBy = ["multi-user.target"];
+    };
+  };
+
   xdg.configFile.hypr = {
     recursive = true;
     source = ./.;

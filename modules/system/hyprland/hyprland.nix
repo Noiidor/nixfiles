@@ -25,6 +25,14 @@ in {
     enable = true;
   };
 
+  # system.userActivationScripts = {
+  #   reloadHypr = {
+  #     text = ''
+  #       hyprctl reload
+  #     '';
+  #   };
+  # };
+
   # environment.systemPackages = with pkgs; [
   #   mako # Notifoication daemon
   #   swww # Wallpapers utility

@@ -55,7 +55,7 @@
       enable = true;
     };
 
-    initExtra = ''
+    initContent = ''
       bindkey "^R" history-incremental-pattern-search-backward
       bindkey '^[OA' history-substring-search-up
       bindkey '^[OB' history-substring-search-down
