@@ -647,6 +647,10 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 local lspconfigs = require("lspconfig.configs")
 
+-- vim.lsp.enable("nixd")
+--
+lspconfig.nixd.setup({})
+
 lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
@@ -701,7 +705,7 @@ lspconfig.rust_analyzer.setup({})
 
 lspconfig.sqls.setup({})
 
-lspconfig.nil_ls.setup({})
+-- lspconfig.nil_ls.setup({})
 
 lspconfig.yamlls.setup({
 	settings = {

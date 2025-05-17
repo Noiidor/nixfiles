@@ -20,6 +20,7 @@
 
     # LSP
     nil # nix
+    nixd
     lua-language-server
     postgres-lsp
     sqls

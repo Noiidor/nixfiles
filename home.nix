@@ -16,6 +16,7 @@
     # ./modules/themes/default.nix
     ./modules/hyprpanel/hyprpanel.nix
     ./modules/qimgv/qimgv.nix
+    # ./modules/home/hyprland/hyprland.nix
   ];
 
   home = {

@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration-laptop.nix
-    ./modules/hyprland/hyprland.nix
+    ./modules/system/hyprland/hyprland.nix
     inputs.stylix.nixosModules.stylix
   ];
 
