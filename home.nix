@@ -16,7 +16,7 @@
     # ./modules/themes/default.nix
     ./modules/hyprpanel/hyprpanel.nix
     ./modules/qimgv/qimgv.nix
-    # ./modules/home/hyprland/hyprland.nix
+    ./modules/home/hyprland/hyprland.nix
   ];
 
   home = {
@@ -90,7 +90,6 @@
         mullvad-vpn
         mullvad-closest
         lutris
-        ventoy
         links2 # Terminal web browser
         # kando # GUI pie-picker
         qutebrowser

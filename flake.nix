@@ -2,16 +2,16 @@
   description = "System flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.47.2-b";
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -21,7 +21,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/release-24.11";
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

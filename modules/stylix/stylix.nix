@@ -22,7 +22,7 @@
 
     fonts = {
       monospace = {
-        package = pkgs.maple-mono;
+        package = pkgs.maple-mono.NF-CN;
         name = vars.fontName;
       };
 
@@ -36,10 +36,10 @@
         name = "DejaVu Serif";
       };
 
-      emoji = {
-        package = pkgs.maple-mono;
-        name = vars.fontName;
-      };
+      # emoji = {
+      #   package = pkgs.maple-mono.;
+      #   name = vars.fontName;
+      # };
 
       sizes = {
         applications = 10;

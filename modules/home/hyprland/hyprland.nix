@@ -12,7 +12,7 @@
   };
 
   home.packages = with pkgs; [
-    mako # Notifoication daemon
+    # mako # Notifoication daemon
     swww # Wallpapers utility
     rofi-wayland
     pwvucontrol # Volume control
@@ -22,7 +22,7 @@
     nautilus # File manager
     sushi # File previewer for Nautilus
     hyprpicker # Screen color picker
-    xwaylandvideobridge
+    kdePackages.xwaylandvideobridge
     overskride # Bluetooth GUI
     udiskie # Udisks GUI for removable drives
     ags
