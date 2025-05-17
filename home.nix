@@ -158,6 +158,7 @@
         tcpdump
         # espeak
         memtester # RAM tester
+        rsync
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
