@@ -163,7 +163,6 @@
 
         font = {
           name = vars.fontName;
-          # label = vars.fontName;
           size = "1.15rem";
         };
       };
@@ -174,8 +173,9 @@
       theme.bar.menus.popover.background = "#1a1a1a";
       theme.bar.opacity = 70;
       theme.bar.buttons.background_opacity = 40;
-      theme.font.label = "Maple Mono";
-      theme.font.name = "Maple Mono";
+      theme.font.name = vars.fontName;
+      theme.font.label = vars.fontNameItalic;
+      theme.font.style = "italic";
       theme.font.size = "1.15rem";
     };
   };

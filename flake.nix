@@ -74,7 +74,8 @@
     };
 
     vars = {
-      fontName = "Maple Mono";
+      fontName = "Maple Mono NF CN";
+      fontNameItalic = "Maple Mono NF CN Italic";
     };
   in {
     nixosConfigurations = {
