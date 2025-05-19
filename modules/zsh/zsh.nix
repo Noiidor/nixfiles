@@ -8,9 +8,8 @@
     defaultKeymap = "emacs";
 
     shellAliases = {
-      ez = "eza -a --icons=auto";
-      ezl = "eza -a --icons=auto -l -h";
-      ls = "ls --color";
+      ls = "eza -a --icons=auto";
+      ll = "eza -a --icons=auto -l -h";
       ff = "fastfetch";
       nv = "nvim";
       yz = "yazi";
@@ -21,11 +20,10 @@
       gis = "git status";
       gidi = "git diff";
       gich = "git checkout";
-      gipul = "git pull";
-      gipus = "git push";
       ai = "mods";
       lg = "lazygit";
       fuck = "thefuck";
+      weather = "curl v2.wttr.in/Moscow";
     };
 
     plugins = [
