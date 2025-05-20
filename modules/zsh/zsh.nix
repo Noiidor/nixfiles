@@ -1,5 +1,10 @@
-{pkgs, ...}: {
-  programs.zsh = {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  programs.zsh = rec {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
@@ -67,6 +72,10 @@
       zstyle ':fzf-tab:complete:z:*' fzf-preview 'ls --color $realpath'
 
       [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+      autoload -U add-zsh-hook
     '';
+
+    initExtra = lib.mkIf config.programs.foot.enable (builtins.readFile ./foot-zshrc);
   };
 }

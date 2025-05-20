@@ -17,6 +17,7 @@
     ./modules/hyprpanel/hyprpanel.nix
     ./modules/qimgv/qimgv.nix
     ./modules/home/hyprland/hyprland.nix
+    ./modules/home/foot/foot.nix
   ];
 
   home = {
@@ -93,7 +94,7 @@
         links2 # Terminal web browser
         # kando # GUI pie-picker
         qutebrowser
-        # foot
+        helix
 
         unstable.ayugram-desktop
         # unstable.winetricks
