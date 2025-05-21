@@ -159,6 +159,7 @@
         memtester # RAM tester
         rsync
         gping
+        file
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
