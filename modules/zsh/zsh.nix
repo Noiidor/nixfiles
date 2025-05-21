@@ -30,6 +30,11 @@
       fuck = "thefuck";
       weather = "curl v2.wttr.in/Moscow";
       kubectx = "kubectl config use-context";
+      watch = "viddy";
+      grep = "grep --color=always";
+      diff = "diff --color=always";
+      ping = "gping";
+      pping = "ping";
     };
 
     plugins = [

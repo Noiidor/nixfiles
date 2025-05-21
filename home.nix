@@ -158,6 +158,7 @@
         # espeak
         memtester # RAM tester
         rsync
+        gping
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
