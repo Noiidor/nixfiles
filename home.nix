@@ -38,7 +38,6 @@
         nats-top
         glab
         kubectl
-        kubectx
         protobuf_26
         gnumake
         postgresql_16 # Needed for psql
@@ -94,7 +93,6 @@
         links2 # Terminal web browser
         # kando # GUI pie-picker
         qutebrowser
-        helix
 
         unstable.ayugram-desktop
         # unstable.winetricks

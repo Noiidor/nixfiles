@@ -1,4 +1,8 @@
-{user, lib, ...}: {
+{
+  user,
+  lib,
+  ...
+}: {
   programs = {
     foot = {
       enable = true;
@@ -6,6 +10,7 @@
       settings = {
         main = {
           term = "xterm-256color";
+          title = "Terminal";
           gamma-correct-blending = "no";
         };
         cursor = {
@@ -14,7 +19,7 @@
           blink = "yes";
         };
         colors = {
-            alpha = lib.mkForce 0.9;
+          alpha = lib.mkForce 0.9;
         };
         tweak = {
           overflowing-glyphs = "yes";

@@ -102,6 +102,7 @@
         mini-nvim
         vim-tmux-navigator
         better-escape-nvim
+        hardtime-nvim
       ])
       ++
       # Unstable nvim plugins

@@ -116,6 +116,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+require("hardtime").setup({})
+
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "#@bg@" })
 
 -- Telescope config
