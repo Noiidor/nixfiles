@@ -41,6 +41,7 @@
         protobuf_26
         gnumake
         postgresql_16 # Needed for psql
+        gdb # GNU debugger
 
         # Golang
         go
