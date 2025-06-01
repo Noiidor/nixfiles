@@ -42,6 +42,8 @@
         gnumake
         postgresql_16 # Needed for psql
         gdb # GNU debugger
+        templ
+        kubernetes-helm
 
         # Golang
         go

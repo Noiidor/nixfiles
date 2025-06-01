@@ -655,6 +655,8 @@ local lspconfigs = require("lspconfig.configs")
 --
 lspconfig.nixd.setup({})
 
+lspconfig.templ.setup({})
+
 lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
