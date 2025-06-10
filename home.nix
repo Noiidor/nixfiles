@@ -118,6 +118,7 @@
         # xfce.thunar # Xfce file manager
         unzip
         ffmpeg
+        blueman
 
         # TUI
         lazygit
