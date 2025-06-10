@@ -82,7 +82,7 @@
         vesktop
         qbittorrent
         obsidian
-        bottles
+        (bottles.override {removeWarningPopup = true;})
         mangohud
         zoom-us
         piper
@@ -102,7 +102,7 @@
         # unstable.wineWowPackages.waylandFull
 
         # Media
-        yazi # File manager
+        # yazi # File manager
         unstable.gimp3
         inkscape
         obs-studio
@@ -200,6 +200,11 @@
 
   programs = {
     zoxide.enable = true;
+
+    yazi = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
     mpv = {
       enable = true;
