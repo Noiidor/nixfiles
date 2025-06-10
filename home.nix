@@ -256,6 +256,10 @@
     };
   };
 
+  services = {
+    mpris-proxy.enable = true; # Bluetooth devices media buttons
+  };
+
   xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = let
     apps = {
