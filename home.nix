@@ -195,7 +195,7 @@
       WLR_NO_HARDWARE_CURSORS = "1";
     };
 
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
 
   programs = {

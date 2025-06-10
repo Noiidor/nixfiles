@@ -21,7 +21,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -76,6 +76,7 @@
     vars = {
       fontName = "Maple Mono NF CN";
       fontNameItalic = "Maple Mono NF CN Italic";
+      release = "25.05";
     };
   in {
     nixosConfigurations = {
