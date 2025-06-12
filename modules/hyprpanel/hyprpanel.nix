@@ -13,7 +13,7 @@
     # Hyprland config 'exec-once'.
     hyprland.enable = false;
 
-    overwrite.enable = true;
+    overwrite.enable = false;
 
     # theme = "rose_pine_moon";
 

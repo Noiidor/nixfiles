@@ -18,6 +18,7 @@
     ./modules/qimgv/qimgv.nix
     ./modules/home/hyprland/hyprland.nix
     ./modules/home/foot/foot.nix
+    ./modules/home/yazi/yazi.nix
   ];
 
   home = {
@@ -119,6 +120,7 @@
         unzip
         ffmpeg
         blueman
+        bluetuith
 
         # TUI
         lazygit
@@ -164,6 +166,8 @@
         rsync
         gping
         file
+        zip
+        trash-cli
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
@@ -201,11 +205,6 @@
 
   programs = {
     zoxide.enable = true;
-
-    yazi = {
-      enable = true;
-      enableZshIntegration = true;
-    };
 
     mpv = {
       enable = true;

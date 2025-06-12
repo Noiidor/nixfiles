@@ -17,7 +17,7 @@
       ll = "eza -a --icons=auto -l -h";
       ff = "fastfetch";
       nv = "nvim";
-      yz = "yazi";
+      # yz = "yazi";
       kc = "kubectl";
       g = "git";
       gic = "git commit -am";
