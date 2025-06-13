@@ -77,6 +77,9 @@
         cargo
         cargo-modules # tree of project modules
 
+        # Haskell
+        # haskell.compiler.ghcHEAD
+
         # System
 
         # Applications and gaming
@@ -121,6 +124,7 @@
         ffmpeg
         blueman
         bluetuith
+        rnote
 
         # TUI
         lazygit
