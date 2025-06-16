@@ -172,6 +172,7 @@
         file
         zip
         trash-cli
+        udiskie
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences

@@ -24,7 +24,6 @@
     hyprpicker # Screen color picker
     kdePackages.xwaylandvideobridge
     overskride # Bluetooth GUI
-    udiskie # Udisks GUI for removable drives
     ags
     hyprshot # Screenshot utility
     grim # Screenshot utility
@@ -33,6 +32,12 @@
     networkmanagerapplet
     hyprcursor
   ];
+
+  services = {
+    udiskie = {
+      enable = true;
+    };
+  };
 
   systemd.user.services.reload-hypr = {
     Unit = {
