@@ -106,7 +106,6 @@
         # unstable.wineWowPackages.waylandFull
 
         # Media
-        # yazi # File manager
         unstable.gimp3
         inkscape
         obs-studio
@@ -125,6 +124,7 @@
         blueman
         bluetuith
         rnote
+        davinci-resolve
 
         # TUI
         lazygit
