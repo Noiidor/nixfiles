@@ -193,7 +193,7 @@
   users.users.${user} = {
     isNormalUser = true;
     description = user;
-    extraGroups = ["networkmanager" "wheel" "video" "docker" "wireshark"];
+    extraGroups = ["networkmanager" "wheel" "video" "docker" "wireshark" "dialout"];
     shell = pkgs.zsh;
   };
 
