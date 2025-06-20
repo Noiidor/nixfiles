@@ -711,6 +711,8 @@ lspconfig.rust_analyzer.setup({})
 
 lspconfig.sqls.setup({})
 
+lspconfig.clangd.setup({})
+
 -- lspconfig.nil_ls.setup({})
 
 lspconfig.yamlls.setup({
