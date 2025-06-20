@@ -173,6 +173,7 @@
         zip
         trash-cli
         udiskie
+        smartmontools
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
