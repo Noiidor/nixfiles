@@ -76,6 +76,7 @@
         rustc
         cargo
         cargo-modules # tree of project modules
+        cargo-bloat
 
         # Haskell
         # haskell.compiler.ghcHEAD
@@ -174,6 +175,7 @@
         trash-cli
         udiskie
         smartmontools
+        caligula
 
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
