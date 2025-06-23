@@ -91,7 +91,7 @@
       0.0.0.0 zzz-log-upload-os.hoyoverse.com
     '';
     #networkmanager.dns = "none";
-    # nameservers = ["8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
+    nameservers = ["83.220.169.155" "212.109.195.93"];
 
     firewall = {
       enable = true;
