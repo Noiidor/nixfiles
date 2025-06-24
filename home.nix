@@ -78,6 +78,10 @@
         cargo-modules # tree of project modules
         cargo-bloat
 
+        # C/C++
+        llvmPackages_20.clang
+        llvmPackages_20.clang-tools
+
         # Haskell
         # haskell.compiler.ghcHEAD
 
