@@ -28,7 +28,7 @@
     packages =
       # Stable packages
       (with pkgs; [
-        # Programming
+        #=== Programming
         bruno
         dbeaver-bin
         graphviz
@@ -46,7 +46,7 @@
         templ
         kubernetes-helm
 
-        # Golang
+        #=== Golang
         go
         gopls
         go-tools
@@ -59,53 +59,49 @@
         protoc-gen-doc
         golangci-lint
 
-        # Odin
+        #=== Odin
         unstable.odin
         unstable.ols
 
-        # Python
+        #=== Python
         python3
 
-        # Dotnet
-        dotnet-runtime
+        #=== Dotnet
+        # dotnet-runtime
 
-        # Julia
+        #=== Julia
         julia
 
-        # Rust
+        #=== Rust
         rustc
         cargo
         cargo-modules # tree of project modules
         cargo-bloat
 
-        # C/C++
+        #=== C/C++
         llvmPackages_20.clang
         llvmPackages_20.clang-tools
 
-        # Haskell
+        #=== Haskell
         # haskell.compiler.ghcHEAD
 
-        # System
-
-        # Applications and gaming
+        #=== Applications and gaming
         vesktop
         qbittorrent
         obsidian
         (bottles.override {removeWarningPopup = true;})
         mangohud
-        zoom-us
-        piper
+        # piper
         baobab # Disk usage analyzer
         # bitwarden-desktop
         bitwarden-cli
         unstable.keyguard
         mullvad-vpn
         mullvad-closest
-        lutris
+        # lutris
         links2 # Terminal web browser
         # kando # GUI pie-picker
-        qutebrowser
-
+        # qutebrowser
         unstable.ayugram-desktop
         # unstable.winetricks
         # unstable.wineWowPackages.waylandFull
@@ -126,12 +122,22 @@
         # xfce.thunar # Xfce file manager
         unzip
         ffmpeg
-        blueman
-        bluetuith
         rnote
         davinci-resolve
 
-        # TUI
+        #=== Network
+        iperf3
+        tcpdump
+        nmap
+        gping
+        dig # DNS lookup
+        mtr # ping + traceroute
+
+        #=== Bluetooth
+        blueman
+        bluetuith
+
+        #=== TUI
         lazygit
         lazydocker
         pspg
@@ -140,9 +146,7 @@
         wishlist # SSH picker
         nix-tree
 
-        unstable.claude-code
-
-        # CLI utils
+        #=== CLI utils
         fastfetch
         cbonsai
         # lux # Video downloader
@@ -153,7 +157,6 @@
         fzf
         wev # wayland actions
         qrencode
-        nmap
         hollywood
         charm-freeze # Generate terminal images
         vhs # Generate terminal GIFs
@@ -169,24 +172,19 @@
         nix-visualize
         wf-recorder # Screen recorder
         ripgrep
-        tcpdump
         # espeak
         memtester # RAM tester
         rsync
-        gping
         file
         zip
         trash-cli
         udiskie
         smartmontools
         caligula
-
         unstable.astroterm
         unstable.sequin # Decode ANSI sequences
         unstable.buf
         unstable.spotdl # Download music from yt/spotify
-
-        # Other
       ])
       # Other
       ++ [

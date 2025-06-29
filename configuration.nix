@@ -17,12 +17,8 @@
   # List of stable packages
   environment.systemPackages = with pkgs; [
     # CLI utils
-    dig
     usbutils
     inetutils
-
-    # TUI
-    mtr # ping + traceroute
 
     # Programming
     minikube
@@ -136,6 +132,21 @@
       enable = true;
     };
     power-profiles-daemon.enable = true;
+
+    keyd = {
+      enable = true;
+      keyboards.default = {
+        ids = ["*"];
+        settings = {
+          # NOTE: Use wev to find key names.
+          main = {
+            # backspace = "delete"; # Delete key on backspace.
+            # Long hold shift + caps = caps. Caps = keyboard layout
+            capslock = "overload(shift, capslock)";
+          };
+        };
+      };
+    };
   };
 
   # Desktop Environment
@@ -160,7 +171,7 @@
     xkb = {
       layout = "us,ru";
       variant = "";
-      options = "grp:alt_shift_toggle";
+      options = "grp:caps_toggle";
     };
     upscaleDefaultCursor = true;
   };
