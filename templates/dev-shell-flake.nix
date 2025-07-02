@@ -2,7 +2,7 @@
   description = "Basic Dev shell";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
+    nixpkgs.url = "nixpkgs/nixos-25.05";
   };
 
   outputs = {

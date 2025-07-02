@@ -14,11 +14,12 @@
     ./modules/spicetify/spicetify.nix
     ./modules/ghostty/ghostty.nix
     # ./modules/themes/default.nix
-    ./modules/hyprpanel/hyprpanel.nix
+    # ./modules/hyprpanel/hyprpanel.nix
     ./modules/qimgv/qimgv.nix
     ./modules/home/hyprland/hyprland.nix
     ./modules/home/foot/foot.nix
     ./modules/home/yazi/yazi.nix
+    ./modules/home/waybar/waybar.nix
   ];
 
   home = {

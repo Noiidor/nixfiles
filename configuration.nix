@@ -6,8 +6,8 @@
 }: {
   imports = [
     ./hardware-configuration-laptop.nix
-    ./modules/system/hyprland/hyprland.nix
     inputs.stylix.nixosModules.stylix
+    ./modules/system/hyprland/hyprland.nix
   ];
 
   # System config is a mess
