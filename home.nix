@@ -106,6 +106,7 @@
         unstable.ayugram-desktop
         # unstable.winetricks
         # unstable.wineWowPackages.waylandFull
+        gamescope
 
         # Media
         unstable.gimp3
