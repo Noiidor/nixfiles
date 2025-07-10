@@ -60,7 +60,13 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["ntfs"];
   boot.kernel.sysctl."kernel.sysrq" = 502;
-  boot.kernelParams = ["cgroup_enable=cpuset" "cgroup_enable=memory" "cgroup_memory=1" "preempt=full"];
+  boot.kernelParams = [
+    "cgroup_enable=cpuset"
+    "cgroup_enable=memory"
+    "cgroup_memory=1"
+    "preempt=full"
+    "elevator=bfq"
+  ];
   boot.extraModprobeConfig = ''
     options hid_apple fnmode=0
   '';
@@ -76,6 +82,7 @@
     networkmanager = {
       enable = true;
       wifi.powersave = false; # Unstable connectivity without this
+      logLevel = "DEBUG";
     };
     # Needed for Anime launchers
     extraHosts = ''
