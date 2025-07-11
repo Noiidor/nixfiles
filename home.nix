@@ -46,6 +46,7 @@
         gdb # GNU debugger
         templ
         kubernetes-helm
+        sentry-cli
 
         #=== Golang
         go
