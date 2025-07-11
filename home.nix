@@ -47,6 +47,7 @@
         templ
         kubernetes-helm
         sentry-cli
+        arduino-ide
 
         #=== Golang
         go
