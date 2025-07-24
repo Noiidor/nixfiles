@@ -172,9 +172,12 @@
 
   # Desktop Environment
   services.displayManager = {
-    sddm = {
+    # sddm = {
+    #   enable = true;
+    #   wayland.enable = true;
+    # };
+    ly = {
       enable = true;
-      wayland.enable = true;
     };
   };
 
