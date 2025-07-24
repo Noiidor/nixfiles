@@ -31,10 +31,13 @@
     wl-clipboard
     wireguard-tools
 
-    # Disks
+    # Disks and FS
     gparted
     ntfs3g
     testdisk
+    adbfs-rootless
+    android-tools
+    simple-mtpfs
 
     # Lib
     libadwaita
