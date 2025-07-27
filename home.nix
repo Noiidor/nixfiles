@@ -48,6 +48,7 @@
         kubernetes-helm
         sentry-cli
         arduino-ide
+        gcc
 
         #=== Golang
         go
@@ -82,7 +83,7 @@
         cargo-bloat
 
         #=== C/C++
-        llvmPackages_20.clang
+        # llvmPackages_20.clang
         llvmPackages_20.clang-tools
 
         #=== Haskell
