@@ -59,24 +59,38 @@
   ];
 
   # BOOT
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = ["ntfs"];
-  boot.kernel.sysctl."kernel.sysrq" = 502;
-  boot.kernelParams = [
-    "cgroup_enable=cpuset"
-    "cgroup_enable=memory"
-    "cgroup_memory=1"
-    "preempt=full"
-    "elevator=bfq"
-  ];
-  boot.extraModprobeConfig = ''
-    options hid_apple fnmode=0
-  '';
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    supportedFilesystems = ["ntfs"];
+    kernel.sysctl = {
+      "kernel.sysrq" = 502;
+
+      # Swapping with zram is much much faster than paging so we prioritize it.
+      "vm.swappiness" = 180;
+
+      # Prevents uncompressing any more than you absolutely have to,
+      # with a minimal reduction to sequential throughput
+      "vm.page-cluster" = 0;
+
+      "vm.watermark_boost_factor" = 0;
+      "vm.watermark_scale_factor" = 125;
+    };
+    kernelParams = [
+      "cgroup_enable=cpuset"
+      "cgroup_enable=memory"
+      "cgroup_memory=1"
+      "preempt=full"
+      "elevator=bfq"
+    ];
+    extraModprobeConfig = ''
+      options hid_apple fnmode=0
+    '';
+  };
   zramSwap = {
     enable = true;
     algorithm = "lz4";
-    memoryPercent = 100;
+    memoryPercent = 200;
   };
 
   services.earlyoom = {

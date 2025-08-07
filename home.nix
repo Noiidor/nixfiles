@@ -44,7 +44,6 @@
         gnumake
         postgresql_16 # Needed for psql
         gdb # GNU debugger
-        templ
         kubernetes-helm
         sentry-cli
         arduino-ide
@@ -62,6 +61,7 @@
         protoc-gen-validate
         protoc-gen-doc
         golangci-lint
+        templ
 
         #=== Odin
         unstable.odin
@@ -129,6 +129,7 @@
         ffmpeg
         rnote
         davinci-resolve
+        gnome-font-viewer
 
         #=== Network
         iperf3
