@@ -29,6 +29,7 @@
     dockerfile-language-server-nodejs
     yaml-language-server
     rust-analyzer
+    unstable.ols
 
     # Debug
     python312Packages.debugpy

@@ -21,8 +21,6 @@
     inetutils
 
     # Programming
-    minikube
-    k3d
     git
 
     # System
@@ -220,7 +218,13 @@
   # Enable sound with pipewire.
   hardware = {
     pulseaudio.enable = false;
-    graphics.enable = true;
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        # This fixes DaVinci Resolve "Unsupported GPU processing mode" error
+        rocmPackages.clr.icd
+      ];
+    };
     bluetooth.enable = true;
   };
   security.rtkit.enable = true;

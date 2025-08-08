@@ -35,10 +35,6 @@
         graphviz
         clickhouse-cli
         go-migrate
-        goose
-        natscli
-        nats-top
-        glab
         kubectl
         protobuf_26
         gnumake
@@ -118,7 +114,6 @@
         glxinfo
         scribus
         libreoffice-fresh
-        shotcut # video editing
         unrar
         kdePackages.ark # Acrhiever
         pinta
@@ -134,7 +129,7 @@
         #=== Network
         iperf3
         tcpdump
-        nmap
+        nmap # Network security and port scanner
         gping
         dig # DNS lookup
         mtr # ping + traceroute
@@ -143,14 +138,16 @@
         blueman
         bluetuith
 
+        #=== LLM
+        mods # TUI frontend
+
         #=== TUI
         lazygit
         lazydocker
         pspg
         pgcli
-        mods # LLM frontend
         wishlist # SSH picker
-        nix-tree
+        nix-tree # Nix pkgs dependencies and size
 
         #=== CLI utils
         fastfetch
@@ -163,7 +160,6 @@
         fzf
         wev # wayland actions
         qrencode
-        hollywood
         charm-freeze # Generate terminal images
         vhs # Generate terminal GIFs
         glow # Render markdown in terminal
