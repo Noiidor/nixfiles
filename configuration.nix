@@ -49,11 +49,16 @@
 
   fonts.packages = with pkgs; [
     # nerdfonts
-    liberation_ttf
-    helvetica-neue-lt-std
-    times-newer-roman
-    arkpandora_ttf
-    gelasio
+    # liberation_ttf
+    # helvetica-neue-lt-std
+    # times-newer-roman
+    # arkpandora_ttf
+    # gelasio
+    # nerd-fonts.terminess-ttf
+    # terminus_font
+    maple-mono.NF-CN
+    # nerd-fonts.iosevka
+    # inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd
   ];
 
   # BOOT

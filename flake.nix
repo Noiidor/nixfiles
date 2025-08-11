@@ -45,7 +45,7 @@
     };
 
     kirsch-font = {
-      url = "https://flakehub.com/f/molarmanful/kirsch/0.4.0";
+      url = "https://flakehub.com/f/molarmanful/kirsch/0.6.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -73,9 +73,9 @@
       ];
     };
 
+    # Meh
     vars = {
       fontName = "Maple Mono NF CN";
-      fontNameItalic = "Maple Mono NF CN Italic";
       release = "25.05";
     };
   in {

@@ -174,7 +174,6 @@
       theme.bar.opacity = 70;
       theme.bar.buttons.background_opacity = 40;
       theme.font.name = vars.fontName;
-      theme.font.label = vars.fontNameItalic;
       theme.font.style = "italic";
       theme.font.size = "1.15rem";
     };

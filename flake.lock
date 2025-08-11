@@ -665,16 +665,16 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1745437791,
-        "narHash": "sha256-SGK5JNsEy2mHc+g/hkj0a/iKBRPW84iZCTf/UDXq6N8=",
-        "rev": "4e4be280ab06f0c52eeb8d224d344eeba431297e",
-        "revCount": 524,
+        "lastModified": 1749045366,
+        "narHash": "sha256-6zGy2wCbr3n/cmg2G9c/8Lh7C/JJ26hsNAunmFF76cY=",
+        "rev": "da7c6a11d0fb4d458db116fd78ab28efbd6c3098",
+        "revCount": 558,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/molarmanful/kirsch/0.4.1/01966433-a98c-7ce4-80df-66b6bbc7549e/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/molarmanful/kirsch/0.6.0/01973b3a-f879-7a1b-8508-d38be4ce09d5/source.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://flakehub.com/f/molarmanful/kirsch/0.4.0"
+        "url": "https://flakehub.com/f/molarmanful/kirsch/0.6.0"
       }
     },
     "nix-flatpak": {

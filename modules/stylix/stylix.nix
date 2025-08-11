@@ -22,7 +22,8 @@
 
     fonts = {
       monospace = {
-        package = pkgs.maple-mono.NF-CN;
+        # package = pkgs.maple-mono.NF-CN;
+        package = inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd;
         name = vars.fontName;
       };
 
