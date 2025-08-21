@@ -134,6 +134,10 @@
         dig # DNS lookup
         mtr # ping + traceroute
 
+        #=== Filesystem
+        iozone
+        # phoronix-test-suite # Comprehensive system benchmark
+
         #=== Bluetooth
         blueman
         bluetuith
