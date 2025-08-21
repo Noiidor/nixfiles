@@ -148,6 +148,7 @@
         pgcli
         wishlist # SSH picker
         nix-tree # Nix pkgs dependencies and size
+        # s-tui # Stress-test
 
         #=== CLI utils
         fastfetch

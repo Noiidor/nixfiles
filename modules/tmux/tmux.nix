@@ -12,11 +12,13 @@
       resurrect
     ];
     extraConfig = ''
-      set -g mouse on
-
-      set -g status-position top
-
+      set -a terminal-features "tmux-256color:RGB"
       set -g default-terminal "xterm-256color"
+      set -g mouse on
+      set -g renumber-windows on
+      set -g status-position top
+      set -g status-justify absolute-centre
+      set -g status-style "fg=default,bg=default"
 
       set -g @resurrect-strategy-nvim "session"
 
