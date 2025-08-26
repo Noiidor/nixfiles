@@ -37,6 +37,9 @@
     android-tools
     simple-mtpfs
 
+    # Network
+    wireshark
+
     # Lib
     libadwaita
     libnotify
@@ -280,8 +283,8 @@
 
     wireshark = {
       enable = true;
-      # dumpcap.enable = true;
-      # usbmon.enable = true;
+      dumpcap.enable = true;
+      usbmon.enable = true;
     };
   };
 
