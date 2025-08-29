@@ -170,7 +170,7 @@
         glow # Render markdown in terminal
         tldr # Short manual
         viddy
-        yt-dlp # video downloader
+        unstable.yt-dlp # video downloader
         jq
         yq
         alejandra
