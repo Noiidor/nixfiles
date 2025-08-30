@@ -125,6 +125,7 @@
         rnote
         davinci-resolve
         gnome-font-viewer
+        unstable.wiremix
 
         #=== Network
         iperf3
