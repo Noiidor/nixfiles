@@ -192,10 +192,10 @@
 
   # Desktop Environment
   services.displayManager = {
-    # sddm = {
-    #   enable = true;
-    #   wayland.enable = true;
-    # };
+    sddm = {
+      enable = false;
+      wayland.enable = true;
+    };
     ly = {
       enable = true;
     };
@@ -245,7 +245,7 @@
     jack.enable = true;
   };
 
-  services.ratbagd.enable = true;
+  services.ratbagd.enable = false;
   services.udisks2.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -295,15 +295,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
   };
 
-  services.flatpak.enable = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  services.flatpak.enable = false;
 
   nix = {
     settings =
