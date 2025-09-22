@@ -70,7 +70,7 @@
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = ["ntfs"];
     kernel.sysctl = {
-      "kernel.sysrq" = 502;
+      "kernel.sysrq" = 1;
 
       # Swapping with zram is much much faster than paging so we prioritize it.
       "vm.swappiness" = 180;
