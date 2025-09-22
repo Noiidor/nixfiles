@@ -31,6 +31,8 @@
     # hyprshade # Screen shader util
     networkmanagerapplet
     hyprcursor
+
+    (callPackage ../../../packages/hyprland-per-window-layout.nix {})
   ];
 
   services = {

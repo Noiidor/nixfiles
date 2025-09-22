@@ -126,6 +126,7 @@
         davinci-resolve
         gnome-font-viewer
         unstable.wiremix
+        wl-screenrec
 
         #=== Network
         iperf3
