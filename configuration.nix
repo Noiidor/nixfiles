@@ -66,6 +66,7 @@
 
   # BOOT
   boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = ["ntfs"];
