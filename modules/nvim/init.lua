@@ -1,8 +1,5 @@
 -- THIS CONFIG IS A MESS
 
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -10,21 +7,15 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 vim.g.loaded_netrwPlugin = 0
 
--- [[ Setting options ]]
-
 vim.wo.wrap = false
 vim.wo.linebreak = false
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
--- Make line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
 
--- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -71,6 +62,8 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 15
 vim.opt.sidescrolloff = 15
 vim.opt.jumpoptions = "stack,view"
+
+vim.o.winborder = "rounded"
 
 vim.o.langmap =
 	"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
@@ -574,9 +567,9 @@ cmp.setup({
 		-- completion = {
 		-- 	border = "rounded",
 		-- },
-		documentation = {
-			border = "rounded",
-		},
+		-- documentation = {
+		-- 	border = "rounded",
+		-- },
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
