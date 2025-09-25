@@ -12,7 +12,7 @@
   };
 
   home.packages = with pkgs; [
-    # mako # Notifoication daemon
+    mako # Notification daemon
     swww # Wallpapers utility
     rofi-wayland
     pwvucontrol # Volume control
@@ -31,6 +31,7 @@
     # hyprshade # Screen shader util
     networkmanagerapplet
     hyprcursor
+    hyprland-per-window-layout
   ];
 
   services = {
