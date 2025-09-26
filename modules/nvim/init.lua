@@ -371,6 +371,7 @@ require("conform").setup({
 		proto = { "buf format" },
 		c = { "clang-format" },
 		cpp = { "clang-format" },
+		typ = { "typstyle" },
 		-- You can use 'stop_after_first' to run the first available formatter from the list
 		-- javascript = { "prettierd", "prettier", stop_after_first = true },
 	},
@@ -745,6 +746,8 @@ set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 lspconfig.dockerls.setup({})
 
 lspconfig.buf_ls.setup({})
+
+lspconfig.tinymist.setup({})
 
 require("nvim-treesitter.configs").setup({
 	indent = {

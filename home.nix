@@ -85,6 +85,11 @@
         #=== Haskell
         # haskell.compiler.ghcHEAD
 
+        #=== Typst
+        typst
+        typstyle
+        tinymist
+
         #=== Applications and gaming
         vesktop
         qbittorrent
