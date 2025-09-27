@@ -104,6 +104,7 @@
         vim-tmux-navigator
         better-escape-nvim
         hardtime-nvim
+        typst-preview-nvim
       ])
       ++
       # Unstable nvim plugins
