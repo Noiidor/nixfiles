@@ -159,7 +159,16 @@
         pgcli
         wishlist # SSH picker
         nix-tree # Nix pkgs dependencies and size
-        # s-tui # Stress-test
+
+        #=== Monitoring
+        s-tui # Stress-test
+        atop # Detailed system metrics
+        iftop # Network bandwith usage
+        iotop # I/O metrics
+        # sysdig
+        nvtopPackages.amd # GPU metrics
+        wavemon # WiFi metrics
+        # glances
 
         #=== CLI utils
         fastfetch

@@ -45,7 +45,6 @@
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
-    # Stable nvim plugins
     plugins =
       (with pkgs.vimPlugins; [
         # General
