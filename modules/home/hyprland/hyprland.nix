@@ -55,8 +55,17 @@
     };
   };
 
+  # xdg.configFile.hypr = {
+  #   recursive = true;
+  #   source = pkgs.replaceVarsWith {
+  #     src = ./hyprland.conf;
+  #     replacements = {round = 10;};
+  #     dir = ".";
+  #   };
+  # };
+
   xdg.configFile.hypr = {
-    recursive = true;
     source = ./.;
+    recursive = true;
   };
 }

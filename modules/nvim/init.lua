@@ -73,8 +73,49 @@ vim.diagnostic.config({
 	virtual_lines = { current_line = true },
 })
 
+local color_bg = "#1b100f"
+local color_text = "#da7890"
+-- TODO: Make dimming by HSV
+local color_text_dim = "#59313a"
+
 -- Theme config
-vim.cmd.colorscheme("base16-hardcore")
+-- vim.cmd.colorscheme("base16-hardcore")
+require("mini.base16").setup({
+	palette = {
+		base00 = color_bg,
+		base01 = "#2e1d1d",
+		base02 = "#6b3844",
+		base03 = color_text,
+		base04 = "#805a5a",
+		base05 = "#a87d7d",
+		base06 = "#c4adad",
+		base07 = "#e8e1e1",
+		base08 = "#f8d8d8",
+		base09 = "#cddafc",
+		base0A = "#a19552",
+		base0B = "#f1b9eb",
+		base0C = "#ffacd0",
+		base0D = "#5ac670",
+		base0E = "#c3d2f6",
+		base0F = "#c1b492",
+	},
+})
+
+vim.api.nvim_set_hl(0, "Comment", { fg = color_text_dim })
+vim.api.nvim_set_hl(0, "MiniStatuslineDevinfo", { fg = color_text })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+vim.api.nvim_set_hl(0, "LineNrAbove", { bg = "none" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "GitSignsAdd", { bg = "none" })
+vim.api.nvim_set_hl(0, "GitSignsDelete", { bg = "none" })
+vim.api.nvim_set_hl(0, "GitSignsChange", { bg = "none" })
+vim.api.nvim_set_hl(0, "GitSignsUntracked", { bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticSignError", { bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticSignOk", { bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticSignHint", { bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { bg = "none" })
 
 local dashboard = require("alpha.themes.dashboard")
 dashboard.file_icons_provider = "devicons"
@@ -748,6 +789,7 @@ lspconfig.dockerls.setup({})
 lspconfig.buf_ls.setup({})
 
 lspconfig.tinymist.setup({})
+lspconfig.zls.setup({})
 
 require("nvim-treesitter.configs").setup({
 	indent = {

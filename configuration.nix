@@ -60,6 +60,7 @@
     # nerd-fonts.terminess-ttf
     # terminus_font
     maple-mono.NF-CN
+    zpix-pixel-font
     # nerd-fonts.iosevka
     # inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd
   ];
