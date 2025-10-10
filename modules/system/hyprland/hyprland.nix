@@ -4,7 +4,7 @@
   ...
 }: let
   # hyprlandPkgs = inputs.hyprland.packages.${pkgs.system};
-  hyprlandPkgs = pkgs;
+  hyprlandPkgs = pkgs.unstable;
 in {
   programs.hyprland = {
     enable = true;
