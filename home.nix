@@ -110,7 +110,6 @@
         unstable.ayugram-desktop
         # unstable.winetricks
         # unstable.wineWowPackages.waylandFull
-        gamescope
 
         # Media
         unstable.gimp3
@@ -204,7 +203,7 @@
         udiskie
         smartmontools
         caligula
-        unstable.astroterm
+        # unstable.astroterm
         unstable.sequin # Decode ANSI sequences
         unstable.buf
         unstable.spotdl # Download music from yt/spotify
