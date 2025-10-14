@@ -97,7 +97,6 @@
         (bottles.override {removeWarningPopup = true;})
         mangohud
         # piper
-        baobab # Disk usage analyzer
         # bitwarden-desktop
         bitwarden-cli
         unstable.keyguard
@@ -131,6 +130,7 @@
         gnome-font-viewer
         unstable.wiremix
         wl-screenrec
+        # weasis # DICOM viewer
 
         #=== Network
         iperf3
@@ -139,9 +139,13 @@
         gping
         dig # DNS lookup
         mtr # ping + traceroute
+        trippy # ping + traceroute TUI
+        posting # TUI HTTP Client
 
-        #=== Filesystem
+        #=== Disks and filesystem
         iozone
+        baobab # Disk usage analyzer
+        # duf # Good looking df alternatinve
         # phoronix-test-suite # Comprehensive system benchmark
 
         #=== Bluetooth
@@ -158,6 +162,7 @@
         pgcli
         wishlist # SSH picker
         nix-tree # Nix pkgs dependencies and size
+        # smassh # TUI MonkeyType
 
         #=== Monitoring
         s-tui # Stress-test
@@ -168,6 +173,9 @@
         nvtopPackages.amd # GPU metrics
         wavemon # WiFi metrics
         # glances
+        # mission-center # GUI system monitor
+        # lazysql
+        # lazyjournal
 
         #=== CLI utils
         fastfetch
