@@ -131,6 +131,7 @@
         unstable.wiremix
         wl-screenrec
         # weasis # DICOM viewer
+        # eaglemode # absolute cinema
 
         #=== Network
         iperf3
