@@ -17,6 +17,7 @@
     yamlfmt
     rustfmt
     sqlfluff
+    kdlfmt
 
     # LSP
     nil # nix
