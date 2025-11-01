@@ -3,6 +3,9 @@
   inputs,
   ...
 }: {
+  imports = [
+    ../desktop/desktop.nix
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -12,33 +15,12 @@
   };
 
   home.packages = with pkgs; [
-    mako # Notification daemon
-    swww # Wallpapers utility
-    rofi-wayland
-    pwvucontrol # Volume control
-    playerctl
-    brightnessctl
-    wlogout
-    nautilus # File manager
-    sushi # File previewer for Nautilus
     hyprpicker # Screen color picker
-    kdePackages.xwaylandvideobridge
-    overskride # Bluetooth GUI
-    ags
     hyprshot # Screenshot utility
-    grim # Screenshot utility
-    slurp # Screen selection util
-    # hyprshade # Screen shader util
-    networkmanagerapplet
     hyprcursor
     hyprland-per-window-layout
+    # hyprshade # Screen shader util
   ];
-
-  services = {
-    udiskie = {
-      enable = true;
-    };
-  };
 
   systemd.user.services.reload-hypr = {
     Unit = {

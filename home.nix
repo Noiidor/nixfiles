@@ -10,13 +10,14 @@
     ./modules/tmux/tmux.nix
     ./modules/zsh/zsh.nix
     ./modules/stylix/stylix.nix
-    ./modules/flatpak/flatpak.nix
+    # ./modules/flatpak/flatpak.nix
     ./modules/spicetify/spicetify.nix
-    ./modules/ghostty/ghostty.nix
+    # ./modules/ghostty/ghostty.nix
     # ./modules/themes/default.nix
     # ./modules/hyprpanel/hyprpanel.nix
     ./modules/qimgv/qimgv.nix
-    ./modules/home/hyprland/hyprland.nix
+    # ./modules/home/hyprland/hyprland.nix
+    ./modules/home/niri/niri.nix
     ./modules/home/foot/foot.nix
     ./modules/home/yazi/yazi.nix
     ./modules/home/waybar/waybar.nix
@@ -231,13 +232,11 @@
       PSQL_PAGER = "pspg -X -s 1";
 
       # Not sure if its essensial
-      GDK_BACKEND = "wayland,x11";
+      # GDK_BACKEND = "wayland,x11";
       QT_QPA_PLATFORM = "wayland;xcb";
       QT_QPA_PLATFORMTHEME = "gtk3"; # Fixes Telegram file picker
-      CLUTTER_BACKEND = "wayland";
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_SESSION_DESKTOP = "Hyprland";
+      # CLUTTER_BACKEND = "wayland";
+      # XDG_SESSION_TYPE = "wayland";
       WLR_NO_HARDWARE_CURSORS = "1";
     };
 

@@ -7,7 +7,8 @@
   imports = [
     ./hardware-configuration-laptop.nix
     inputs.stylix.nixosModules.stylix
-    ./modules/system/hyprland/hyprland.nix
+    # ./modules/system/hyprland/hyprland.nix
+    ./modules/system/niri/niri.nix
   ];
 
   # System config is a mess
@@ -28,6 +29,7 @@
     wirelesstools
     wl-clipboard
     wireguard-tools
+    xwayland-satellite
 
     # Disks and FS
     gparted
@@ -216,10 +218,11 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    config.common.default = "hyprland;gtk";
+    config = {
+      common = {
+        default = ["gtk"];
+      };
+    };
   };
 
   services.xserver = {

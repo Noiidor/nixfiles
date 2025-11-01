@@ -6,6 +6,9 @@
   # hyprlandPkgs = inputs.hyprland.packages.${pkgs.system};
   hyprlandPkgs = pkgs.unstable;
 in {
+  imports = [
+    ../desktop/desktop.nix
+  ];
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -19,10 +22,8 @@ in {
     extraPortals = [
       hyprlandPkgs.xdg-desktop-portal-hyprland
     ];
-  };
 
-  services.udisks2 = {
-    enable = true;
+    config.common.default = "hyprland;gtk";
   };
 
   # system.userActivationScripts = {
