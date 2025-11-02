@@ -275,6 +275,10 @@
   programs = {
     zsh.enable = true;
 
+    direnv = {
+      enable = true;
+    };
+
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
