@@ -31,6 +31,8 @@
       bind-key -n M-7 select-window -t 7
       bind-key -n M-8 select-window -t 8
       bind-key -n M-9 select-window -t 9
+
+      bind-key s display-popup -w 90% -h 80%
     '';
   };
 }

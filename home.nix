@@ -217,6 +217,9 @@
         unstable.sequin # Decode ANSI sequences
         unstable.buf
         unstable.spotdl # Download music from yt/spotify
+
+        xorg.xprop # x11/xwayland debug info
+        xorg.xlsclients
       ])
       # Other
       ++ [
