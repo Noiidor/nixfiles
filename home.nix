@@ -31,19 +31,17 @@
       # Stable packages
       (with pkgs; [
         #=== Programming
-        bruno
-        dbeaver-bin
+        # bruno
+        # dbeaver-bin
         graphviz
-        clickhouse-cli
-        go-migrate
+        # clickhouse-cli
+        # go-migrate
         kubectl
         protobuf_26
         gnumake
-        postgresql_16 # Needed for psql
         gdb # GNU debugger
-        kubernetes-helm
+        # kubernetes-helm
         sentry-cli
-        arduino-ide
         gcc
 
         #=== Golang
@@ -58,7 +56,6 @@
         protoc-gen-validate
         protoc-gen-doc
         golangci-lint
-        templ
 
         #=== Odin
         unstable.odin
@@ -113,7 +110,7 @@
 
         # Media
         unstable.gimp3
-        inkscape
+        # inkscape
         obs-studio
         glxinfo
         scribus
@@ -149,13 +146,14 @@
         baobab # Disk usage analyzer
         # duf # Good looking df alternatinve
         # phoronix-test-suite # Comprehensive system benchmark
+        fio # IO Benchmark
 
         #=== Bluetooth
         blueman
         bluetuith
 
         #=== LLM
-        mods # TUI frontend
+        # mods # TUI frontend
 
         #=== TUI
         lazygit
@@ -224,7 +222,7 @@
       # Other
       ++ [
         inputs.aagl.packages.${pkgs.system}.the-honkers-railway-launcher
-        inputs.aagl.packages.${pkgs.system}.sleepy-launcher
+        # inputs.aagl.packages.${pkgs.system}.sleepy-launcher
         inputs.zen-browser.packages.${pkgs.system}.default
       ];
 

@@ -23,7 +23,11 @@
     options = ["subvol=@"];
   };
 
-  boot.initrd.luks.devices."luks-edc8883e-2b33-4270-8396-ace13ceb363b".device = "/dev/disk/by-uuid/edc8883e-2b33-4270-8396-ace13ceb363b";
+  boot.initrd.luks.devices."luks-edc8883e-2b33-4270-8396-ace13ceb363b" = {
+    device = "/dev/disk/by-uuid/edc8883e-2b33-4270-8396-ace13ceb363b";
+    allowDiscards = true;
+    bypassWorkqueues = true;
+  };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/E175-B94B";
