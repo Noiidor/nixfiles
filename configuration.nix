@@ -239,7 +239,6 @@
 
   # Enable sound with pipewire.
   hardware = {
-    pulseaudio.enable = false;
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
