@@ -4,6 +4,7 @@
   ];
 
   services.flatpak = {
+    enable = true;
     packages = [
       # Flatpak apps goes here
     ];

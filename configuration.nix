@@ -11,11 +11,9 @@
     ./modules/system/niri/niri.nix
   ];
 
-  # System config is a mess
-  # I dont know what half of options does, but it works
   # TODO: Split into modules
 
-  # List of stable packages
+  #=== Packages
   environment.systemPackages = with pkgs; [
     # CLI utils
     usbutils
@@ -53,22 +51,7 @@
   environment.variables = {
   };
 
-  fonts.packages = with pkgs; [
-    # nerdfonts
-    # liberation_ttf
-    # helvetica-neue-lt-std
-    # times-newer-roman
-    # arkpandora_ttf
-    # gelasio
-    # nerd-fonts.terminess-ttf
-    # terminus_font
-    maple-mono.NF-CN
-    zpix-pixel-font
-    # nerd-fonts.iosevka
-    # inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd
-  ];
-
-  # BOOT
+  #=== Boot and kernel
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
     loader.systemd-boot.enable = true;
@@ -97,6 +80,8 @@
       options hid_apple fnmode=0
     '';
   };
+
+  #=== Disks and memory
   zramSwap = {
     enable = true;
     algorithm = "lz4";
@@ -108,6 +93,8 @@
     freeMemThreshold = 6;
     enableNotifications = true;
   };
+
+  services.udisks2.enable = true;
 
   systemd.services.adbd = {
     enable = true;
@@ -124,7 +111,7 @@
     ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
   '';
 
-  # NETWORKING
+  #=== Networking
   networking = {
     hostName = "nixos";
     networkmanager = {
@@ -151,22 +138,34 @@
     };
   };
 
-  services.openssh = {
-    enable = true;
-    ports = [22];
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
+  services = {
+    openssh = {
+      enable = true;
+      ports = [22];
+      settings = {
+        PasswordAuthentication = false;
+        PermitRootLogin = "no";
+      };
+    };
+
+    mullvad-vpn.enable = true;
+  };
+
+  programs = {
+    wireshark = {
+      enable = true;
+      dumpcap.enable = true;
+      usbmon.enable = true;
     };
   };
 
-  services.mullvad-vpn.enable = true;
-
+  #=== Virtualization and containerization
   virtualisation.docker = {
     enable = true;
     storageDriver = "btrfs";
   };
 
+  #=== i18n
   time.timeZone = "Europe/Moscow";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -182,29 +181,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  services = {
-    upower = {
-      enable = true;
-    };
-    power-profiles-daemon.enable = true;
-
-    keyd = {
-      enable = true;
-      keyboards.default = {
-        ids = ["*"];
-        settings = {
-          # NOTE: Use wev to find key names.
-          main = {
-            # backspace = "delete"; # Delete key on backspace.
-            # Long hold shift + caps = caps. Caps = keyboard layout
-            capslock = "overload(shift, capslock)";
-          };
-        };
-      };
-    };
-  };
-
-  # Desktop Environment
+  #=== Desktop Environment
   services.displayManager = {
     sddm = {
       enable = false;
@@ -225,19 +202,31 @@
     };
   };
 
-  services.xserver = {
-    xkb = {
-      layout = "us,ru";
-      variant = "";
-      options = "grp:caps_toggle";
-    };
-    upscaleDefaultCursor = true;
+  fonts.packages = with pkgs; [
+    # nerdfonts
+    # liberation_ttf
+    # helvetica-neue-lt-std
+    # times-newer-roman
+    # arkpandora_ttf
+    # gelasio
+    # nerd-fonts.terminess-ttf
+    # terminus_font
+    maple-mono.NF-CN
+    zpix-pixel-font
+    # nerd-fonts.iosevka
+    # inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd
+  ];
+
+  stylix = {
+    enable = true;
+    image = ./modules/stylix/wallpaper.png;
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
   hardware = {
     graphics = {
       enable = true;
@@ -248,6 +237,8 @@
     };
     bluetooth.enable = true;
   };
+
+  #=== Audio
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -258,12 +249,25 @@
     jack.enable = true;
   };
 
-  services.ratbagd.enable = false;
-  services.udisks2.enable = true;
+  #=== Inputs
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = ["*"];
+      settings = {
+        # NOTE: Use wev to find key names.
+        main = {
+          # backspace = "delete"; # Delete key on backspace.
+          # Long hold shift + caps = caps. Caps = keyboard layout
+          capslock = "overload(shift, capslock)";
+        };
+      };
+    };
+  };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # services.ratbagd.enable = false; # Mouse configuration
 
+  #=== Users and apps
   users.users.${user} = {
     isNormalUser = true;
     description = user;
@@ -291,32 +295,26 @@
       enable = true;
       package = pkgs.unstable.gamescope;
     };
-
-    nh = {
-      enable = true;
-      flake = "/home/${user}/nixfiles";
-      clean = {
-        enable = true;
-        dates = "weekly";
-        extraArgs = "--keep-since 5d --keep 5";
-      };
-    };
-
-    wireshark = {
-      enable = true;
-      dumpcap.enable = true;
-      usbmon.enable = true;
-    };
   };
 
-  stylix = {
+  #=== Other
+  services = {
+    upower = {
+      enable = true;
+    };
+    power-profiles-daemon.enable = true;
+  };
+
+  #=== Nix
+  programs.nh = {
     enable = true;
-    image = ./modules/stylix/wallpaper.png;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
+    flake = "/home/${user}/nixfiles";
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep-since 5d --keep 5";
+    };
   };
-
-  services.flatpak.enable = false;
 
   nix = {
     settings =
