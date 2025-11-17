@@ -317,6 +317,21 @@
   };
 
   nix = {
+    registry = {
+      unstable = {
+        from = {
+          id = "unstable";
+          type = "indirect";
+        };
+        to = {
+          type = "github";
+          owner = "NixOS";
+          repo = "nixpkgs";
+          ref = "nixos-unstable";
+        };
+      };
+    };
+
     settings =
       {
         experimental-features = ["nix-command" "flakes"];
