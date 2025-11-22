@@ -4,11 +4,16 @@
   inputs,
   ...
 }: {
+  disabledModules = [
+    "programs/nekoray.nix"
+  ];
   imports = [
     ./hardware-configuration-laptop.nix
     inputs.stylix.nixosModules.stylix
     # ./modules/system/hyprland/hyprland.nix
     ./modules/system/niri/niri.nix
+    "${inputs.nixpkgs-unstable}/nixos/modules/programs/throne.nix"
+    ./modules/system/sing-box/sing-box.nix
   ];
 
   # TODO: Split into modules
@@ -294,6 +299,12 @@
     gamescope = {
       enable = true;
       package = pkgs.unstable.gamescope;
+    };
+
+    throne = {
+      enable = true;
+      package = pkgs.unstable.throne;
+      tunMode.enable = true;
     };
   };
 
