@@ -4,16 +4,11 @@
   inputs,
   ...
 }: {
-  disabledModules = [
-    "programs/nekoray.nix"
-  ];
   imports = [
     ./hardware-configuration-laptop.nix
     inputs.stylix.nixosModules.stylix
     # ./modules/system/hyprland/hyprland.nix
     ./modules/system/niri/niri.nix
-    "${inputs.nixpkgs-unstable}/nixos/modules/programs/throne.nix"
-    ./modules/system/sing-box/sing-box.nix
   ];
 
   # TODO: Split into modules
@@ -132,6 +127,7 @@
       0.0.0.0 overseauspider.yuanshen.com
       0.0.0.0 apm-log-upload-os.hoyoverse.com
       0.0.0.0 zzz-log-upload-os.hoyoverse.com
+      130.255.77.28 ntc.party
     '';
     #networkmanager.dns = "none";
     # nameservers = ["9.9.9.9" "8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
@@ -300,12 +296,6 @@
       enable = true;
       package = pkgs.unstable.gamescope;
     };
-
-    throne = {
-      enable = true;
-      package = pkgs.unstable.throne;
-      tunMode.enable = true;
-    };
   };
 
   #=== Other
@@ -345,7 +335,12 @@
 
     settings =
       {
-        experimental-features = ["nix-command" "flakes"];
+        trusted-users = ["noi"];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+          "pipe-operators"
+        ];
         substituters = [
           "https://hyprland.cachix.org"
           "https://nix-community.cachix.org"
