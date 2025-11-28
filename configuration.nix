@@ -9,6 +9,7 @@
     inputs.stylix.nixosModules.stylix
     # ./modules/system/hyprland/hyprland.nix
     ./modules/system/niri/niri.nix
+    ./scripts/scripts.nix
   ];
 
   # TODO: Split into modules
