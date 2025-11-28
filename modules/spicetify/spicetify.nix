@@ -12,7 +12,7 @@ in {
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       hidePodcasts
-      copyToClipboard
+      # copyToClipboard # Bugged
       betterGenres
       fullAppDisplay
       beautifulLyrics
@@ -21,7 +21,7 @@ in {
     enabledCustomApps = with spicePkgs.apps; [
     ];
     # Remove mkForce to use Stylix theme
-    theme = lib.mkForce spicePkgs.themes.hazy;
+    theme = lib.mkForce spicePkgs.themes.text;
     colorScheme = lib.mkForce "";
   };
 }
