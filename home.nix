@@ -6,21 +6,10 @@
   ...
 }: {
   imports = [
-    ./modules/nvim/nvim.nix
-    ./modules/tmux/tmux.nix
-    ./modules/zsh/zsh.nix
-    ./modules/stylix/stylix.nix
-    # ./modules/flatpak/flatpak.nix
-    ./modules/spicetify/spicetify.nix
-    # ./modules/ghostty/ghostty.nix
-    # ./modules/themes/default.nix
-    # ./modules/hyprpanel/hyprpanel.nix
-    ./modules/qimgv/qimgv.nix
-    # ./modules/home/hyprland/hyprland.nix
-    ./modules/home/niri/niri.nix
-    ./modules/home/foot/foot.nix
-    ./modules/home/yazi/yazi.nix
-    ./modules/home/waybar/waybar.nix
+    ./modules/home-manager-deprecated/nvim/nvim.nix
+    ./modules/home-manager-deprecated/zsh/zsh.nix
+    ./modules/home-manager-deprecated/stylix/stylix.nix
+    ./modules/home-manager-deprecated/spicetify/spicetify.nix
   ];
 
   home = {

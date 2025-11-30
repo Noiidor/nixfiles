@@ -7,9 +7,11 @@
   imports = [
     ./hardware-configuration-laptop.nix
     inputs.stylix.nixosModules.stylix
-    # ./modules/system/hyprland/hyprland.nix
-    ./modules/system/niri/niri.nix
+    # ./modules/hyprland/hyprland.nix
+    ./modules/niri/niri.nix
     ./scripts/scripts.nix
+    ./modules/desktop.nix
+    ./tmpfiles.nix
   ];
 
   # TODO: Split into modules
@@ -45,6 +47,19 @@
     # Lib
     libadwaita
     libnotify
+
+    # Media
+    unstable.yazi
+    dragon-drop # Drag-n-drop utility
+    hexyl # Hex binary viewer
+    qimgv
+
+    # Terminal
+    foot
+    tmux
+
+    # Desktop
+    waybar
 
     # Other
   ];
@@ -215,6 +230,7 @@
     # terminus_font
     maple-mono.NF-CN
     zpix-pixel-font
+    (callPackage ./pkgs/vcr-osd-font.nix {})
     # nerd-fonts.iosevka
     # inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd
   ];

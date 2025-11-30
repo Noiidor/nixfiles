@@ -33,7 +33,7 @@
       #     prepend_keymap = [
       #       {
       #         on = "<C-n>";
-      #         run = ''shell 'dragon-drop -x -i -T "$@"' '';
+      #         run = "shell -- dragon-drop -x -i -a -T \"$@\"";
       #       }
       #     ];
       #   };

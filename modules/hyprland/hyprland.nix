@@ -7,7 +7,7 @@
   hyprlandPkgs = pkgs.unstable;
 in {
   imports = [
-    ../desktop/desktop.nix
+    ../desktop.nix
   ];
   programs.hyprland = {
     enable = true;

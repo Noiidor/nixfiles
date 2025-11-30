@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ../desktop/desktop.nix
+    ../desktop.nix
   ];
   programs.niri.enable = true;
   programs.hyprlock.enable = true;

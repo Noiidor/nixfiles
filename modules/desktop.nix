@@ -3,11 +3,10 @@
   inputs,
   ...
 }: {
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     mako # Notification daemon
     swww # Wallpapers utility
     rofi-wayland
-    # pwvucontrol # Volume control
     playerctl
     brightnessctl
     wlogout
@@ -15,15 +14,17 @@
     sushi # File previewer for Nautilus
     kdePackages.xwaylandvideobridge
     overskride # Bluetooth GUI
-    ags
     grim # Screenshot utility
     slurp # Screen selection util
-    networkmanagerapplet
   ];
 
-  services = {
-    udiskie = {
-      enable = true;
-    };
+  services.udisks2 = {
+    enable = true;
   };
+
+  # services = {
+  #   udiskie = {
+  #     enable = true;
+  #   };
+  # };
 }
