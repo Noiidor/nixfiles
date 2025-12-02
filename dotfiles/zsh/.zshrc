@@ -74,7 +74,7 @@ alias -- ls='eza -a --icons=auto'
 alias -- nv=nvim
 alias -- watch=viddy
 alias -- weather='curl v2.wttr.in/Moscow'
-source @zsh-fsh-pkg@/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
+source @zsh-fsh-pkg@/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey '^[OA' history-substring-search-up
