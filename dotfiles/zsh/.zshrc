@@ -7,22 +7,6 @@ autoload -U compinit && compinit
 source @zsh-autosuggestions-pkg@/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 
-# NOTE: plugins
-
-# path+="$HOME/.zsh/plugins/zsh-fzf-tab"
-# fpath+="$HOME/.zsh/plugins/zsh-fzf-tab"
-# path+="$HOME/.zsh/plugins/powerlevel10k"
-# fpath+="$HOME/.zsh/plugins/powerlevel10k"
-# if [[ -f "$HOME/.zsh/plugins/zsh-fzf-tab/fzf-tab.plugin.zsh" ]]; then
-#   source "$HOME/.zsh/plugins/zsh-fzf-tab/fzf-tab.plugin.zsh"
-# fi
-# if [[ -f "$HOME/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
-#   source "$HOME/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme"
-# fi
-# History options should be set in .zshrc and after oh-my-zsh sourcing.
-# See https://github.com/nix-community/home-manager/issues/177.
-
-
 HISTSIZE=10000
 SAVEHIST=10000
 
@@ -74,13 +58,19 @@ alias -- ls='eza -a --icons=auto'
 alias -- nv=nvim
 alias -- watch=viddy
 alias -- weather='curl v2.wttr.in/Moscow'
+alias -- yz='yazi'
+
+# Plugins
+
 source @zsh-fsh-pkg@/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source @zsh-hss-pkg@/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
+source @zsh-fzf-pkg@/share/fzf-tab/fzf-tab.plugin.zsh
 
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey '^[OA' history-substring-search-up
 bindkey '^[OB' history-substring-search-down
 
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export WORDCHARS='#*?_-.[]~=&;!#$%^(){}<>'
 
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
