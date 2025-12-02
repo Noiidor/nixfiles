@@ -13,7 +13,6 @@
     ./scripts/scripts.nix
     ./modules/desktop.nix
     ./tmpfiles.nix
-    # ./modules/zsh/zsh.nix
   ];
 
   # TODO: Split into modules
@@ -57,6 +56,7 @@
     qimgv
 
     # Terminal
+    zsh
     foot
     tmux
     starship
