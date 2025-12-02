@@ -13,6 +13,7 @@
     ./scripts/scripts.nix
     ./modules/desktop.nix
     ./tmpfiles.nix
+    ./modules/clamav.nix
   ];
 
   # TODO: Split into modules
