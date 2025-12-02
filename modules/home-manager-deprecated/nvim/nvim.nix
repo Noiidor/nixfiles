@@ -23,11 +23,11 @@
     nil # nix
     nixd
     lua-language-server
-    postgres-lsp
+    postgres-language-server
     sqls
     pyright
     docker-compose-language-service
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     yaml-language-server
     rust-analyzer
     unstable.ols

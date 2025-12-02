@@ -6,13 +6,12 @@
   environment.systemPackages = with pkgs; [
     mako # Notification daemon
     swww # Wallpapers utility
-    rofi-wayland
+    rofi
     playerctl
     brightnessctl
     wlogout
     nautilus # File manager
     sushi # File previewer for Nautilus
-    kdePackages.xwaylandvideobridge
     overskride # Bluetooth GUI
     grim # Screenshot utility
     slurp # Screen selection util

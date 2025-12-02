@@ -27,7 +27,6 @@
       gich = "git checkout";
       ai = "mods";
       lg = "lazygit";
-      fuck = "thefuck";
       weather = "curl v2.wttr.in/Moscow";
       kubectx = "kubectl config use-context";
       watch = "viddy";

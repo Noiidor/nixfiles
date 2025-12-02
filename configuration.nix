@@ -321,6 +321,29 @@
       enable = true;
       package = pkgs.unstable.gamescope;
     };
+
+    git = {
+      enable = true;
+      config = {
+        user = {
+          name = "noi";
+          email = "noidor2019@gmail.com";
+        };
+        init.defaultBranch = "master";
+
+        pull = {
+          rebase = true;
+        };
+
+        url = {
+          "git@gitlab.com:" = {
+            insteadOf = [
+              "https://gitlab.com/"
+            ];
+          };
+        };
+      };
+    };
   };
 
   #=== Other
@@ -387,5 +410,5 @@
     };
   };
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

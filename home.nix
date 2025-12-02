@@ -26,7 +26,7 @@
         # clickhouse-cli
         # go-migrate
         kubectl
-        protobuf_26
+        protobuf
         gnumake
         gdb # GNU debugger
         # kubernetes-helm
@@ -101,7 +101,7 @@
         unstable.gimp3
         # inkscape
         obs-studio
-        glxinfo
+        mesa-demos
         scribus
         libreoffice-fresh
         unrar
@@ -222,7 +222,7 @@
       # WLR_NO_HARDWARE_CURSORS = "1";
     };
 
-    stateVersion = "25.05";
+    stateVersion = "25.11";
   };
 
   programs = {
@@ -236,8 +236,6 @@
       };
     };
 
-    thefuck.enable = true;
-
     htop = {
       enable = true;
       settings = {
@@ -250,27 +248,6 @@
     };
 
     btop.enable = true;
-
-    git = {
-      enable = true;
-      userName = "noi";
-      userEmail = "noidor2019@gmail.com";
-      extraConfig = {
-        init.defaultBranch = "master";
-
-        pull = {
-          rebase = true;
-        };
-
-        url = {
-          "git@gitlab.com:" = {
-            insteadOf = [
-              "https://gitlab.com/"
-            ];
-          };
-        };
-      };
-    };
 
     home-manager = {
       enable = true;
