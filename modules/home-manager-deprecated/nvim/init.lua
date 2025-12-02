@@ -689,16 +689,11 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- },
 -- }
 
-local lspconfig = require("lspconfig")
-local lspconfigs = require("lspconfig.configs")
+vim.lsp.enable("nixd")
 
--- vim.lsp.enable("nixd")
---
-lspconfig.nixd.setup({})
+vim.lsp.enable("templ")
 
-lspconfig.templ.setup({})
-
-lspconfig.lua_ls.setup({
+vim.lsp.config["lua_ls"] = {
 	settings = {
 		Lua = {
 			completion = {
@@ -714,9 +709,10 @@ lspconfig.lua_ls.setup({
 	},
 	capabilities = capabilities,
 	on_attach = on_attach,
-})
+}
+vim.lsp.enable("lua_ls")
 
-lspconfig.gopls.setup({
+vim.lsp.config["gopls"] = {
 	settings = {
 		gopls = {
 			analyses = {
@@ -730,9 +726,10 @@ lspconfig.gopls.setup({
 	},
 	capabilities = capabilities,
 	on_attach = on_attach,
-})
+}
+vim.lsp.enable("gopls")
 
-lspconfig.pyright.setup({})
+vim.lsp.enable("pyright")
 
 -- lspconfigs.postgres_lsp = {
 -- 	default_config = {
@@ -746,17 +743,17 @@ lspconfig.pyright.setup({})
 --
 -- lspconfig.postgres_lsp.setup({})
 --
-lspconfig.ols.setup({})
+vim.lsp.enable("ols")
 
-lspconfig.rust_analyzer.setup({})
+vim.lsp.enable("rust_analyzer")
 
-lspconfig.sqls.setup({})
+vim.lsp.enable("sqls")
 
-lspconfig.clangd.setup({})
+vim.lsp.enable("clangd")
 
 -- lspconfig.nil_ls.setup({})
 
-lspconfig.yamlls.setup({
+vim.lsp.config["yamlls"] = {
 	settings = {
 		yaml = {
 			completion = true,
@@ -772,9 +769,10 @@ lspconfig.yamlls.setup({
 			},
 		},
 	},
-})
+}
+vim.lsp.enable("yamlls")
 
-lspconfig.docker_compose_language_service.setup({})
+vim.lsp.enable("docker_compose_language_service")
 
 local function set_filetype(pattern, filetype)
 	vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
@@ -785,12 +783,12 @@ end
 
 set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
 
-lspconfig.dockerls.setup({})
+vim.lsp.enable("dockerls")
 
-lspconfig.buf_ls.setup({})
+vim.lsp.enable("buf_ls")
 
-lspconfig.tinymist.setup({})
-lspconfig.zls.setup({})
+vim.lsp.enable("tinymist")
+vim.lsp.enable("zls")
 
 require("nvim-treesitter.configs").setup({
 	indent = {
