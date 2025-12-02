@@ -7,7 +7,7 @@
 }: {
   imports = [
     ./modules/home-manager-deprecated/nvim/nvim.nix
-    ./modules/home-manager-deprecated/zsh/zsh.nix
+    # ./modules/home-manager-deprecated/zsh/zsh.nix
     ./modules/home-manager-deprecated/stylix/stylix.nix
     ./modules/home-manager-deprecated/spicetify/spicetify.nix
   ];
@@ -219,13 +219,7 @@
     ];
 
     sessionVariables = {
-      PSQL_PAGER = "pspg -X -s 1";
-
-      # Not sure if its essensial
-      # GDK_BACKEND = "wayland,x11";
-      QT_QPA_PLATFORM = "wayland;xcb";
-      QT_QPA_PLATFORMTHEME = "gtk3"; # Fixes Telegram file picker
-      WLR_NO_HARDWARE_CURSORS = "1";
+      # WLR_NO_HARDWARE_CURSORS = "1";
     };
 
     stateVersion = "25.05";

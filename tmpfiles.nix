@@ -33,6 +33,10 @@ in {
           (mkLink ".config/yazi/theme.toml" dotfiles.yazi.theme)
 
           (mkLink ".config/tmux/tmux.conf" dotfiles.tmux.config)
+
+          (mkLink ".zshrc" dotfiles.zsh.config)
+
+          (mkLink ".config/starship.toml" dotfiles.starship.config)
         ])
     ]
     |> lib.mergeAttrsList;

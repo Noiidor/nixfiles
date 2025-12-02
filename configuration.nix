@@ -1,6 +1,7 @@
 {
   user,
   pkgs,
+  lib,
   inputs,
   ...
 }: {
@@ -12,6 +13,7 @@
     ./scripts/scripts.nix
     ./modules/desktop.nix
     ./tmpfiles.nix
+    # ./modules/zsh/zsh.nix
   ];
 
   # TODO: Split into modules
@@ -57,6 +59,8 @@
     # Terminal
     foot
     tmux
+    starship
+    zoxide
 
     # Desktop
     waybar
@@ -65,6 +69,10 @@
   ];
 
   environment.variables = {
+    PSQL_PAGER = "pspg -X -s 1";
+
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_QPA_PLATFORMTHEME = lib.mkForce "gtk3"; # Fixes Telegram file picker
   };
 
   #=== Boot and kernel
