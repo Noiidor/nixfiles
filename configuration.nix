@@ -1,5 +1,6 @@
 {
   user,
+  config,
   pkgs,
   lib,
   inputs,
@@ -14,6 +15,7 @@
     ./modules/desktop.nix
     ./tmpfiles.nix
     ./modules/clamav.nix
+    ./agenix.nix
   ];
 
   # TODO: Split into modules
@@ -69,6 +71,7 @@
   ];
 
   environment.variables = {
+    EDITOR = "nvim";
     PSQL_PAGER = "pspg -X -s 1";
 
     QT_QPA_PLATFORM = "wayland;xcb";
@@ -294,11 +297,12 @@
   # services.ratbagd.enable = false; # Mouse configuration
 
   #=== Users and apps
-  # users.mutableUsers = false;
+  users.mutableUsers = false;
   users.users.${user} = {
     isNormalUser = true;
     description = user;
     extraGroups = ["networkmanager" "wheel" "video" "docker" "wireshark" "dialout"];
+    hashedPasswordFile = config.age.secrets.noi-hashed-password.path;
     shell = pkgs.zsh;
   };
 

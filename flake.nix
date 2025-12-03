@@ -52,6 +52,12 @@
       url = "https://flakehub.com/f/molarmanful/kirsch/0.6.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
   };
 
   outputs = {
