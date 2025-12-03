@@ -16,6 +16,7 @@
     ./tmpfiles.nix
     ./modules/clamav.nix
     ./agenix.nix
+    ./modules/vm/virt-manager.nix
   ];
 
   # TODO: Split into modules

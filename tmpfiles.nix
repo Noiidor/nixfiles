@@ -37,6 +37,8 @@ in {
           (mkLink ".zshrc" dotfiles.zsh.config)
 
           (mkLink ".config/starship.toml" dotfiles.starship.config)
+
+          (mkLink ".config/mako/config" dotfiles.mako.config)
         ])
     ]
     |> lib.mergeAttrsList;
