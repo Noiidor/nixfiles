@@ -295,6 +295,7 @@
   # services.ratbagd.enable = false; # Mouse configuration
 
   #=== Users and apps
+  users.mutableUsers = false;
   users.users.${user} = {
     isNormalUser = true;
     description = user;
@@ -367,6 +368,7 @@
   };
 
   nix = {
+    channel.enable = false;
     registry = {
       unstable = {
         from = {
