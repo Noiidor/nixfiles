@@ -242,7 +242,8 @@
     # terminus_font
     maple-mono.NF-CN
     zpix-pixel-font
-    (callPackage ./pkgs/vcr-osd-font.nix {})
+    # (callPackage ./pkgs/vcr-osd-font.nix {})
+    (callPackage ./pkgs/vcr-osd-cyr-font/vcr-osd-cyr-font.nix {})
     # nerd-fonts.iosevka
     # inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd
   ];
