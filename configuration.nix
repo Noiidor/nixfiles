@@ -33,7 +33,6 @@
     wirelesstools
     wl-clipboard
     wireguard-tools
-    xwayland-satellite
 
     # Disks and FS
     gparted
@@ -295,7 +294,7 @@
   # services.ratbagd.enable = false; # Mouse configuration
 
   #=== Users and apps
-  users.mutableUsers = false;
+  # users.mutableUsers = false;
   users.users.${user} = {
     isNormalUser = true;
     description = user;

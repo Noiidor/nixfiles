@@ -9,6 +9,8 @@
       url = "github:nix-community/home-manager/release-25.11";
     };
 
+    xwayland-sattelite.url = "github:Supreeeme/xwayland-satellite";
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
