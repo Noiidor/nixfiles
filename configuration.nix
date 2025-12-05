@@ -14,7 +14,7 @@
     ./scripts/scripts.nix
     ./modules/desktop.nix
     ./tmpfiles.nix
-    ./modules/clamav.nix
+    # ./modules/clamav.nix
     ./agenix.nix
     ./modules/vm/virt-manager.nix
   ];
@@ -303,7 +303,7 @@
   users.users.${user} = {
     isNormalUser = true;
     description = user;
-    extraGroups = ["networkmanager" "wheel" "video" "docker" "wireshark" "dialout"];
+    extraGroups = ["networkmanager" "wheel" "video" "dialout"];
     hashedPasswordFile = config.age.secrets.noi-hashed-password.path;
     shell = pkgs.zsh;
   };
