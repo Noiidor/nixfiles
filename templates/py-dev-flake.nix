@@ -2,7 +2,7 @@
   description = "Python Dev Shell";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
   };
 
   outputs = {
