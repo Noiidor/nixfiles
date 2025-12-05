@@ -139,6 +139,8 @@
     ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
   '';
 
+  systemd.tmpfiles.rules = ["d /run/media/noi/android 0755 noi users - -"];
+
   #=== Networking
   networking = {
     hostName = "nixos";
