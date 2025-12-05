@@ -58,11 +58,12 @@
         #Git
         gitsigns-nvim
 
-        # Telescope
+        # File management
         telescope-nvim
         telescope-ui-select-nvim
         telescope-fzf-native-nvim
         telescope-file-browser-nvim
+        yazi-nvim
 
         # LSP and snippets
         nvim-lspconfig
@@ -102,7 +103,6 @@
         # Utils
         mini-nvim
         vim-tmux-navigator
-        better-escape-nvim
         hardtime-nvim
         typst-preview-nvim
       ])

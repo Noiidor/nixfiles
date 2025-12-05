@@ -347,7 +347,15 @@ minifiles.setup({
 	},
 })
 
-vim.keymap.set("n", "-", minifiles.open, { desc = "Open file browser" })
+vim.keymap.set("n", "<leader>-", minifiles.open, { desc = "Open file browser" })
+
+local yazi = require("yazi")
+
+yazi.setup({})
+
+vim.keymap.set("n", "-", function()
+	yazi.yazi()
+end)
 
 local indentscope = require("mini.indentscope")
 indentscope.setup({
@@ -363,8 +371,6 @@ indentscope.setup({
 -- - sd'   - [S]urround [D]elete [']quotes
 -- - sr)'  - [S]urround [R]eplace [)] [']
 require("mini.surround").setup()
-
-require("better_escape").setup()
 
 local statusline = require("mini.statusline")
 statusline.setup({ use_icons = vim.g.have_nerd_font })
