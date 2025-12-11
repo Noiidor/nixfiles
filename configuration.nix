@@ -67,6 +67,10 @@
     # Desktop
     waybar
 
+    # Programming
+    zls
+    zig
+
     # Other
   ];
 
