@@ -318,17 +318,24 @@ devicons.setup({
 	},
 })
 
--- Mini config
-require("mini.ai").setup({ n_lines = 500 })
-
-local animate = require("mini.animate")
-animate.setup({
-	cursor = { enable = false },
-	scroll = {
-		timing = animate.gen_timing.linear({ duration = 3 }),
+require("scrollbar").setup({
+	handle = {
+		blend = 10,
+		color = "#ff9999",
 	},
 })
 
+-- Mini config
+require("mini.ai").setup({ n_lines = 500 })
+
+-- local animate = require("mini.animate")
+-- animate.setup({
+-- 	cursor = { enable = false },
+-- 	scroll = {
+-- 		timing = animate.gen_timing.linear({ duration = 3 }),
+-- 	},
+-- })
+--
 -- require("mini.pairs").setup()
 require("nvim-autopairs").setup({})
 

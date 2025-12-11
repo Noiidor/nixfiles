@@ -99,6 +99,7 @@
         fidget-nvim
         base16-nvim
         vim-illuminate
+        nvim-scrollbar
 
         # Utils
         mini-nvim
