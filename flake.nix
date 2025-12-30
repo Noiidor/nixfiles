@@ -9,6 +9,15 @@
       url = "github:nix-community/home-manager/release-25.11";
     };
 
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager/master";
+    };
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     xwayland-sattelite.url = "github:Supreeeme/xwayland-satellite";
 
     hyprland = {
@@ -56,7 +65,12 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.darwin.follows = "";
+      # inputs.darwin.follows = "";
+    };
+
+    priv-env = {
+      url = "git+ssh://git@gitlab.ozon.ru/rrodnyuk/nixenv.git";
+      flake = false;
     };
   };
 
@@ -65,10 +79,11 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
+    nix-darwin,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    user = "noi";
+    system-darwin = "aarch64-darwin";
 
     pkgs = import nixpkgs {
       inherit system;
@@ -83,12 +98,26 @@
       ];
     };
 
+    pkgsDarwin = import nixpkgs {
+      system = system-darwin;
+      config.allowUnfree = true;
+      overlays = [
+        (final: prev: {
+          unstable = import nixpkgs-unstable {
+            system = system-darwin;
+            config.allowUnfree = true;
+          };
+        })
+      ];
+    };
+
     # Meh
     vars = {
       fontName = "Maple Mono NF CN";
       release = "25.11";
     };
   in {
+    #===
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit pkgs;
@@ -96,21 +125,36 @@
           ./configuration.nix
         ];
         specialArgs = {
-          inherit user;
           inherit vars;
           inherit inputs;
         };
       };
     };
 
-    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.noi = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
         ./home.nix
       ];
       extraSpecialArgs = {
-        inherit user;
         inherit vars;
+        inherit inputs;
+      };
+    };
+
+    #===
+    darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
+      system = system-darwin;
+      modules = [./hosts/macbook/default.nix];
+      specialArgs = {
+        inherit inputs;
+      };
+    };
+
+    homeConfigurations.rrodnyuk = home-manager.lib.homeManagerConfiguration {
+      pkgs = pkgsDarwin;
+      modules = [./users/rrodnyuk.nix];
+      extraSpecialArgs = {
         inherit inputs;
       };
     };

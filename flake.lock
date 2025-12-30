@@ -24,7 +24,7 @@
     },
     "agenix": {
       "inputs": {
-        "darwin": [],
+        "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": [
           "nixpkgs"
@@ -173,9 +173,31 @@
         "type": "github"
       }
     },
+    "darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "agenix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766784396,
+        "narHash": "sha256-rIlgatT0JtwxsEpzq+UrrIJCRfVAXgbYPzose1DmAcM=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "f0c8e1f6feb562b5db09cee9fb566a2f989e6b55",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "devshell": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1741473158,
@@ -391,6 +413,25 @@
       },
       "original": {
         "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager-unstable": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1765682243,
+        "narHash": "sha256-yeCxFV/905Wr91yKt5zrVvK6O2CVXWRMSrxqlAZnLp0=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "58bf3ecb2d0bba7bdf363fc8a6c4d49b4d509d03",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
@@ -751,6 +792,27 @@
         "url": "https://flakehub.com/f/molarmanful/kirsch/0.6.0"
       }
     },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765066094,
+        "narHash": "sha256-0YSU35gfRFJzx/lTGgOt6ubP8K6LeW0vaywzNNqxkl4=",
+        "owner": "nix-darwin",
+        "repo": "nix-darwin",
+        "rev": "688427b1aab9afb478ca07989dc754fa543e03d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-darwin",
+        "ref": "nix-darwin-25.11",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1711997201,
@@ -816,6 +878,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1765186076,
+        "narHash": "sha256-hM20uyap1a0M9d344I692r+ik4gTMyj60cQWO+hAYP8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "addf7cf5f383a3101ecfba091b98d0a1263dc9b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1722073938,
         "narHash": "sha256-OpX0StkL8vpXyWOGUD6G+MA26wAXK6SpT94kLJXo6B4=",
         "owner": "NixOS",
@@ -830,7 +908,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1764522689,
         "narHash": "sha256-SqUuBFjhl/kpDiVaKLQBoD8TLD+/cTUzzgVFoaHrkqY=",
@@ -845,7 +923,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1764522689,
         "narHash": "sha256-SqUuBFjhl/kpDiVaKLQBoD8TLD+/cTUzzgVFoaHrkqY=",
@@ -909,17 +987,36 @@
         "type": "github"
       }
     },
+    "priv-env": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766773921,
+        "narHash": "sha256-0D4Oj/WfvH+iEnlUS8gWCBw0vrNcyT6WBsgEAHXXvBA=",
+        "ref": "refs/heads/master",
+        "rev": "e5a781126af82b2114205f3dbb2e4dc1f00c6936",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@gitlab.ozon.ru/rrodnyuk/nixenv.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@gitlab.ozon.ru/rrodnyuk/nixenv.git"
+      }
+    },
     "root": {
       "inputs": {
         "aagl": "aagl",
         "agenix": "agenix",
         "home-manager": "home-manager_2",
+        "home-manager-unstable": "home-manager-unstable",
         "hyprland": "hyprland",
         "hyprpanel": "hyprpanel",
         "kirsch-font": "kirsch-font",
+        "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "priv-env": "priv-env",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "xwayland-sattelite": "xwayland-sattelite",
@@ -1265,7 +1362,7 @@
     "xwayland-sattelite": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {

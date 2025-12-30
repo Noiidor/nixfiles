@@ -1,5 +1,4 @@
 {
-  user,
   config,
   pkgs,
   lib,
@@ -302,9 +301,9 @@
 
   #=== Users and apps
   users.mutableUsers = false;
-  users.users.${user} = {
+  users.users.noi = {
     isNormalUser = true;
-    description = user;
+    description = "based";
     extraGroups = ["networkmanager" "wheel" "video" "dialout"];
     hashedPasswordFile = config.age.secrets.noi-hashed-password.path;
     shell = pkgs.zsh;
@@ -366,7 +365,7 @@
   #=== Nix
   programs.nh = {
     enable = true;
-    flake = "/home/${user}/nixfiles";
+    flake = "/home/noi/nixfiles";
     clean = {
       enable = true;
       dates = "weekly";
