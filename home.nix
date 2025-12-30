@@ -1,5 +1,4 @@
 {
-  user,
   pkgs,
   inputs,
   lib,
@@ -13,8 +12,8 @@
   ];
 
   home = {
-    username = user;
-    homeDirectory = "/home/${user}";
+    username = "noi";
+    homeDirectory = "/home/noi";
 
     packages =
       # Stable packages
@@ -219,6 +218,7 @@
     ];
 
     sessionVariables = {
+      EDITOR = "nvim";
       # WLR_NO_HARDWARE_CURSORS = "1";
     };
 

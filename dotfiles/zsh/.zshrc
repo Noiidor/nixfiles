@@ -79,4 +79,5 @@ fi
 if command -v zoxide >/dev/null 2>&1; then
 	eval "$(zoxide init zsh)"
 fi
-#
+
+export PATH=$PATH:$(go env GOPATH)/bin

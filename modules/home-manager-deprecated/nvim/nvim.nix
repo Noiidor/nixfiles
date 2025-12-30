@@ -18,6 +18,7 @@
     rustfmt
     sqlfluff
     kdlfmt
+    alejandra
 
     # LSP
     nil # nix
@@ -31,6 +32,7 @@
     yaml-language-server
     rust-analyzer
     unstable.ols
+    gopls
 
     # Debug
     python312Packages.debugpy
