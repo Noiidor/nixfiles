@@ -84,7 +84,7 @@
 
   #=== Boot and kernel
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = ["ntfs"];
@@ -138,8 +138,8 @@
   };
 
   services.udev.extraRules = ''
-    # set bfq scheduler for non-rotating disks
-    ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
+    # set nvme scheduler
+    ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="adios"
   '';
 
   systemd.tmpfiles.rules = ["d /run/media/noi/android 0755 noi users - -"];
@@ -364,6 +364,7 @@
       enable = true;
     };
     power-profiles-daemon.enable = true;
+    envfs.enable = true;
   };
 
   #=== Nix
@@ -405,10 +406,12 @@
         substituters = [
           "https://hyprland.cachix.org"
           "https://nix-community.cachix.org"
+          "https://attic.xuyh0120.win/lantian"
         ];
         trusted-public-keys = [
           "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
         ];
 
         cores = 4;
@@ -421,6 +424,12 @@
       persistent = true;
       dates = ["Fri 23:00"];
     };
+  };
+
+  nixpkgs = {
+    overlays = [
+      inputs.nix-cachyos-kernel.overlays.pinned
+    ];
   };
 
   system.stateVersion = "25.11";
