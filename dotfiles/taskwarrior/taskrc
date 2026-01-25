@@ -1,0 +1,6 @@
+data.location=~/.local/share/task
+hooks.location=~/.config/task/hooks
+
+sync.server.url=http://router.local:10222
+sync.server.client_id=9c1df23a-2ec0-438a-8deb-59eef175bd8f
+sync.encryption_secret=${SECRET}

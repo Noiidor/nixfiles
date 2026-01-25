@@ -72,6 +72,8 @@
     zig
 
     # Other
+
+    # LLM
   ];
 
   environment.variables = {
@@ -106,6 +108,8 @@
       "cgroup_enable=memory"
       "cgroup_memory=1"
       "preempt=full"
+      "init_on_alloc=0"
+      "init_on_free=0"
     ];
     extraModprobeConfig = ''
       options hid_apple fnmode=0

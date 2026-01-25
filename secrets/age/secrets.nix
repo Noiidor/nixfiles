@@ -3,4 +3,5 @@ let
   allHosts = [keys.hosts.nixos];
 in {
   "noi-hashed-password.age".publicKeys = allHosts;
+  "taskwarrior-encryption-secret.age".publicKeys = allHosts;
 }
