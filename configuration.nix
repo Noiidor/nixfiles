@@ -72,6 +72,7 @@
     zig
 
     # Other
+    taskwarrior3
 
     # LLM
   ];
