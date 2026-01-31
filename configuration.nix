@@ -400,35 +400,52 @@
       };
     };
 
-    settings =
-      {
-        trusted-users = ["noi"];
-        experimental-features = [
-          "nix-command"
-          "flakes"
-          "pipe-operators"
-        ];
-        substituters = [
-          "https://hyprland.cachix.org"
-          "https://nix-community.cachix.org"
-          "https://attic.xuyh0120.win/lantian"
-        ];
-        trusted-public-keys = [
-          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-        ];
+    settings = {
+      trusted-users = ["noi"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "pipe-operators"
+      ];
 
-        cores = 4;
-        max-jobs = 3;
-      }
-      // inputs.aagl.nixConfig;
+      stalled-download-timeout = 4;
+      connect-timeout = 4;
+      substituters = [
+        # "https://hyprland.cachix.org"
+
+        "https://cache.nixos.kz"
+        "https://nixos-cache-proxy.cofob.dev"
+        "https://nixos-cache-proxy.sweetdogs.ru"
+        "https://cache.xd0.zip"
+        "https://mirror.yandex.ru/nixos"
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+
+        "https://nix-community.cachix.org"
+        # "https://attic.xuyh0120.win/lantian"
+        "https://cache.garnix.io"
+      ];
+      trusted-public-keys = [
+        # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        # "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      ];
+
+      cores = 4;
+      max-jobs = 3;
+    };
+    # // inputs.aagl.nixConfig;
 
     optimise = {
       automatic = true;
       persistent = true;
       dates = ["Fri 23:00"];
     };
+
+    # gc = {
+    #   dates = "daily";
+    #   options = "--delete-older-than 7d";
+    # };
   };
 
   nixpkgs = {

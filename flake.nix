@@ -78,10 +78,10 @@
       # inputs.darwin.follows = "";
     };
 
-    priv-env = {
-      url = "git+ssh://git@gitlab.ozon.ru/rrodnyuk/nixenv.git";
-      flake = false;
-    };
+    # priv-env = {
+    #   url = "git+ssh://git@gitlab.ozon.ru/rrodnyuk/nixenv.git";
+    #   flake = false;
+    # };
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };
