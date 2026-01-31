@@ -30,8 +30,8 @@ in {
     apple-sdk_26
     yazi
     xcode-install
-    # go
-    go_1_24
+    go
+    # go_1_24
     golangci-lint
     # grpc_cli # Unavailable
     kubectl
@@ -51,6 +51,9 @@ in {
     goose
     lazygit
     bruno
+    gotools
+
+    inputs.zen-browser2.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   services.colima = {

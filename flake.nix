@@ -57,6 +57,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser2 = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        home-manager.follows = "home-manager-unstable";
+      };
+    };
+
     kirsch-font = {
       url = "https://flakehub.com/f/molarmanful/kirsch/0.6.0";
       inputs.nixpkgs.follows = "nixpkgs";
