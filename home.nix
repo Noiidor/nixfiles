@@ -85,7 +85,7 @@
         # piper
         # bitwarden-desktop
         bitwarden-cli
-        unstable.keyguard
+        # unstable.keyguard
         mullvad-vpn
         mullvad-closest
         # lutris
@@ -211,7 +211,7 @@
       ++ [
         inputs.aagl.packages.${pkgs.system}.the-honkers-railway-launcher
         # inputs.aagl.packages.${pkgs.system}.sleepy-launcher
-        inputs.zen-browser.packages.${pkgs.system}.default
+        inputs.zen-browser2.packages.${pkgs.system}.default
       ];
 
     sessionPath = [

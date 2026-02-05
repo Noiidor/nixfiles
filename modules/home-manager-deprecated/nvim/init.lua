@@ -438,7 +438,7 @@ require("conform").setup({
 	},
 })
 
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter").setup({
 	-- ensure_installed = {
 	-- 	"all",
 	-- },
@@ -449,7 +449,10 @@ require("nvim-treesitter.configs").setup({
 		--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 		additional_vim_regex_highlighting = { "ruby" },
 	},
-	indent = { enable = true, disable = { "ruby" } },
+	indent = {
+		enable = true,
+		disable = { "ruby", "yaml" },
+	},
 })
 
 require("todo-comments").setup({
@@ -802,13 +805,6 @@ vim.lsp.enable("buf_ls")
 
 vim.lsp.enable("tinymist")
 vim.lsp.enable("zls")
-
-require("nvim-treesitter.configs").setup({
-	indent = {
-		enable = true,
-		disable = { "yaml" },
-	},
-})
 
 -- #############
 -- ### Debug ###

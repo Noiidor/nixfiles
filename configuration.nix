@@ -115,6 +115,8 @@
     extraModprobeConfig = ''
       options hid_apple fnmode=0
     '';
+    kernelPatches = [
+    ];
   };
 
   #=== Disks and memory
@@ -410,14 +412,18 @@
 
       stalled-download-timeout = 4;
       connect-timeout = 4;
+
+      http-connections = 100;
+      max-substitution-jobs = 64;
+
       substituters = [
         # "https://hyprland.cachix.org"
 
+        "https://mirror.yandex.ru/nixos"
+        "https://cache.xd0.zip"
         "https://cache.nixos.kz"
         "https://nixos-cache-proxy.cofob.dev"
         "https://nixos-cache-proxy.sweetdogs.ru"
-        "https://cache.xd0.zip"
-        "https://mirror.yandex.ru/nixos"
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
 
         "https://nix-community.cachix.org"
