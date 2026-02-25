@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./modules/home-manager-deprecated/nvim/nvim.nix
-    # ./modules/home-manager-deprecated/zsh/zsh.nix
     ./modules/home-manager-deprecated/stylix/stylix.nix
     ./modules/home-manager-deprecated/spicetify/spicetify.nix
   ];
@@ -280,11 +279,13 @@
         "application/x-extension-shtml"
         "application/x-extension-xht"
         "application/x-extension-xhtml"
+        "x-scheme-handler/unknown"
+        "x-scheme-handler/mailto"
         "x-scheme-handler/chrome"
-        "x-scheme-handler/http"
+        "x-scheme-handler/about"
         "x-scheme-handler/https"
+        "x-scheme-handler/http"
         "application/xhtml+xml"
-        "application/pdf"
       ];
     };
   in
@@ -293,5 +294,5 @@
     }
     // (lib.genAttrs apps.mpv (_: "mpv.desktop"))
     // (lib.genAttrs apps.nvim (_: "nvim.desktop"))
-    // (lib.genAttrs apps.zen (_: "zen.desktop"));
+    // (lib.genAttrs apps.zen (_: "zen-beta.desktop"));
 }

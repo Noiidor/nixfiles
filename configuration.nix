@@ -423,12 +423,12 @@
         "https://cache.xd0.zip"
         "https://cache.nixos.kz"
         "https://nixos-cache-proxy.cofob.dev"
-        "https://nixos-cache-proxy.sweetdogs.ru"
-        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        # "https://nixos-cache-proxy.sweetdogs.ru"
+        # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
 
-        "https://nix-community.cachix.org"
+        # "https://nix-community.cachix.org"
         # "https://attic.xuyh0120.win/lantian"
-        "https://cache.garnix.io"
+        # "https://cache.garnix.io"
       ];
       trusted-public-keys = [
         # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="

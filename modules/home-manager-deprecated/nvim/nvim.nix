@@ -1,6 +1,7 @@
 {
   pkgs,
   # pkgs-unstable,
+  inputs,
   ...
 }: {
   # Stable user packages
@@ -46,68 +47,59 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.unstable.neovim-unwrapped;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     defaultEditor = true;
     plugins =
       (with pkgs.vimPlugins; [
         # General
-        vim-sleuth
-        which-key-nvim
-        plenary-nvim
-        nvim-web-devicons
-        nvim-autopairs
+        # vim-sleuth
+        # which-key-nvim
+        # plenary-nvim
+        # nvim-web-devicons
+        # nvim-autopairs
 
         #Git
-        gitsigns-nvim
+        # gitsigns-nvim
 
         # File management
-        telescope-nvim
-        telescope-ui-select-nvim
-        telescope-fzf-native-nvim
-        telescope-file-browser-nvim
-        yazi-nvim
+        # telescope-nvim
+        # telescope-ui-select-nvim
+        # telescope-fzf-native-nvim
+        # telescope-file-browser-nvim
+        # yazi-nvim
 
         # LSP and snippets
-        nvim-lspconfig
-        nvim-cmp
-        cmp_luasnip
-        cmp-nvim-lsp
-        cmp-nvim-lua
-        cmp-buffer
-        cmp-path
-        luasnip
+        # nvim-lspconfig
+        # nvim-cmp
+        # cmp_luasnip
+        # cmp-nvim-lsp
+        # cmp-nvim-lua
+        # cmp-buffer
+        # cmp-path
+        # luasnip
 
         # Debugging
-        nvim-dap
-        nvim-dap-go
-        nvim-dap-python
-        nvim-dap-ui
-        nvim-dap-virtual-text
+        # nvim-dap
+        # nvim-dap-go
+        # nvim-dap-python
+        # nvim-dap-ui
+        # nvim-dap-virtual-text
 
         # Format
-        conform-nvim
+        # conform-nvim
 
         # Visual
-        tokyonight-nvim
-        cyberdream-nvim
-        kanagawa-nvim
-        onedark-nvim
-        onedarker-nvim
-        miasma-nvim
-        nightfox-nvim
-        twilight-nvim
-        alpha-nvim
-        todo-comments-nvim
-        fidget-nvim
-        base16-nvim
-        vim-illuminate
-        nvim-scrollbar
+        # todo-comments-nvim
+        # fidget-nvim
+        # base16-nvim
+        # vim-illuminate
+        # nvim-scrollbar
 
         # Utils
-        mini-nvim
-        vim-tmux-navigator
-        hardtime-nvim
-        typst-preview-nvim
+        # mini-nvim
+        # vim-tmux-navigator
+        # hardtime-nvim
+        # typst-preview-nvim
       ])
       ++
       # Unstable nvim plugins

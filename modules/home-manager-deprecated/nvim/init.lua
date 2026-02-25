@@ -73,6 +73,85 @@ vim.diagnostic.config({
 	virtual_lines = { current_line = true },
 })
 
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set("n", "<C-_>", "<cmd>nohlsearch<CR>")
+
+-- Diagnostic keymaps
+-- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- TIP: Disable arrow keys in normal mode
+vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+
+vim.keymap.set("n", "<leader>lo", function()
+	vim.opt.scrolloff = 999 - vim.o.scrolloff
+end, { desc = "[LO]ck cursor in middle" })
+
+--  See `:help wincmd` for a list of all window commands
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+-- Highlight when yanking (copying) text
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
+vim.pack.add({
+	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+	{ src = "https://github.com/windwp/nvim-autopairs" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	{ src = "https://github.com/folke/which-key.nvim" },
+
+	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
+	{ src = "https://github.com/mikavilpas/yazi.nvim" },
+
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+
+	{ src = "https://github.com/hrsh7th/nvim-cmp" },
+	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+	{ src = "https://github.com/hrsh7th/cmp-nvim-lua" },
+	{ src = "https://github.com/hrsh7th/cmp-buffer" },
+	{ src = "https://github.com/hrsh7th/cmp-path" },
+	{ src = "https://github.com/saadparwaiz1/cmp_luasnip" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip" },
+
+	{ src = "https://github.com/stevearc/conform.nvim" },
+	-- Starter dashboard
+	{ src = "https://github.com/goolord/alpha-nvim" },
+	-- Highlight special comments
+	{ src = "https://github.com/folke/todo-comments.nvim" },
+	-- Notifications
+	{ src = "https://github.com/j-hui/fidget.nvim" },
+	-- Highlight other uses of a word/object
+	{ src = "https://github.com/RRethy/vim-illuminate" },
+	-- Scrollbar
+	{ src = "https://github.com/petertriho/nvim-scrollbar" },
+	-- A lot of utility plugins
+	{ src = "https://github.com/nvim-mini/mini.nvim" },
+
+	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
+
+	-- Debug
+	{ src = "https://github.com/mfussenegger/nvim-dap" },
+	{ src = "https://github.com/igorlfs/nvim-dap-view" },
+	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
+
+	-- Zen mode
+	{ src = "https://github.com/folke/twilight.nvim" },
+})
+
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "#@bg@" })
+
 local color_bg = "#1b100f"
 local color_text = "#da7890"
 -- TODO: Make dimming by HSV
@@ -121,42 +200,6 @@ local dashboard = require("alpha.themes.dashboard")
 dashboard.file_icons_provider = "devicons"
 require("alpha").setup(dashboard.opts)
 
--- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
-vim.keymap.set("n", "<C-_>", "<cmd>nohlsearch<CR>")
-
--- Diagnostic keymaps
--- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
--- TIP: Disable arrow keys in normal mode
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
-
-vim.keymap.set("n", "<leader>lo", function()
-	vim.opt.scrolloff = 999 - vim.o.scrolloff
-end, { desc = "[LO]ck cursor in middle" })
-
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-
--- Highlight when yanking (copying) text
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})
-
-require("hardtime").setup({})
-
--- vim.api.nvim_set_hl(0, "Normal", { bg = "#@bg@" })
-
 -- Telescope config
 require("telescope").setup({
 	-- You can put your default mappings / updates / etc. in here
@@ -198,9 +241,8 @@ vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#303030" })
 vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#303030" })
 
 -- Enable Telescope extensions if they are installed
-pcall(require("telescope").load_extension, "fzf")
-pcall(require("telescope").load_extension, "ui-select")
-pcall(require("telescope").load_extension, "file_browser")
+-- pcall(require("telescope").load_extension, "fzf")
+-- pcall(require("telescope").load_extension, "ui-select")
 
 -- See `:help telescope.builtin`
 local builtin = require("telescope.builtin")
@@ -306,17 +348,19 @@ require("gitsigns").setup({
 	current_line_blame = true,
 })
 
-local devicons = require("nvim-web-devicons")
+-- local devicons = require("nvim-web-devicons")
+--
+-- devicons.setup({
+-- 	override_by_extension = {
+-- 		["go"] = {
+-- 			icon = "",
+-- 			color = "#00add8",
+-- 			name = "Golang",
+-- 		},
+-- 	},
+-- })
 
-devicons.setup({
-	override_by_extension = {
-		["go"] = {
-			icon = "",
-			color = "#00add8",
-			name = "Golang",
-		},
-	},
-})
+require("mini.icons").setup({})
 
 require("scrollbar").setup({
 	handle = {
@@ -566,9 +610,6 @@ local on_attach = function(_, bufnr)
 	-- vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 end
 
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-
 local kind_icons = {
 	Text = "",
 	Method = "󰆧",
@@ -597,19 +638,19 @@ local kind_icons = {
 	TypeParameter = "󰅲",
 }
 
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+
 cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			luasnip.lsp_expand(args.body)
-			-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+			vim.snippet.expand(args.body)
 		end,
 	},
 	formatting = {
 		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
-			-- Source
+			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
 			vim_item.menu = ({
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
@@ -622,7 +663,7 @@ cmp.setup({
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
-		-- documentation = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 		-- completion = {
 		-- 	border = "rounded",
 		-- },
@@ -705,106 +746,92 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- },
 -- }
 
-vim.lsp.enable("nixd")
-
-vim.lsp.enable("templ")
-
-vim.lsp.config["lua_ls"] = {
-	settings = {
-		Lua = {
-			completion = {
-				callSnippet = "Replace",
-			},
-			-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-			-- diagnostics = { disable = { 'missing-fields' } },
-		},
-		diagnostics = {
-			-- Get the language server to recognize the `vim` global
-			globals = { "vim" },
-		},
-	},
+-- Shared defaults for most servers
+local default_lsp = {
 	capabilities = capabilities,
 	on_attach = on_attach,
 }
-vim.lsp.enable("lua_ls")
 
-vim.lsp.config["gopls"] = {
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
+-- Helper to register and enable servers with merged config
+local function setup_server(name, cfg)
+	cfg = vim.tbl_deep_extend("force", default_lsp, cfg or {})
+	vim.lsp.config[name] = cfg
+	vim.lsp.enable(name)
+end
+
+-- Per-server configurations
+local servers = {
+	nixd = {},
+	templ = {},
+	lua_ls = {
+		settings = {
+			Lua = {
+				completion = {
+					callSnippet = "Replace",
+				},
+				-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+				-- diagnostics = { disable = { 'missing-fields' } },
 			},
-			staticcheck = true,
-			gofumpt = true,
-			completeUnimported = true,
-			usePlaceholders = true,
-		},
-	},
-	capabilities = capabilities,
-	on_attach = on_attach,
-}
-vim.lsp.enable("gopls")
-
-vim.lsp.enable("pyright")
-
--- lspconfigs.postgres_lsp = {
--- 	default_config = {
--- 		name = "postgres_lsp",
--- 		cmd = { "postgres_lsp" },
--- 		filetypes = { "sql" },
--- 		single_file_support = true,
--- 		root_dir = lspconfig.util.find_git_ancestor,
--- 	},
--- }
---
--- lspconfig.postgres_lsp.setup({})
---
-vim.lsp.enable("ols")
-
-vim.lsp.enable("rust_analyzer")
-
-vim.lsp.enable("sqls")
-
-vim.lsp.enable("clangd")
-
--- lspconfig.nil_ls.setup({})
-
-vim.lsp.config["yamlls"] = {
-	settings = {
-		yaml = {
-			completion = true,
-			schemas = {
-				kubernetes = "*.yaml",
-			},
-			schemaStore = { enable = true },
-			format = {
-				enable = true,
-			},
-			editor = {
-				tabSize = 4,
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
 			},
 		},
 	},
+	gopls = {
+		settings = {
+			gopls = {
+				analyses = {
+					unusedparams = true,
+				},
+				staticcheck = true,
+				gofumpt = true,
+				completeUnimported = true,
+				usePlaceholders = true,
+			},
+		},
+	},
+	pyright = {},
+	ols = {},
+	rust_analyzer = {},
+	sqls = {},
+	clangd = {},
+	yamlls = {
+		settings = {
+			yaml = {
+				completion = true,
+				schemas = {
+					kubernetes = "*.yaml",
+				},
+				schemaStore = { enable = true },
+				format = {
+					enable = true,
+				},
+				editor = {
+					tabSize = 4,
+				},
+			},
+		},
+	},
+	docker_compose_language_service = {},
+	dockerls = {},
+	buf_ls = {},
+	tinymist = {},
+	zls = {},
 }
-vim.lsp.enable("yamlls")
 
-vim.lsp.enable("docker_compose_language_service")
+for name, cfg in pairs(servers) do
+	setup_server(name, cfg)
+end
 
+-- Filetype for Docker Compose
 local function set_filetype(pattern, filetype)
 	vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		pattern = pattern,
 		command = "set filetype=" .. filetype,
 	})
 end
-
 set_filetype({ "docker-compose.yaml" }, "yaml.docker-compose")
-
-vim.lsp.enable("dockerls")
-
-vim.lsp.enable("buf_ls")
-
-vim.lsp.enable("tinymist")
-vim.lsp.enable("zls")
 
 -- #############
 -- ### Debug ###
@@ -860,86 +887,96 @@ dap.listeners.after["event_terminated"]["me"] = function()
 end
 
 -- DAP extensions
--- require("nvim-dap-virtual-text").setup()
-require("dap-go").setup()
-require("dap-python").setup("python")
+require("nvim-dap-virtual-text").setup()
 
-local dapui = require("dapui")
-dapui.setup({
-	controls = {
-		element = "repl",
-		enabled = true,
-		icons = {
-			disconnect = "",
-			pause = "",
-			play = "",
-			run_last = "",
-			step_back = "",
-			step_into = "",
-			step_out = "",
-			step_over = "",
-			terminate = "",
-		},
-	},
-	element_mappings = {},
-	expand_lines = true,
-	floating = {
-		border = "single",
-		mappings = {
-			close = { "q", "<Esc>" },
-		},
-	},
-	force_buffers = true,
-	icons = {
-		collapsed = "",
-		current_frame = "",
-		expanded = "",
-	},
-	layouts = {
-		{
-			elements = { {
-				id = "scopes",
-				size = 1,
-			} },
-			position = "left",
-			size = 45,
-		},
-		{
-			elements = {
-				{
-					id = "repl",
-					size = 1,
-				},
-			},
-			position = "bottom",
-			size = 20,
-		},
-	},
-	mappings = {
-		edit = "e",
-		expand = { "<CR>", "<2-LeftMouse>" },
-		open = "o",
-		remove = "d",
-		repl = "r",
-		toggle = "t",
-	},
-	render = {
-		indent = 1,
-		max_value_lines = 100,
-	},
-})
+-- require("nvim-dap-view").setup({
+-- 	auto_toggle = true,
+-- })
+
+-- local dapui = require("dapui")
+-- dapui.setup({
+-- 	controls = {
+-- 		element = "repl",
+-- 		enabled = true,
+-- 		icons = {
+-- 			disconnect = "",
+-- 			pause = "",
+-- 			play = "",
+-- 			run_last = "",
+-- 			step_back = "",
+-- 			step_into = "",
+-- 			step_out = "",
+-- 			step_over = "",
+-- 			terminate = "",
+-- 		},
+-- 	},
+-- 	element_mappings = {},
+-- 	expand_lines = true,
+-- 	floating = {
+-- 		border = "single",
+-- 		mappings = {
+-- 			close = { "q", "<Esc>" },
+-- 		},
+-- 	},
+-- 	force_buffers = true,
+-- 	icons = {
+-- 		collapsed = "",
+-- 		current_frame = "",
+-- 		expanded = "",
+-- 	},
+-- 	layouts = {
+-- 		{
+-- 			elements = { {
+-- 				id = "scopes",
+-- 				size = 1,
+-- 			} },
+-- 			position = "left",
+-- 			size = 45,
+-- 		},
+-- 		{
+-- 			elements = {
+-- 				{
+-- 					id = "repl",
+-- 					size = 1,
+-- 				},
+-- 			},
+-- 			position = "bottom",
+-- 			size = 20,
+-- 		},
+-- 	},
+-- 	mappings = {
+-- 		edit = "e",
+-- 		expand = { "<CR>", "<2-LeftMouse>" },
+-- 		open = "o",
+-- 		remove = "d",
+-- 		repl = "r",
+-- 		toggle = "t",
+-- 	},
+-- 	render = {
+-- 		indent = 1,
+-- 		max_value_lines = 100,
+-- 	},
+-- })
+
 dap.listeners.before.attach.dapui_config = function()
-	dapui.open()
+	-- dapui.open()
 end
 dap.listeners.before.launch.dapui_config = function()
-	dapui.open()
+	-- dapui.open()
 end
 dap.listeners.before.event_terminated.dapui_config = function()
-	dapui.close()
+	-- dapui.close()
 end
 dap.listeners.before.event_exited.dapui_config = function()
-	dapui.close()
+	-- dapui.close()
 end
 
-require("typst-preview").setup({})
+require("typst-preview").setup({
+	dependencies_bin = {
+		["tinymist"] = nil,
+		["websocat"] = nil,
+	},
+})
 vim.keymap.set("n", "<leader>p", ":TypstPreviewToggle<CR>")
+
+require("grug-far").setup({})
