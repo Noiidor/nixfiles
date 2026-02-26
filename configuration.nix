@@ -149,7 +149,10 @@
     ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="adios"
   '';
 
-  systemd.tmpfiles.rules = ["d /run/media/noi/android 0755 noi users - -"];
+  systemd.tmpfiles.rules = [
+    "d /run/media/noi/android 0755 noi users - -"
+    "d /run/media/noi/drive 0755 noi users - -"
+  ];
 
   #=== Networking
   networking = {
