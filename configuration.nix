@@ -424,7 +424,7 @@
 
         "https://mirror.yandex.ru/nixos"
         "https://cache.xd0.zip"
-        "https://cache.nixos.kz"
+        # "https://cache.nixos.kz"
         "https://nixos-cache-proxy.cofob.dev"
         # "https://nixos-cache-proxy.sweetdogs.ru"
         # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"

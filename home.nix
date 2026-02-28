@@ -46,7 +46,7 @@
 
         #=== Odin
         unstable.odin
-        unstable.ols
+        # ols
 
         #=== Python
         python3
@@ -111,7 +111,7 @@
         unzip
         ffmpeg
         rnote
-        davinci-resolve
+        # davinci-resolve
         gnome-font-viewer
         unstable.wiremix
         wl-screenrec
@@ -208,7 +208,7 @@
       ])
       # Other
       ++ [
-        inputs.aagl.packages.${pkgs.system}.the-honkers-railway-launcher
+        # inputs.aagl.packages.${pkgs.system}.the-honkers-railway-launcher
         # inputs.aagl.packages.${pkgs.system}.sleepy-launcher
         inputs.zen-browser2.packages.${pkgs.system}.default
       ];
@@ -287,6 +287,7 @@
         "x-scheme-handler/http"
         "application/xhtml+xml"
       ];
+      qimgv = ["image/png" "image/jpeg" "image/webp" "image/gif"];
     };
   in
     {
@@ -294,5 +295,6 @@
     }
     // (lib.genAttrs apps.mpv (_: "mpv.desktop"))
     // (lib.genAttrs apps.nvim (_: "nvim.desktop"))
-    // (lib.genAttrs apps.zen (_: "zen-beta.desktop"));
+    // (lib.genAttrs apps.zen (_: "zen-beta.desktop"))
+    // (lib.genAttrs apps.qimgv (_: "qimgv.desktop"));
 }

@@ -54,10 +54,10 @@
       url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
     };
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # zen-browser = {
+    #   url = "github:youwen5/zen-browser-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     zen-browser2 = {
       url = "github:0xc000022070/zen-browser-flake";
