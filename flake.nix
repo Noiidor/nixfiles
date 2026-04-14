@@ -5,6 +5,8 @@
     nixpkgs.url = "nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
+    nur.url = "github:nix-community/NUR";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
     };
@@ -52,10 +54,10 @@
       url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
     };
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # zen-browser = {
+    #   url = "github:youwen5/zen-browser-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     zen-browser2 = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -82,6 +84,13 @@
     };
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    # priv-env = {
+    #   url = "git+ssh://git@gitlab.ozon.ru/rrodnyuk/nixenv.git";
+    #   flake = false;
+    # };
+
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = {

@@ -72,6 +72,9 @@
     zig
 
     # Other
+    taskwarrior3
+
+    # LLM
   ];
 
   environment.variables = {
@@ -84,7 +87,7 @@
 
   #=== Boot and kernel
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = ["ntfs"];
@@ -106,10 +109,14 @@
       "cgroup_enable=memory"
       "cgroup_memory=1"
       "preempt=full"
+      "init_on_alloc=0"
+      "init_on_free=0"
     ];
     extraModprobeConfig = ''
       options hid_apple fnmode=0
     '';
+    kernelPatches = [
+    ];
   };
 
   #=== Disks and memory
@@ -138,11 +145,14 @@
   };
 
   services.udev.extraRules = ''
-    # set bfq scheduler for non-rotating disks
-    ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
+    # set nvme scheduler
+    ACTION=="add|change", KERNEL=="nvme[0-9]n[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="adios"
   '';
 
-  systemd.tmpfiles.rules = ["d /run/media/noi/android 0755 noi users - -"];
+  systemd.tmpfiles.rules = [
+    "d /run/media/noi/android 0755 noi users - -"
+    "d /run/media/noi/drive 0755 noi users - -"
+  ];
 
   #=== Networking
   networking = {
@@ -364,6 +374,7 @@
       enable = true;
     };
     power-profiles-daemon.enable = true;
+    envfs.enable = true;
   };
 
   #=== Nix
@@ -394,33 +405,62 @@
       };
     };
 
-    settings =
-      {
-        trusted-users = ["noi"];
-        experimental-features = [
-          "nix-command"
-          "flakes"
-          "pipe-operators"
-        ];
-        substituters = [
-          "https://hyprland.cachix.org"
-          "https://nix-community.cachix.org"
-        ];
-        trusted-public-keys = [
-          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        ];
+    settings = {
+      trusted-users = ["noi"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "pipe-operators"
+      ];
 
-        cores = 4;
-        max-jobs = 3;
-      }
-      // inputs.aagl.nixConfig;
+      stalled-download-timeout = 4;
+      connect-timeout = 4;
+
+      http-connections = 100;
+      max-substitution-jobs = 64;
+
+      substituters = [
+        # "https://hyprland.cachix.org"
+
+        "https://mirror.yandex.ru/nixos"
+        "https://cache.xd0.zip"
+        # "https://cache.nixos.kz"
+        "https://nixos-cache-proxy.cofob.dev"
+        # "https://nixos-cache-proxy.sweetdogs.ru"
+        # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+
+        # "https://nix-community.cachix.org"
+        # "https://attic.xuyh0120.win/lantian"
+        # "https://cache.garnix.io"
+      ];
+      trusted-public-keys = [
+        # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        # "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      ];
+
+      cores = 4;
+      max-jobs = 3;
+    };
+    # // inputs.aagl.nixConfig;
 
     optimise = {
       automatic = true;
       persistent = true;
       dates = ["Fri 23:00"];
     };
+
+    # gc = {
+    #   dates = "daily";
+    #   options = "--delete-older-than 7d";
+    # };
+  };
+
+  nixpkgs = {
+    overlays = [
+      inputs.nix-cachyos-kernel.overlays.pinned
+    ];
   };
 
   system.stateVersion = "25.11";

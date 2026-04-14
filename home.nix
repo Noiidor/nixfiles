@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./modules/home-manager-deprecated/nvim/nvim.nix
-    # ./modules/home-manager-deprecated/zsh/zsh.nix
     ./modules/home-manager-deprecated/stylix/stylix.nix
     ./modules/home-manager-deprecated/spicetify/spicetify.nix
   ];
@@ -47,7 +46,7 @@
 
         #=== Odin
         unstable.odin
-        unstable.ols
+        # ols
 
         #=== Python
         python3
@@ -85,7 +84,7 @@
         # piper
         # bitwarden-desktop
         bitwarden-cli
-        unstable.keyguard
+        # unstable.keyguard
         mullvad-vpn
         mullvad-closest
         # lutris
@@ -112,7 +111,7 @@
         unzip
         ffmpeg
         rnote
-        davinci-resolve
+        # davinci-resolve
         gnome-font-viewer
         unstable.wiremix
         wl-screenrec
@@ -209,9 +208,9 @@
       ])
       # Other
       ++ [
-        inputs.aagl.packages.${pkgs.system}.the-honkers-railway-launcher
+        # inputs.aagl.packages.${pkgs.system}.the-honkers-railway-launcher
         # inputs.aagl.packages.${pkgs.system}.sleepy-launcher
-        inputs.zen-browser.packages.${pkgs.system}.default
+        inputs.zen-browser2.packages.${pkgs.system}.default
       ];
 
     sessionPath = [
@@ -280,12 +279,15 @@
         "application/x-extension-shtml"
         "application/x-extension-xht"
         "application/x-extension-xhtml"
+        "x-scheme-handler/unknown"
+        "x-scheme-handler/mailto"
         "x-scheme-handler/chrome"
-        "x-scheme-handler/http"
+        "x-scheme-handler/about"
         "x-scheme-handler/https"
+        "x-scheme-handler/http"
         "application/xhtml+xml"
-        "application/pdf"
       ];
+      qimgv = ["image/png" "image/jpeg" "image/webp" "image/gif"];
     };
   in
     {
@@ -293,5 +295,6 @@
     }
     // (lib.genAttrs apps.mpv (_: "mpv.desktop"))
     // (lib.genAttrs apps.nvim (_: "nvim.desktop"))
-    // (lib.genAttrs apps.zen (_: "zen.desktop"));
+    // (lib.genAttrs apps.zen (_: "zen-beta.desktop"))
+    // (lib.genAttrs apps.qimgv (_: "qimgv.desktop"));
 }

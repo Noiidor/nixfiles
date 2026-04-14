@@ -20,9 +20,6 @@ in {
     [
       (mkHome "noi"
         [
-          (mkDir ".test")
-          (rm "fio")
-          (mkLink ".config/test" "/home/noi/random.file")
           (mkLink ".config/foot/foot.ini" dotfiles.foot.config)
 
           (mkLink ".config/qimgv/qimgv.conf" dotfiles.qimgv.config)
@@ -39,7 +36,19 @@ in {
           (mkLink ".config/starship.toml" dotfiles.starship.config)
 
           (mkLink ".config/mako/config" dotfiles.mako.config)
+
+          # (mkLink ".config/task/taskrc" dotfiles.taskwarrior.config)
         ])
     ]
     |> lib.mergeAttrsList;
+
+  system.activationScripts.taskwarrior-config =
+    lib.stringAfter []
+    /*
+    bash
+    */
+    ''
+      export SECRET=$(cat ${config.age.secrets.taskwarrior-encryption-secret.path})
+      ${pkgs.envsubst}/bin/envsubst < ${dotfiles.taskwarrior.config} > /home/noi/.config/task/taskrc
+    '';
 }
