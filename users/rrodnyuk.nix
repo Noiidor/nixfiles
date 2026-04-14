@@ -52,12 +52,37 @@ in {
     lazygit
     bruno
     gotools
+    localsend
+    go-minimock
+    betterdisplay
+    # unstable.claude-code
+    glow
+    pgcli
 
     inputs.zen-browser2.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   services.colima = {
     enable = true;
+  };
+
+  programs = {
+    mpv = {
+      enable = true;
+      scripts = [pkgs.mpvScripts.uosc];
+      config = {
+        loop-file = "inf";
+      };
+    };
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          # name = "";
+          # email = "";
+        };
+      };
+    };
   };
 
   home.file = {

@@ -420,7 +420,7 @@ require("conform").setup({
 		html = { "biome" },
 		css = { "biome" },
 		graphql = { "biome" },
-		yaml = { "yamlfmt" },
+		-- yaml = { "yamlfmt" },
 		rs = { "rustfmt" },
 		proto = { "buf format" },
 		c = { "clang-format" },

@@ -1,12 +1,11 @@
 {
+  config,
   pkgs,
   inputs,
   ...
 }: {
   imports = [
-    # Private expression, should at least setup necessary envs
-    "${inputs.priv-env}/system-env.nix"
-    ./darwin.nix
+    inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
 
   environment.systemPackages = [];
@@ -18,9 +17,29 @@
   # services.nix-daemon.enable = true;
   # services.karabiner-elements.enable = true;
 
-  programs.zsh.enable = true;
+  # programs.zsh.enable = true;
+
+  nix-homebrew = {
+    enable = true;
+    # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+    # enableRosetta = true;
+    user = "rrodnyuk";
+  };
+
+  homebrew = {
+    enable = true;
+    brews = [
+      "deskflow"
+    ];
+    taps =
+      [
+        "deskflow/tap"
+      ]
+      ++ builtins.attrNames config.nix-homebrew.taps;
+  };
 
   system.stateVersion = 4;
+  system.primaryUser = "rrodnyuk";
 
   fonts.packages = with pkgs; [
     maple-mono.NF-CN

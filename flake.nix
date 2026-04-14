@@ -80,6 +80,8 @@
       url = "git+ssh://git@gitlab.ozon.ru/rrodnyuk/nixenv.git";
       flake = false;
     };
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
   outputs = {
