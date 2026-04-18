@@ -79,7 +79,7 @@
         vesktop
         qbittorrent
         obsidian
-        (bottles.override {removeWarningPopup = true;})
+        (unstable.bottles.override {removeWarningPopup = true;})
         mangohud
         # piper
         # bitwarden-desktop
@@ -91,9 +91,9 @@
         links2 # Terminal web browser
         # kando # GUI pie-picker
         # qutebrowser
-        unstable.ayugram-desktop
         # unstable.winetricks
         # unstable.wineWowPackages.waylandFull
+        # lutris
 
         # Media
         unstable.gimp3

@@ -16,66 +16,84 @@
     # ./modules/clamav.nix
     ./agenix.nix
     ./modules/vm/virt-manager.nix
+
+    "${inputs.nixpkgs-unstable}/nixos/modules/services/hardware/tlp.nix"
+    # "${inputs.nixpkgs-unstable}/nixos/modules/programs/throne.nix"
+  ];
+
+  disabledModules = [
+    "services/hardware/tlp.nix"
   ];
 
   # TODO: Split into modules
 
   #=== Packages
-  environment.systemPackages = with pkgs; [
-    # CLI utils
-    usbutils
-    inetutils
-    pciutils
+  environment.systemPackages = with pkgs;
+    [
+      # CLI utils
+      usbutils
+      inetutils
+      pciutils
+      ddcutil
 
-    # Programming
-    git
+      # Programming
+      git
 
-    # System
-    home-manager
-    wirelesstools
-    wl-clipboard
-    wireguard-tools
+      # System
+      home-manager
+      wirelesstools
+      wl-clipboard
+      wireguard-tools
 
-    # Disks and FS
-    gparted
-    ntfs3g
-    testdisk
-    adbfs-rootless
-    android-tools
-    simple-mtpfs
+      # Disks and FS
+      gparted
+      ntfs3g
+      testdisk
+      adbfs-rootless
+      android-tools
+      simple-mtpfs
+      qdiskinfo # Disk health GUI
 
-    # Network
-    wireshark
+      # Network
+      wireshark
+      v2rayn
 
-    # Lib
-    libadwaita
-    libnotify
+      # Lib
+      libadwaita
+      libnotify
 
-    # Media
-    unstable.yazi
-    dragon-drop # Drag-n-drop utility
-    hexyl # Hex binary viewer
-    qimgv
+      # Media
+      unstable.yazi
+      dragon-drop # Drag-n-drop utility
+      hexyl # Hex binary viewer
+      qimgv
 
-    # Terminal
-    zsh
-    foot
-    tmux
-    starship
-    zoxide
+      # Terminal
+      zsh
+      foot
+      tmux
+      starship
+      zoxide
 
-    # Desktop
-    waybar
+      # Desktop
+      waybar
+      unstable.telegram-desktop
 
-    # Programming
-    zls
-    zig
+      # Programming
+      zls
+      zig
 
-    # Other
-    taskwarrior3
+      # Other
+      taskwarrior3
+      kicad-small
+      localsend
+      deskflow
 
-    # LLM
-  ];
+      # LLM
+    ]
+    ++ [
+      inputs.agenix.packages.${pkgs.system}.default
+    ];
 
   environment.variables = {
     EDITOR = "nvim";
@@ -112,6 +130,9 @@
       "init_on_alloc=0"
       "init_on_free=0"
     ];
+    kernelModules = [
+      "i2c-dev"
+    ];
     extraModprobeConfig = ''
       options hid_apple fnmode=0
     '';
@@ -131,6 +152,8 @@
     freeMemThreshold = 6;
     enableNotifications = true;
   };
+
+  services.fwupd.enable = true;
 
   services.udisks2.enable = true;
 
@@ -174,7 +197,15 @@
     '';
     #networkmanager.dns = "none";
     # nameservers = ["9.9.9.9" "8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
-
+    # interfaces = {
+    #   xray-tun = {
+    #     virtual = true;
+    #     virtualType = "tun";
+    #     mtu = 1500;
+    #     ipAddress = "172.19.0.1/30";
+    #   };
+    # };
+    #
     firewall = {
       enable = true;
       allowedTCPPorts = [22];
@@ -366,6 +397,11 @@
         };
       };
     };
+
+    throne = {
+      enable = true;
+      tunMode.enable = true;
+    };
   };
 
   #=== Other
@@ -373,7 +409,14 @@
     upower = {
       enable = true;
     };
-    power-profiles-daemon.enable = true;
+    power-profiles-daemon.enable = false;
+    tlp = {
+      pd = {
+        enable = true;
+        package = pkgs.unstable.tlp-pd;
+      };
+      enable = true;
+    };
     envfs.enable = true;
   };
 

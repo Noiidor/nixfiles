@@ -106,7 +106,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.pack.add({
-	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
@@ -148,6 +147,9 @@ vim.pack.add({
 
 	-- Zen mode
 	{ src = "https://github.com/folke/twilight.nvim" },
+
+	-- Global search and replace
+	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
 })
 
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "#@bg@" })
@@ -980,4 +982,7 @@ require("typst-preview").setup({
 })
 vim.keymap.set("n", "<leader>p", ":TypstPreviewToggle<CR>")
 
-require("grug-far").setup({})
+local grug = require("grug-far")
+grug.setup()
+
+vim.keymap.set("n", "<leader>R", grug.open)
