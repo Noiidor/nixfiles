@@ -36,9 +36,6 @@
       pciutils
       ddcutil
 
-      # Programming
-      git
-
       # System
       home-manager
       wirelesstools
@@ -80,6 +77,8 @@
       unstable.telegram-desktop
 
       # Programming
+      git
+      delta # better git pager
       zls
       zig
 
@@ -378,6 +377,9 @@
     git = {
       enable = true;
       config = {
+        core = {
+          pager = "delta";
+        };
         user = {
           name = "noi";
           email = "noidor2019@gmail.com";
@@ -386,6 +388,19 @@
 
         pull = {
           rebase = true;
+        };
+        merge = {
+          conflictStyle = "zdiff3";
+        };
+        interactive = {
+          diffFilter = "delta --color-only";
+        };
+        delta = {
+          navigate = true;
+          dark = true;
+        };
+        alias = {
+          sdiff = "-c delta.features=side-by-side diff";
         };
 
         url = {
