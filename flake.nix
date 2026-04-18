@@ -87,6 +87,8 @@
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs = {

@@ -87,9 +87,13 @@
       kicad-small
       localsend
       deskflow
-
-      # LLM
     ]
+    # LLM
+    ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+      claude-code
+      claude-code-router
+      opencode
+    ])
     ++ [
       inputs.agenix.packages.${pkgs.system}.default
     ];
@@ -481,9 +485,9 @@
         # "https://hyprland.cachix.org"
 
         "https://mirror.yandex.ru/nixos"
-        "https://cache.xd0.zip"
+        # "https://cache.xd0.zip"
         # "https://cache.nixos.kz"
-        "https://nixos-cache-proxy.cofob.dev"
+        # "https://nixos-cache-proxy.cofob.dev"
         # "https://nixos-cache-proxy.sweetdogs.ru"
         # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
 

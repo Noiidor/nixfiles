@@ -47,7 +47,7 @@
 
   programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    package = pkgs.unstable.neovim;
     defaultEditor = true;
     plugins =
       (with pkgs.vimPlugins; [
