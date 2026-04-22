@@ -38,6 +38,8 @@ in {
           (mkLink ".config/mako/config" dotfiles.mako.config)
 
           # (mkLink ".config/task/taskrc" dotfiles.taskwarrior.config)
+
+          (mkLink ".config/opencode/opencode.json" dotfiles.opencode.config)
         ])
     ]
     |> lib.mergeAttrsList;
