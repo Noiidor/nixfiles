@@ -161,6 +161,10 @@ vim.api.nvim_set_hl(0, "DiagnosticSignOk", { bg = "none" })
 vim.api.nvim_set_hl(0, "DiagnosticSignHint", { bg = "none" })
 vim.api.nvim_set_hl(0, "DiagnosticSignInfo", { bg = "none" })
 
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = color_bg })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#303030" })
+vim.api.nvim_set_hl(0, "FloatTitle", { fg = color_text, bg = color_bg })
+
 vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#303030" })
 vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#303030" })
 
