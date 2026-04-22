@@ -12,7 +12,7 @@ in {
     "${inputs.home-manager-unstable}/modules/services/colima.nix"
 
     # Private expression, should at least setup git
-    "${inputs.priv-env}/home-env.nix"
+    # "${inputs.priv-env}/home-env.nix"
 
     # inputs.agenix.homeManagerModules.default
   ];
@@ -22,7 +22,6 @@ in {
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    iterm2
     ghostty-bin
     tmux
     starship
@@ -81,6 +80,17 @@ in {
           # name = "";
           # email = "";
         };
+      };
+    };
+  };
+
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+      };
+      pull = {
+        rebase = false;
       };
     };
   };
