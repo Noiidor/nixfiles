@@ -218,6 +218,8 @@
 
     sessionVariables = {
       EDITOR = "nvim";
+      MANPAGER = "nvim +Man!";
+      PAGER = "nvimpager";
       # WLR_NO_HARDWARE_CURSORS = "1";
     };
 

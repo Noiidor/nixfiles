@@ -35,6 +35,8 @@
       inetutils
       pciutils
       ddcutil
+      fd
+      ripgrep
 
       # System
       home-manager
@@ -71,6 +73,8 @@
       tmux
       starship
       zoxide
+      inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+      nvimpager
 
       # Desktop
       waybar
@@ -81,6 +85,32 @@
       delta # better git pager
       zls
       zig
+      delve # go
+
+      # LSP
+      nil # nix
+      nixd
+      lua-language-server
+      postgres-language-server
+      sqls
+      pyright
+      docker-compose-language-service
+      dockerfile-language-server
+      yaml-language-server
+      rust-analyzer
+      # unstable.ols
+      gopls
+
+      # Formatting
+      stylua # lua
+      biome # json, js
+      sleek # sql
+      sql-formatter
+      yamlfmt
+      rustfmt
+      sqlfluff
+      kdlfmt
+      alejandra
 
       # Other
       taskwarrior3

@@ -150,6 +150,8 @@ vim.pack.add({
 
 	-- Global search and replace
 	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
+
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 })
 
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "#@bg@" })
@@ -489,7 +491,7 @@ require("nvim-treesitter").setup({
 	-- ensure_installed = {
 	-- 	"all",
 	-- },
-	auto_install = false,
+	auto_install = true,
 	highlight = {
 		enable = true,
 		--  If you are experiencing weird indenting issues, add the language to

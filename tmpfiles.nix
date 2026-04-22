@@ -40,6 +40,8 @@ in {
           # (mkLink ".config/task/taskrc" dotfiles.taskwarrior.config)
 
           (mkLink ".config/opencode/opencode.json" dotfiles.opencode.config)
+
+          (mkLink ".config/nvim/init.lua" dotfiles.neovim.config)
         ])
     ]
     |> lib.mergeAttrsList;
