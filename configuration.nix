@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./hardware-configuration-laptop.nix
-    inputs.stylix.nixosModules.stylix
     # ./modules/hyprland/hyprland.nix
     ./modules/niri/niri.nix
     ./scripts/scripts.nix
@@ -16,6 +15,7 @@
     # ./modules/clamav.nix
     ./agenix.nix
     ./modules/vm/virt-manager.nix
+    ./modules/stylix/stylix.nix
 
     "${inputs.nixpkgs-unstable}/nixos/modules/services/hardware/tlp.nix"
     # "${inputs.nixpkgs-unstable}/nixos/modules/programs/throne.nix"
@@ -326,13 +326,6 @@
     # nerd-fonts.iosevka
     # inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd
   ];
-
-  stylix = {
-    enable = true;
-    image = ./modules/stylix/wallpaper.png;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
