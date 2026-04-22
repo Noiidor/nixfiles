@@ -78,11 +78,6 @@
       # inputs.darwin.follows = "";
     };
 
-    # priv-env = {
-    #   url = "git+ssh://git@gitlab.ozon.ru/rrodnyuk/nixenv.git";
-    #   flake = false;
-    # };
-
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
