@@ -8,11 +8,7 @@
   dotfiles = import ../dotfiles/dotfiles.nix args;
 in {
   imports = [
-    ../modules/home-manager-deprecated/nvim/nvim.nix
     "${inputs.home-manager-unstable}/modules/services/colima.nix"
-
-    # Private expression, should at least setup git
-    # "${inputs.priv-env}/home-env.nix"
 
     # inputs.agenix.homeManagerModules.default
   ];
@@ -30,6 +26,7 @@ in {
     yazi
     xcode-install
     go
+    gopls
     # go_1_24
     golangci-lint
     # grpc_cli # Unavailable
@@ -57,18 +54,28 @@ in {
     # unstable.claude-code
     glow
     pgcli
+    delta
+    ripgrep
+    alejandra
+    stylua # lua
+    biome # json, js
+    sleek # sql
+    nixd
 
+    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     inputs.zen-browser2.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   services.colima = {
     enable = true;
+    package = pkgs.unstable.colima;
   };
 
   programs = {
     mpv = {
-      enable = true;
-      scripts = [pkgs.mpvScripts.uosc];
+      enable = false;
+      package = pkgs.unstable.mpv;
+      # scripts = [pkgs.mpvScripts.uosc];
       config = {
         loop-file = "inf";
       };
@@ -105,6 +112,8 @@ in {
     ".config/starship.toml".source = dotfiles.starship.config;
 
     ".config/tmux/tmux.conf".source = dotfiles.tmux.config;
+
+    ".config/nvim/init.lua".source = dotfiles.neovim.config;
   };
 
   home.sessionVariables = {
