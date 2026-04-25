@@ -54,12 +54,7 @@
       url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
     };
 
-    # zen-browser = {
-    #   url = "github:youwen5/zen-browser-flake";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    zen-browser2 = {
+    zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
@@ -67,10 +62,10 @@
       };
     };
 
-    kirsch-font = {
-      url = "https://flakehub.com/f/molarmanful/kirsch/0.6.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # kirsch-font = {
+    #   url = "https://flakehub.com/f/molarmanful/kirsch/0.6.0";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -84,6 +79,11 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
+
+    freesm-launcher = {
+      url = "github:freesmteam/freesmlauncher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -97,47 +97,67 @@
     system = "x86_64-linux";
     system-darwin = "aarch64-darwin";
 
+    overlays = [
+      inputs.nix-cachyos-kernel.overlays.pinned
+
+      (final: prev: {
+        unstable = import nixpkgs-unstable {
+          system = prev.system;
+          config.allowUnfree = true;
+        };
+
+        neovim-nightly = inputs.neovim-nightly-overlay.packages.${prev.stdenv.hostPlatform.system}.default;
+        agenix = inputs.agenix.packages.${prev.stdenv.hostPlatform.system}.default;
+        zen-browser = inputs.zen-browser.packages.${prev.stdenv.hostPlatform.system}.default;
+        llmPkgs = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system};
+        freesm-launcher = inputs.freesm-launcher.packages.${prev.stdenv.hostPlatform.system}.default;
+      })
+    ];
+
     pkgs = import nixpkgs {
-      inherit system;
+      inherit system overlays;
       config.allowUnfree = true;
-      overlays = [
-        (final: prev: {
-          unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        })
-      ];
     };
 
     pkgsDarwin = import nixpkgs {
       system = system-darwin;
       config.allowUnfree = true;
-      overlays = [
-        (final: prev: {
-          unstable = import nixpkgs-unstable {
-            system = system-darwin;
-            config.allowUnfree = true;
-          };
-        })
-      ];
+      inherit overlays;
     };
-
     # Meh
-    vars = {
-      fontName = "Maple Mono NF CN";
-      release = "25.11";
-    };
   in {
     #===
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit pkgs;
         modules = [
-          ./configuration.nix
+          ./hosts/laptop/configuration.nix
+          ./hosts/laptop/hardware-configuration-laptop.nix
         ];
         specialArgs = {
-          inherit vars;
+          inherit inputs;
+        };
+      };
+
+      test_vm = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
+        modules = [
+          ./hosts/laptop/configuration.nix
+          ({modulesPath, ...}: {
+            imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
+          })
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
+      };
+
+      pc = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
+        modules = [
+          ./hosts/pc/configuration.nix
+        ];
+        specialArgs = {
           inherit inputs;
         };
       };
@@ -146,10 +166,9 @@
     homeConfigurations.noi = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
-        ./home.nix
+        ./users/noi.nix
       ];
       extraSpecialArgs = {
-        inherit vars;
         inherit inputs;
       };
     };

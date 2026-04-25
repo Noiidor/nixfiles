@@ -1,5 +1,4 @@
 {
-  vars,
   pkgs,
   inputs,
   ...
@@ -51,7 +50,7 @@
         package = pkgs.maple-mono.NF-CN;
         # package = pkgs.zpix-pixel-font;
         # package = inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd;
-        name = vars.fontName;
+        name = "Maple Mono NF CN";
       };
 
       sansSerif = {

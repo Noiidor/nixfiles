@@ -4,7 +4,7 @@
   pkgs,
   ...
 } @ args: let
-  dotfiles = import ./dotfiles/dotfiles.nix args;
+  dotfiles = import ../../dotfiles/dotfiles.nix args;
   mkHome = user: files: {
     ${user}.rules =
       files

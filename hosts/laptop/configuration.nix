@@ -6,16 +6,13 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration-laptop.nix
-    # ./modules/hyprland/hyprland.nix
-    ./modules/niri/niri.nix
-    ./scripts/scripts.nix
-    ./modules/desktop.nix
     ./tmpfiles.nix
-    # ./modules/clamav.nix
-    ./agenix.nix
-    ./modules/vm/virt-manager.nix
-    ./modules/stylix/stylix.nix
+    ../../modules/niri/niri.nix
+    ../../scripts/scripts.nix
+    ../../modules/desktop.nix
+    ../../agenix.nix
+    ../../modules/vm/virt-manager.nix
+    ../../modules/stylix/stylix.nix
 
     "${inputs.nixpkgs-unstable}/nixos/modules/services/hardware/tlp.nix"
     # "${inputs.nixpkgs-unstable}/nixos/modules/programs/throne.nix"
@@ -28,105 +25,106 @@
   # TODO: Split into modules
 
   #=== Packages
-  environment.systemPackages = with pkgs;
-    [
-      # CLI utils
-      usbutils
-      inetutils
-      pciutils
-      ddcutil
-      fd
-      ripgrep
+  environment.systemPackages = with pkgs; [
+    # CLI utils
+    usbutils
+    inetutils
+    pciutils
+    ddcutil
+    fd
+    ripgrep
+    jq
+    yq
 
-      # System
-      home-manager
-      wirelesstools
-      wl-clipboard
-      wireguard-tools
+    # System
+    home-manager
+    wirelesstools
+    wl-clipboard
+    wireguard-tools
 
-      # Disks and FS
-      gparted
-      ntfs3g
-      testdisk
-      adbfs-rootless
-      android-tools
-      simple-mtpfs
-      qdiskinfo # Disk health GUI
+    # Disks and FS
+    gparted
+    ntfs3g
+    testdisk
+    adbfs-rootless
+    android-tools
+    simple-mtpfs
+    qdiskinfo # Disk health GUI
 
-      # Network
-      wireshark
-      v2rayn
+    # Network
+    wireshark
+    v2rayn
 
-      # Lib
-      libadwaita
-      libnotify
+    # Lib
+    libadwaita
+    libnotify
 
-      # Media
-      unstable.yazi
-      dragon-drop # Drag-n-drop utility
-      hexyl # Hex binary viewer
-      qimgv
+    # Media
+    unstable.yazi
+    dragon-drop # Drag-n-drop utility
+    hexyl # Hex binary viewer
+    qimgv
 
-      # Terminal
-      zsh
-      foot
-      tmux
-      starship
-      zoxide
-      inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
-      nvimpager
+    # Terminal
+    zsh
+    foot
+    tmux
+    starship
+    zoxide
+    neovim-nightly
+    nvimpager
 
-      # Desktop
-      waybar
-      unstable.telegram-desktop
+    # Desktop
+    waybar
+    unstable.telegram-desktop
 
-      # Programming
-      git
-      delta # better git pager
-      zls
-      zig
-      delve # go
+    # Programming
+    git
+    delta # better git pager
+    zls
+    zig
+    delve # go
 
-      # LSP
-      nil # nix
-      nixd
-      lua-language-server
-      postgres-language-server
-      sqls
-      pyright
-      docker-compose-language-service
-      dockerfile-language-server
-      yaml-language-server
-      rust-analyzer
-      # unstable.ols
-      gopls
+    # LSP
+    nil # nix
+    nixd
+    lua-language-server
+    postgres-language-server
+    sqls
+    pyright
+    docker-compose-language-service
+    dockerfile-language-server
+    yaml-language-server
+    rust-analyzer
+    # unstable.ols
+    gopls
 
-      # Formatting
-      stylua # lua
-      biome # json, js
-      sleek # sql
-      sql-formatter
-      yamlfmt
-      rustfmt
-      sqlfluff
-      kdlfmt
-      alejandra
+    # Formatting
+    stylua # lua
+    biome # json, js
+    sleek # sql
+    sql-formatter
+    yamlfmt
+    rustfmt
+    sqlfluff
+    kdlfmt
+    alejandra
 
-      # Other
-      taskwarrior3
-      kicad-small
-      localsend
-      deskflow
-    ]
+    # Other
+    taskwarrior3
+    kicad-small
+    localsend
+    deskflow
+    agenix
+
+    # Media
+    zen-browser
+
     # LLM
-    ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
-      claude-code
-      claude-code-router
-      opencode
-    ])
-    ++ [
-      inputs.agenix.packages.${pkgs.system}.default
-    ];
+    llmPkgs.claude-code
+    llmPkgs.claude-code-router
+    llmPkgs.opencode
+  ];
 
   environment.variables = {
     EDITOR = "nvim";
@@ -322,7 +320,7 @@
     maple-mono.NF-CN
     zpix-pixel-font
     # (callPackage ./pkgs/vcr-osd-font.nix {})
-    (callPackage ./pkgs/vcr-osd-cyr-font/vcr-osd-cyr-font.nix {})
+    (callPackage ../../pkgs/vcr-osd-cyr-font/vcr-osd-cyr-font.nix {})
     # nerd-fonts.iosevka
     # inputs.kirsch-font.packages.${pkgs.system}.kirsch-nerd
   ];
@@ -376,12 +374,14 @@
     isNormalUser = true;
     description = "based";
     extraGroups = ["networkmanager" "wheel" "video" "dialout"];
+    initialHashedPassword = "$y$j9T$NFyRSgzNAAxZVnqnS61MB.$JX.8U3roQwiI7E/3NUIKWeSuEPlCpwJRl5FzIaF9nW0";
     hashedPasswordFile = config.age.secrets.noi-hashed-password.path;
     shell = pkgs.zsh;
   };
 
   programs = {
     zsh.enable = true;
+    zoxide.enable = true;
 
     direnv = {
       enable = true;
@@ -498,16 +498,19 @@
         "pipe-operators"
       ];
 
-      stalled-download-timeout = 4;
-      connect-timeout = 4;
+      fallback = true;
+      keep-going = true;
 
-      http-connections = 100;
-      max-substitution-jobs = 64;
+      http-connections = 128;
+      max-substitution-jobs = 128;
+      stalled-download-timeout = 4;
+      connect-timeout = 8;
 
       substituters = [
         # "https://hyprland.cachix.org"
 
-        "https://mirror.yandex.ru/nixos"
+        "https://mirror.yandex.ru/nixos?priority=1"
+        "https://cache.nixos.org?priority=2"
         # "https://cache.xd0.zip"
         # "https://cache.nixos.kz"
         # "https://nixos-cache-proxy.cofob.dev"
@@ -515,13 +518,14 @@
         # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
 
         # "https://nix-community.cachix.org"
-        # "https://attic.xuyh0120.win/lantian"
-        # "https://cache.garnix.io"
+        "https://attic.xuyh0120.win/lantian?priority=10"
+        "https://cache.garnix.io?priority=11"
       ];
       trusted-public-keys = [
         # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        # "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
 
@@ -540,12 +544,6 @@
     #   dates = "daily";
     #   options = "--delete-older-than 7d";
     # };
-  };
-
-  nixpkgs = {
-    overlays = [
-      inputs.nix-cachyos-kernel.overlays.pinned
-    ];
   };
 
   system.stateVersion = "25.11";

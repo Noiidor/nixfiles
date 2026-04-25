@@ -62,8 +62,8 @@ in {
     sleek # sql
     nixd
 
-    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
-    inputs.zen-browser2.packages.${pkgs.stdenv.hostPlatform.system}.default
+    zen-browser
+    neovim
   ];
 
   services.colima = {
@@ -98,6 +98,19 @@ in {
       };
       pull = {
         rebase = false;
+      };
+      merge = {
+        conflictStyle = "zdiff3";
+      };
+      interactive = {
+        diffFilter = "delta --color-only";
+      };
+      delta = {
+        navigate = true;
+        dark = true;
+      };
+      alias = {
+        sdiff = "-c delta.features=side-by-side diff";
       };
     };
   };

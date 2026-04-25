@@ -5,9 +5,9 @@
   ...
 }: {
   imports = [
-    ./modules/home-manager-deprecated/nvim/nvim.nix
-    ./modules/home-manager-deprecated/stylix/stylix.nix
-    ./modules/home-manager-deprecated/spicetify/spicetify.nix
+    ../../modules/home-manager-deprecated/nvim/nvim.nix
+    ../../modules/home-manager-deprecated/stylix/stylix.nix
+    ../../modules/home-manager-deprecated/spicetify/spicetify.nix
   ];
 
   home = {
@@ -183,7 +183,6 @@
         unstable.yt-dlp # video downloader
         jq
         yq
-        alejandra
         linux-manual
         man-pages
         nix-visualize
@@ -198,7 +197,6 @@
         udiskie
         smartmontools
         caligula
-        # unstable.astroterm
         unstable.sequin # Decode ANSI sequences
         unstable.buf
         unstable.spotdl # Download music from yt/spotify
@@ -210,7 +208,6 @@
       ++ [
         # inputs.aagl.packages.${pkgs.system}.the-honkers-railway-launcher
         # inputs.aagl.packages.${pkgs.system}.sleepy-launcher
-        inputs.zen-browser2.packages.${pkgs.system}.default
       ];
 
     sessionPath = [
@@ -220,15 +217,12 @@
       EDITOR = "nvim";
       MANPAGER = "nvim +Man!";
       PAGER = "nvimpager";
-      # WLR_NO_HARDWARE_CURSORS = "1";
     };
 
     stateVersion = "25.11";
   };
 
   programs = {
-    zoxide.enable = true;
-
     mpv = {
       enable = true;
       scripts = [pkgs.mpvScripts.uosc];
@@ -237,15 +231,8 @@
       };
     };
 
-    htop = {
-      enable = true;
-      settings = {
-        tree_view = 1;
-      };
-    };
-
     wofi = {
-      enable = true;
+      enable = false;
     };
 
     btop.enable = true;

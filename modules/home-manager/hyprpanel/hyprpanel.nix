@@ -1,8 +1,4 @@
-{
-  vars,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
 
   programs.hyprpanel = {
@@ -162,7 +158,7 @@
         };
 
         font = {
-          name = vars.fontName;
+          name = "Maple Mono NF CN";
           size = "1.15rem";
         };
       };
@@ -173,7 +169,7 @@
       theme.bar.menus.popover.background = "#1a1a1a";
       theme.bar.opacity = 70;
       theme.bar.buttons.background_opacity = 40;
-      theme.font.name = vars.fontName;
+      theme.font.name = "Maple Mono NF CN";
       theme.font.style = "italic";
       theme.font.size = "1.15rem";
     };
