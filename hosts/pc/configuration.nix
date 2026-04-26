@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./tmpfiles.nix
   ];
 
   # Bootloader.
@@ -78,16 +79,65 @@
     isNormalUser = true;
     description = "noi";
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3vc5mJ3TAZy2q9P1ZkKkDquCMWw2EZPZpqfSlmZ4F3 noidor2019@gmail.com"
+    ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs = {
+    steam = {
+      enable = true;
+      dedicatedServer.openFirewall = true;
+      remotePlay.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
+
+    gamemode.enable = true;
+    gamescope = {
+      enable = true;
+    };
+
+    zsh.enable = true;
+    zoxide.enable = true;
+    java = {
+      enable = true;
+    };
+  };
+  services.flatpak.enable = true;
+
   environment.systemPackages = with pkgs; [
-    neovim
+    unstable.neovim
     mesa-demos
     zen-browser
     freesm-launcher
+    telegram-desktop
+
+    # Formatting
+    stylua # lua
+    biome # json, js
+    sleek # sql
+    sql-formatter
+    yamlfmt
+    rustfmt
+    sqlfluff
+    kdlfmt
+    alejandra
+
+    fd
+    ripgrep
+    jq
+    yq
+    eza
+    starship
+    fzf
+    foot
+    tmux
+    git
+    go
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -100,8 +150,17 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    allowSFTP = false;
+    ports = [22];
+    settings = {
+      LogLevel = "VERBOSE";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [22];
@@ -116,6 +175,10 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
+
+  fonts.packages = with pkgs; [
+    maple-mono.NF-CN
+  ];
 
   nix = {
     channel.enable = false;
