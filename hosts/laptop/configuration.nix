@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    ../base.nix
     ./tmpfiles.nix
     ../../modules/niri/niri.nix
     ../../scripts/scripts.nix
@@ -31,10 +32,6 @@
     inetutils
     pciutils
     ddcutil
-    fd
-    ripgrep
-    jq
-    yq
 
     # System
     home-manager
@@ -68,10 +65,8 @@
     # Terminal
     zsh
     foot
-    tmux
     starship
     zoxide
-    neovim-nightly
     nvimpager
 
     # Desktop
@@ -79,7 +74,6 @@
     unstable.telegram-desktop
 
     # Programming
-    git
     delta # better git pager
     zls
     zig
@@ -101,14 +95,11 @@
 
     # Formatting
     stylua # lua
-    biome # json, js
     sleek # sql
     sql-formatter
-    yamlfmt
     rustfmt
     sqlfluff
     kdlfmt
-    alejandra
 
     # Other
     taskwarrior3
@@ -245,15 +236,6 @@
   };
 
   services = {
-    openssh = {
-      enable = true;
-      ports = [22];
-      settings = {
-        PasswordAuthentication = false;
-        PermitRootLogin = "no";
-      };
-    };
-
     mullvad-vpn.enable = true;
   };
 
@@ -371,18 +353,12 @@
   #=== Users and apps
   users.mutableUsers = false;
   users.users.noi = {
-    isNormalUser = true;
-    description = "based";
-    extraGroups = ["networkmanager" "wheel" "video" "dialout"];
+    extraGroups = ["networkmanager" "video" "dialout"];
     initialHashedPassword = "$y$j9T$NFyRSgzNAAxZVnqnS61MB.$JX.8U3roQwiI7E/3NUIKWeSuEPlCpwJRl5FzIaF9nW0";
     hashedPasswordFile = config.age.secrets.noi-hashed-password.path;
-    shell = pkgs.zsh;
   };
 
   programs = {
-    zsh.enable = true;
-    zoxide.enable = true;
-
     direnv = {
       enable = true;
     };
@@ -474,30 +450,7 @@
   };
 
   nix = {
-    channel.enable = false;
-    registry = {
-      unstable = {
-        from = {
-          id = "unstable";
-          type = "indirect";
-        };
-        to = {
-          type = "github";
-          owner = "NixOS";
-          repo = "nixpkgs";
-          ref = "nixos-unstable";
-        };
-      };
-    };
-
     settings = {
-      trusted-users = ["noi"];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-        "pipe-operators"
-      ];
-
       fallback = true;
       keep-going = true;
 

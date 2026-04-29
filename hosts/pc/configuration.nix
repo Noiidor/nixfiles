@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ../base.nix
     ./hardware-configuration.nix
     ./tmpfiles.nix
   ];
@@ -76,13 +77,7 @@
   };
 
   users.users.noi = {
-    isNormalUser = true;
-    description = "noi";
-    extraGroups = ["networkmanager" "wheel"];
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3vc5mJ3TAZy2q9P1ZkKkDquCMWw2EZPZpqfSlmZ4F3 noidor2019@gmail.com"
-    ];
+    extraGroups = ["networkmanager"];
   };
 
   # Install firefox.
@@ -101,8 +96,6 @@
       enable = true;
     };
 
-    zsh.enable = true;
-    zoxide.enable = true;
     java = {
       enable = true;
     };
@@ -110,7 +103,6 @@
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
-    unstable.neovim
     mesa-demos
     zen-browser
     freesm-launcher
@@ -118,26 +110,11 @@
 
     # Formatting
     stylua # lua
-    biome # json, js
     sleek # sql
     sql-formatter
-    yamlfmt
     rustfmt
     sqlfluff
     kdlfmt
-    alejandra
-
-    fd
-    ripgrep
-    jq
-    yq
-    eza
-    starship
-    fzf
-    foot
-    tmux
-    git
-    go
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -149,18 +126,6 @@
   # };
 
   # List services that you want to enable:
-
-  services.openssh = {
-    enable = true;
-    allowSFTP = false;
-    ports = [22];
-    settings = {
-      LogLevel = "VERBOSE";
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
-    };
-  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [22];
@@ -179,31 +144,4 @@
   fonts.packages = with pkgs; [
     maple-mono.NF-CN
   ];
-
-  nix = {
-    channel.enable = false;
-    registry = {
-      unstable = {
-        from = {
-          id = "unstable";
-          type = "indirect";
-        };
-        to = {
-          type = "github";
-          owner = "NixOS";
-          repo = "nixpkgs";
-          ref = "nixos-unstable";
-        };
-      };
-    };
-
-    settings = {
-      trusted-users = ["noi"];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-        "pipe-operators"
-      ];
-    };
-  };
 }
