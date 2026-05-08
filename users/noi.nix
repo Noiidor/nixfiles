@@ -5,9 +5,8 @@
   ...
 }: {
   imports = [
-    ../../modules/home-manager-deprecated/nvim/nvim.nix
-    ../../modules/home-manager-deprecated/stylix/stylix.nix
-    ../../modules/home-manager-deprecated/spicetify/spicetify.nix
+    ../modules/home-manager/stylix/stylix.nix
+    ../modules/home-manager/spicetify/spicetify.nix
   ];
 
   home = {
@@ -79,7 +78,6 @@
         vesktop
         qbittorrent
         obsidian
-        (unstable.bottles.override {removeWarningPopup = true;})
         mangohud
         # piper
         # bitwarden-desktop

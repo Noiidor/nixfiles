@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   ...
@@ -7,6 +8,8 @@
     ../base.nix
     ./hardware-configuration.nix
     ./tmpfiles.nix
+
+    inputs.aagl.nixosModules.default
   ];
 
   # Bootloader.
@@ -99,6 +102,8 @@
     java = {
       enable = true;
     };
+
+    sleepy-launcher.enable = true;
   };
   services.flatpak.enable = true;
 

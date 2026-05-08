@@ -44,6 +44,7 @@
     tmux
     git
     go
+    bat
   ];
 
   nix = {

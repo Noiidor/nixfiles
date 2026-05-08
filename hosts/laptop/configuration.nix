@@ -72,6 +72,7 @@
     # Desktop
     waybar
     unstable.telegram-desktop
+    (bottles.override {removeWarningPopup = true;})
 
     # Programming
     delta # better git pager
@@ -104,7 +105,6 @@
     # Other
     taskwarrior3
     kicad-small
-    localsend
     deskflow
     agenix
 
@@ -244,6 +244,10 @@
       enable = true;
       dumpcap.enable = true;
       usbmon.enable = true;
+    };
+    localsend = {
+      enable = true;
+      openFirewall = true;
     };
   };
 
