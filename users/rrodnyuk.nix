@@ -63,7 +63,7 @@ in {
     nixd
 
     zen-browser
-    neovim
+    unstable.neovim
   ];
 
   services.colima = {
