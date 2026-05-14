@@ -55,6 +55,30 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 vim.keymap.set("n", "<leader>lo", function()
 	vim.opt.scrolloff = 999 - vim.o.scrolloff
 end, { desc = "[LO]ck cursor in middle" })
+
+local function tmux_terminal_cwd(direction)
+	local cwd = vim.fn.expand("%:p:h")
+	if cwd == "" then
+		cwd = vim.fn.getcwd()
+	end
+
+	local cmd = "tmux "
+	if direction == "v" then
+		cmd = cmd .. "split-window -v -c " .. vim.fn.shellescape(cwd)
+	else
+		cmd = cmd .. "split-window -h -c " .. vim.fn.shellescape(cwd)
+	end
+	vim.fn.system(cmd)
+end
+
+vim.keymap.set("n", "<leader>tv", function()
+	tmux_terminal_cwd("v")
+end, { desc = "[T]mux terminal [V]ertical split" })
+
+vim.keymap.set("n", "<leader>th", function()
+	tmux_terminal_cwd("h")
+end, { desc = "[T]mux terminal [H]orizontal split" })
+
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
@@ -338,9 +362,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-			map("<leader>th", function()
-				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-			end, "[T]oggle Inlay [H]ints")
+			-- map("<leader>th", function()
+			-- 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+			-- end, "[T]oggle Inlay [H]ints")
 		end
 	end,
 })
