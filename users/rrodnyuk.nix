@@ -49,7 +49,7 @@ in {
     bruno
     gotools
     localsend
-    go-minimock
+    unstable.go-minimock
     betterdisplay
     # unstable.claude-code
     glow
@@ -95,6 +95,9 @@ in {
     enable = true;
     settings = {
       user = {
+      };
+      core = {
+        pager = "delta";
       };
       pull = {
         rebase = false;
