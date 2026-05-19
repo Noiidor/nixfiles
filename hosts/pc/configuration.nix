@@ -4,7 +4,9 @@
   ...
 }: {
   imports = [
+    ../base.nix
     ./hardware-configuration.nix
+    ./tmpfiles.nix
   ];
 
   # Bootloader.
@@ -75,19 +77,44 @@
   };
 
   users.users.noi = {
-    isNormalUser = true;
-    description = "noi";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager"];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs = {
+    steam = {
+      enable = true;
+      dedicatedServer.openFirewall = true;
+      remotePlay.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
+
+    gamemode.enable = true;
+    gamescope = {
+      enable = true;
+    };
+
+    java = {
+      enable = true;
+    };
+  };
+  services.flatpak.enable = true;
+
   environment.systemPackages = with pkgs; [
-    neovim
     mesa-demos
     zen-browser
     freesm-launcher
+    telegram-desktop
+
+    # Formatting
+    stylua # lua
+    sleek # sql
+    sql-formatter
+    rustfmt
+    sqlfluff
+    kdlfmt
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -99,9 +126,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [22];
@@ -117,30 +141,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
 
-  nix = {
-    channel.enable = false;
-    registry = {
-      unstable = {
-        from = {
-          id = "unstable";
-          type = "indirect";
-        };
-        to = {
-          type = "github";
-          owner = "NixOS";
-          repo = "nixpkgs";
-          ref = "nixos-unstable";
-        };
-      };
-    };
-
-    settings = {
-      trusted-users = ["noi"];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-        "pipe-operators"
-      ];
-    };
-  };
+  fonts.packages = with pkgs; [
+    maple-mono.NF-CN
+  ];
 }
