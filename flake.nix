@@ -84,6 +84,13 @@
       url = "github:freesmteam/freesmlauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    eden-emulator = {
+      url = "github:Daaboulex/eden-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    kopuz.url = "github:temidaradev/kopuz";
   };
 
   outputs = {
@@ -99,6 +106,7 @@
 
     overlays = [
       inputs.nix-cachyos-kernel.overlays.pinned
+      inputs.eden-emulator.overlays.default
 
       (final: prev: {
         unstable = import nixpkgs-unstable {
@@ -111,6 +119,7 @@
         zen-browser = inputs.zen-browser.packages.${prev.stdenv.hostPlatform.system}.default;
         llmPkgs = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system};
         freesm-launcher = inputs.freesm-launcher.packages.${prev.stdenv.hostPlatform.system}.default;
+        kopuz = inputs.kopuz.packages.${prev.stdenv.hostPlatform.system}.default;
       })
     ];
 

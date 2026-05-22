@@ -17,6 +17,7 @@
 
     "${inputs.nixpkgs-unstable}/nixos/modules/services/hardware/tlp.nix"
     # "${inputs.nixpkgs-unstable}/nixos/modules/programs/throne.nix"
+    inputs.eden-emulator.nixosModules.default
   ];
 
   disabledModules = [
@@ -70,8 +71,9 @@
     nvimpager
 
     # Desktop
-    waybar
     unstable.telegram-desktop
+
+    # Gaming
     (bottles.override {removeWarningPopup = true;})
 
     # Programming
@@ -110,6 +112,12 @@
 
     # Media
     zen-browser
+
+    # Music
+    unstable.tauon
+    dopamine
+    recordbox
+    kopuz
 
     # LLM
     llmPkgs.claude-code
@@ -381,6 +389,14 @@
       package = pkgs.unstable.gamescope;
     };
 
+    appimage = {
+      enable = true;
+      binfmt = true;
+      package = pkgs.unstable.appimage-run.override {
+        # extraPkgs = pkgs: [ pkgs.ffmpeg pkgs.imagemagick ];
+      };
+    };
+
     git = {
       enable = true;
       config = {
@@ -475,8 +491,9 @@
         # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
 
         # "https://nix-community.cachix.org"
-        "https://attic.xuyh0120.win/lantian?priority=10"
-        "https://cache.garnix.io?priority=11"
+        # "https://attic.xuyh0120.win/lantian?priority=100"
+        # "https://cache.garnix.io?priority=110"
+        "https://kopuz.cachix.org?priority=201" # kopuz player
       ];
       trusted-public-keys = [
         # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
@@ -484,6 +501,7 @@
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "kopuz.cachix.org-1:J2X3AnAYhKTJW5S3aCLoA1ckonQXVNZMQvhZA0YAufw="
       ];
 
       cores = 4;
@@ -501,6 +519,11 @@
     #   dates = "daily";
     #   options = "--delete-older-than 7d";
     # };
+  };
+
+  systemd.services.nix-daemon.environment = {
+    # Change to your proxy's address and port
+    # all_proxy = "";
   };
 
   system.stateVersion = "25.11";
