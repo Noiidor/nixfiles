@@ -120,6 +120,7 @@
         llmPkgs = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system};
         freesm-launcher = inputs.freesm-launcher.packages.${prev.stdenv.hostPlatform.system}.default;
         kopuz = inputs.kopuz.packages.${prev.stdenv.hostPlatform.system}.default;
+        aaglPkgs = inputs.aagl.packages.${prev.stdenv.hostPlatform.system};
       })
     ];
 

@@ -19,7 +19,6 @@
         #=== Programming
         # bruno
         # dbeaver-bin
-        graphviz
         # clickhouse-cli
         # go-migrate
         kubectl
@@ -27,64 +26,16 @@
         gnumake
         gdb # GNU debugger
         # kubernetes-helm
-        sentry-cli
-        gcc
-
-        #=== Golang
-        go
-        gopls
-        go-tools
-        gotools
-        grpc-gateway
-        protoc-gen-go
-        protoc-gen-go-grpc
-        protoc-gen-connect-go
-        protoc-gen-validate
-        protoc-gen-doc
-        golangci-lint
-
-        #=== Odin
-        unstable.odin
-        # ols
-
-        #=== Python
-        python3
-
-        #=== Dotnet
-        # dotnet-runtime
-
-        #=== Julia
-        julia
-
-        #=== Rust
-        rustc
-        cargo
-        cargo-modules # tree of project modules
-        cargo-bloat
-
-        #=== C/C++
-        # llvmPackages_20.clang
-        llvmPackages_20.clang-tools
 
         #=== Haskell
         # haskell.compiler.ghcHEAD
 
-        #=== Typst
-        typst
-        typstyle
-        tinymist
-
-        #=== Applications and gaming
-        vesktop
         qbittorrent
         obsidian
         mangohud
         # piper
         # bitwarden-desktop
-        bitwarden-cli
         # unstable.keyguard
-        mullvad-vpn
-        mullvad-closest
         # lutris
         links2 # Terminal web browser
         # kando # GUI pie-picker
@@ -94,11 +45,9 @@
         # lutris
 
         # Media
-        unstable.gimp3
         # inkscape
         obs-studio
         mesa-demos
-        scribus
         libreoffice-fresh
         unrar
         kdePackages.ark # Acrhiever
@@ -120,14 +69,13 @@
         iperf3
         tcpdump
         nmap # Network security and port scanner
-        gping
         dig # DNS lookup
         mtr # ping + traceroute
         trippy # ping + traceroute TUI
         posting # TUI HTTP Client
 
         #=== Disks and filesystem
-        iozone
+        # iozone
         baobab # Disk usage analyzer
         # duf # Good looking df alternatinve
         # phoronix-test-suite # Comprehensive system benchmark
@@ -185,10 +133,8 @@
         man-pages
         nix-visualize
         wf-recorder # Screen recorder
-        ripgrep
         # espeak
         memtester # RAM tester
-        rsync
         file
         zip
         trash-cli
@@ -196,8 +142,6 @@
         smartmontools
         caligula
         unstable.sequin # Decode ANSI sequences
-        unstable.buf
-        unstable.spotdl # Download music from yt/spotify
 
         xorg.xprop # x11/xwayland debug info
         xorg.xlsclients

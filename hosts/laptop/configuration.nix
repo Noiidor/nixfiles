@@ -18,6 +18,7 @@
     "${inputs.nixpkgs-unstable}/nixos/modules/services/hardware/tlp.nix"
     # "${inputs.nixpkgs-unstable}/nixos/modules/programs/throne.nix"
     inputs.eden-emulator.nixosModules.default
+    inputs.aagl.nixosModules.default
   ];
 
   disabledModules = [
@@ -50,8 +51,6 @@
     qdiskinfo # Disk health GUI
 
     # Network
-    wireshark
-    v2rayn
 
     # Lib
     libadwaita
@@ -62,6 +61,8 @@
     dragon-drop # Drag-n-drop utility
     hexyl # Hex binary viewer
     qimgv
+    # unstable.gimp3
+    # scribus
 
     # Terminal
     zsh
@@ -73,14 +74,30 @@
     # Desktop
     unstable.telegram-desktop
 
-    # Gaming
+    #=== Applications and gaming
+    # vesktop
     (bottles.override {removeWarningPopup = true;})
 
     # Programming
+    graphviz
     delta # better git pager
     zls
     zig
+    unstable.python3
+    unstable.go
     delve # go
+
+    #=== Rust
+    rustc
+    cargo
+
+    #=== C/C++
+    llvmPackages_20.clang-tools
+    gcc
+    #=== Typst
+    typst
+    typstyle
+    tinymist
 
     # LSP
     nil # nix
@@ -116,8 +133,8 @@
     # Music
     unstable.tauon
     dopamine
-    recordbox
     kopuz
+    unstable.euphonica
 
     # LLM
     llmPkgs.claude-code
@@ -170,6 +187,8 @@
     ];
   };
 
+  security.lockKernelModules = true;
+
   #=== Disks and memory
   zramSwap = {
     enable = true;
@@ -183,6 +202,7 @@
     enableNotifications = true;
   };
 
+  # Firmware update
   services.fwupd.enable = true;
 
   services.udisks2.enable = true;
@@ -217,29 +237,11 @@
     };
     # Needed for Anime launchers
     extraHosts = ''
-      0.0.0.0 log-upload-os.hoyoverse.com
-      0.0.0.0 sg-public-data-api.hoyoverse.com
-      0.0.0.0 hkrpg-log-upload-os.hoyoverse.com
-      0.0.0.0 overseauspider.yuanshen.com
-      0.0.0.0 apm-log-upload-os.hoyoverse.com
-      0.0.0.0 zzz-log-upload-os.hoyoverse.com
       130.255.77.28 ntc.party
     '';
-    #networkmanager.dns = "none";
-    # nameservers = ["9.9.9.9" "8.8.8.8" "8.8.4.4" "1.1.1.1" "1.0.0.1"];
-    # interfaces = {
-    #   xray-tun = {
-    #     virtual = true;
-    #     virtualType = "tun";
-    #     mtu = 1500;
-    #     ipAddress = "172.19.0.1/30";
-    #   };
-    # };
-    #
     firewall = {
       enable = true;
       allowedTCPPorts = [22];
-      #allowedUDPPorts = [];
     };
   };
 
@@ -458,6 +460,8 @@
     envfs.enable = true;
   };
 
+  programs.honkers-railway-launcher.enable = true;
+
   #=== Nix
   programs.nh = {
     enable = true;
@@ -494,6 +498,7 @@
         # "https://attic.xuyh0120.win/lantian?priority=100"
         # "https://cache.garnix.io?priority=110"
         "https://kopuz.cachix.org?priority=201" # kopuz player
+        "https://ezkea.cachix.org?priority=201" # aagl pkgs
       ];
       trusted-public-keys = [
         # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
@@ -502,6 +507,7 @@
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         "kopuz.cachix.org-1:J2X3AnAYhKTJW5S3aCLoA1ckonQXVNZMQvhZA0YAufw="
+        "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
       ];
 
       cores = 4;
@@ -522,7 +528,6 @@
   };
 
   systemd.services.nix-daemon.environment = {
-    # Change to your proxy's address and port
     # all_proxy = "";
   };
 
