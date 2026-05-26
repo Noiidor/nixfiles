@@ -91,6 +91,8 @@
     };
 
     kopuz.url = "github:temidaradev/kopuz";
+
+    hermes.url = "github:nousresearch/hermes-agent";
   };
 
   outputs = {
@@ -121,6 +123,7 @@
         freesm-launcher = inputs.freesm-launcher.packages.${prev.stdenv.hostPlatform.system}.default;
         kopuz = inputs.kopuz.packages.${prev.stdenv.hostPlatform.system}.default;
         aaglPkgs = inputs.aagl.packages.${prev.stdenv.hostPlatform.system};
+        hermes-agent = inputs.hermes.packages.${prev.stdenv.hostPlatform.system}.default;
       })
     ];
 

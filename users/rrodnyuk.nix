@@ -62,6 +62,9 @@ in {
     sleek # sql
     nixd
 
+    # LLM
+    hermes-agent
+
     zen-browser
     unstable.neovim
   ];
