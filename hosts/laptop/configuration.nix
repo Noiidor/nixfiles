@@ -202,6 +202,12 @@
     enableNotifications = true;
   };
 
+  # services.btrfs.autoBalance = {
+  #   enable = true;
+  #   interval = "monthly";
+  #   limits = ["dusage=10" "musage=50"];
+  # };
+
   # Firmware update
   services.fwupd.enable = true;
 
@@ -531,5 +537,5 @@
     # all_proxy = "";
   };
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }
