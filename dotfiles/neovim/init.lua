@@ -20,6 +20,7 @@ vim.opt.jumpoptions = "stack,view"
 
 vim.opt.wrap = false
 vim.opt.linebreak = false
+vim.opt.fixeol = false
 
 vim.opt.mouse = "a"
 vim.opt.showmode = false

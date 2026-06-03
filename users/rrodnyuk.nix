@@ -25,7 +25,7 @@ in {
     apple-sdk_26
     yazi
     xcode-install
-    go
+    unstable.go
     gopls
     # go_1_24
     golangci-lint
@@ -61,6 +61,7 @@ in {
     biome # json, js
     sleek # sql
     nixd
+    libreoffice-bin
 
     # LLM
     hermes-agent
