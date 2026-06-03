@@ -13,7 +13,7 @@
     plugin = {
       prepend_previewers = [
         {
-          name = "*.md";
+          url = "*.md";
           run = "glow";
         }
       ];

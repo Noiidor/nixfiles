@@ -143,8 +143,8 @@
         caligula
         unstable.sequin # Decode ANSI sequences
 
-        xorg.xprop # x11/xwayland debug info
-        xorg.xlsclients
+        xprop # x11/xwayland debug info
+        xlsclients
       ])
       # Other
       ++ [
@@ -161,7 +161,7 @@
       PAGER = "nvimpager";
     };
 
-    stateVersion = "25.11";
+    stateVersion = "26.05";
   };
 
   programs = {
