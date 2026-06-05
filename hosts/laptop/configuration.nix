@@ -158,6 +158,7 @@
     supportedFilesystems = ["ntfs"];
     kernel.sysctl = {
       "kernel.sysrq" = 1;
+      "kernel.watchdog_thresh" = 20; # reboot on softlock
 
       # Swapping with zram is much much faster than paging so we prioritize it.
       "vm.swappiness" = 180;
@@ -176,6 +177,7 @@
       "preempt=full"
       "init_on_alloc=0"
       "init_on_free=0"
+      "amdgpu.vm_update_mode=3" # Had issue with deadlock in GPU memory
     ];
     kernelModules = [
       "i2c-dev"
