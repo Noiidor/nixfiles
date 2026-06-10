@@ -8,8 +8,6 @@
   dotfiles = import ../dotfiles/dotfiles.nix args;
 in {
   imports = [
-    "${inputs.home-manager-unstable}/modules/services/colima.nix"
-
     # inputs.agenix.homeManagerModules.default
   ];
   home.username = "rrodnyuk";
