@@ -29,11 +29,11 @@
   homebrew = {
     enable = true;
     brews = [
-      "deskflow"
+      # "deskflow"
     ];
     taps =
       [
-        "deskflow/tap"
+        # "deskflow/tap"
       ]
       ++ builtins.attrNames config.nix-homebrew.taps;
   };
@@ -67,6 +67,9 @@
         "flakes"
         "pipe-operators"
       ];
+      http-proxy = "10.0.0.1:8118";
+      https-proxy = "10.0.0.1:8118";
+      no-proxy = "127.0.0.1,localhost,.local,cache.nixos.org";
     };
   };
 }

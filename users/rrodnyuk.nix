@@ -60,6 +60,7 @@ in {
     sleek # sql
     nixd
     libreoffice-bin
+    dbeaver-bin
 
     # LLM
     hermes-agent
