@@ -107,7 +107,7 @@
     system-darwin = "aarch64-darwin";
 
     overlays = [
-      inputs.nix-cachyos-kernel.overlays.pinned
+      inputs.nix-cachyos-kernel.overlays.default
       inputs.eden-emulator.overlays.default
 
       (final: prev: {

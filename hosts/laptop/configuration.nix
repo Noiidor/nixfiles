@@ -152,7 +152,8 @@
 
   #=== Boot and kernel
   boot = {
-    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
+    kernelPackages = pkgs.linuxPackages;
+    # kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = ["ntfs"];
@@ -178,6 +179,7 @@
       "init_on_alloc=0"
       "init_on_free=0"
       "amdgpu.vm_update_mode=3" # Had issue with deadlock in GPU memory
+      "amdgpu.runpm=0" # Turn off GPU deep sleep
     ];
     kernelModules = [
       "i2c-dev"
@@ -503,7 +505,7 @@
         # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
 
         # "https://nix-community.cachix.org"
-        # "https://attic.xuyh0120.win/lantian?priority=100"
+        "https://attic.xuyh0120.win/lantian?priority=100"
         # "https://cache.garnix.io?priority=110"
         "https://kopuz.cachix.org?priority=201" # kopuz player
         "https://ezkea.cachix.org?priority=201" # aagl pkgs
@@ -536,7 +538,8 @@
   };
 
   systemd.services.nix-daemon.environment = {
-    # all_proxy = "";
+    http_proxy = "http://router.local:8118";
+    https_proxy = "http://router.local:8118";
   };
 
   system.stateVersion = "26.05";
