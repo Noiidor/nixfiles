@@ -61,6 +61,7 @@ in {
     nixd
     libreoffice-bin
     dbeaver-bin
+    unstable.logseq
 
     # LLM
     hermes-agent
@@ -91,6 +92,9 @@ in {
           # email = "";
         };
       };
+    };
+    aerospace = {
+      enable = false;
     };
   };
 
