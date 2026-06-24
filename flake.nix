@@ -174,6 +174,16 @@
           inherit inputs;
         };
       };
+
+      main = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
+        modules = [
+          ./hosts/main/configuration.nix
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
+      };
     };
 
     homeConfigurations.noi = home-manager.lib.homeManagerConfiguration {
