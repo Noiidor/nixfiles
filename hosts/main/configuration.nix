@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ./tmpfiles.nix
     ../base.nix
+    ../../scripts/scripts.nix
 
     inputs.aagl.nixosModules.default
   ];
@@ -291,6 +292,17 @@
   };
 
   programs.honkers-railway-launcher.enable = true;
+
+  #=== Nix
+  programs.nh = {
+    enable = true;
+    flake = "/home/noi/nixfiles";
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep-since 5d --keep 5";
+    };
+  };
 
   nix = {
     settings = {
