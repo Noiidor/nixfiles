@@ -18,6 +18,14 @@
     loader.efi.canTouchEfiVariables = true;
 
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = [
+      "nct6775"
+      "i2c-dev"
+    ];
+
+    extraModprobeConfig = ''
+      options hid_apple fnmode=0
+    '';
   };
 
   networking = {
@@ -291,7 +299,10 @@
     };
   };
 
-  programs.honkers-railway-launcher.enable = true;
+  programs = {
+    honkers-railway-launcher.enable = true;
+    sleepy-launcher.enable = true;
+  };
 
   #=== Nix
   programs.nh = {
