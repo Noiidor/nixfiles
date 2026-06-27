@@ -106,6 +106,7 @@
     android-tools
     simple-mtpfs
     qdiskinfo # Disk health GUI
+    kdiskmark
 
     # Network
 
@@ -184,6 +185,7 @@
 
     # Media
     zen-browser
+    obsidian
 
     # Gaming
     freesm-launcher
