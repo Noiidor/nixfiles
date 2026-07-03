@@ -21,6 +21,7 @@
     kernelModules = [
       "nct6775"
       "i2c-dev"
+      "msr"
     ];
 
     extraModprobeConfig = ''
@@ -97,6 +98,8 @@
     wirelesstools
     wl-clipboard
     wireguard-tools
+    zenmonitor
+    btop
 
     # Disks and FS
     gparted
@@ -121,6 +124,8 @@
     qimgv
     # unstable.gimp3
     # scribus
+    mpv
+    qbittorrent
 
     # Terminal
     zsh
