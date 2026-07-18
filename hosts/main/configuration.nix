@@ -43,6 +43,12 @@
       enable = true;
       allowedTCPPorts = [22];
     };
+    proxy = {
+      default = "http://router.local:8118";
+      allProxy = "http://router.local:8118";
+      httpProxy = "http://router.local:8118";
+      httpsProxy = "http://router.local:8118";
+    };
   };
 
   time.timeZone = "Europe/Moscow";
@@ -110,6 +116,11 @@
     simple-mtpfs
     qdiskinfo # Disk health GUI
     kdiskmark
+    unrar
+
+    # Auth and security
+    yubioath-flutter
+    picotool
 
     # Network
 
@@ -139,7 +150,7 @@
 
     #=== Applications and gaming
     # vesktop
-    (bottles.override {removeWarningPopup = true;})
+    (unstable.bottles.override {removeWarningPopup = true;})
 
     # Programming
     graphviz
@@ -377,8 +388,8 @@
   };
 
   systemd.services.nix-daemon.environment = {
-    http_proxy = "http://router.local:8118";
-    https_proxy = "http://router.local:8118";
+    # http_proxy = "http://router.local:8118";
+    # https_proxy = "http://router.local:8118";
   };
 
   system.stateVersion = "26.05";
