@@ -86,6 +86,8 @@
     jack.enable = true;
   };
 
+  services.pcscd.enable = true;
+
   users.users."noi" = {
     isNormalUser = true;
     description = "noi";
@@ -160,6 +162,7 @@
     unstable.python3
     unstable.go
     delve # go
+    nodejs
 
     #=== Rust
     rustc
@@ -210,9 +213,8 @@
     unstable.tauon
 
     # LLM
-    llmPkgs.claude-code
-    llmPkgs.claude-code-router
     llmPkgs.opencode
+    llmPkgs.pi
   ];
 
   environment.variables = {
