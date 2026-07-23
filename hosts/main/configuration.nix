@@ -24,10 +24,15 @@
       "msr"
     ];
 
+    kernelParams = [
+    ];
+
     extraModprobeConfig = ''
       options hid_apple fnmode=0
     '';
   };
+
+  hardware.amdgpu.overdrive.enable = true;
 
   networking = {
     hostName = "pc";
@@ -108,6 +113,8 @@
     wireguard-tools
     zenmonitor
     btop
+    lact
+    furmark
 
     # Disks and FS
     gparted
@@ -139,6 +146,7 @@
     # scribus
     mpv
     qbittorrent
+    unstable.yt-dlp
 
     # Terminal
     zsh
@@ -241,6 +249,8 @@
       openFirewall = true;
     };
   };
+
+  services.lact.enable = true;
 
   #=== Virtualization and containerization
   virtualisation.docker = {
