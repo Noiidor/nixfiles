@@ -27,6 +27,21 @@
     kernelParams = [
     ];
 
+    kernel.sysctl = {
+      "kernel.sysrq" = 1;
+      "kernel.watchdog_thresh" = 30; # reboot on softlock
+
+      # Swapping with zram is much much faster than paging so we prioritize it.
+      "vm.swappiness" = 180;
+
+      # Prevents uncompressing any more than you absolutely have to,
+      # with a minimal reduction to sequential throughput
+      "vm.page-cluster" = 0;
+
+      "vm.watermark_boost_factor" = 0;
+      "vm.watermark_scale_factor" = 125;
+    };
+
     extraModprobeConfig = ''
       options hid_apple fnmode=0
     '';
@@ -231,6 +246,12 @@
   };
 
   programs.coolercontrol.enable = true;
+
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 100;
+  };
 
   services.earlyoom = {
     enable = true;
