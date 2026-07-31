@@ -120,6 +120,7 @@
     inetutils
     pciutils
     ddcutil
+    ffmpeg
 
     # System
     home-manager
