@@ -17,7 +17,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
     kernelModules = [
       "nct6775"
       "i2c-dev"
@@ -25,6 +25,7 @@
     ];
 
     kernelParams = [
+      "amdgpu.gpu_recovery=1"
     ];
 
     kernel.sysctl = {
@@ -47,7 +48,15 @@
     '';
   };
 
-  hardware.amdgpu.overdrive.enable = true;
+  hardware = {
+    graphics = {
+      enable = true;
+      package = pkgs.unstable.mesa.drivers;
+    };
+    amdgpu.overdrive.enable = true;
+  };
+
+  programs.niri.enable = true;
 
   networking = {
     hostName = "pc";
