@@ -17,7 +17,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
+    kernelPackages = pkgs.unstable.linuxPackages_latest;
     kernelModules = [
       "nct6775"
       "i2c-dev"
