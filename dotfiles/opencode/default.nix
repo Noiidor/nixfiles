@@ -50,6 +50,13 @@ in {
               output = 65500;
             };
           };
+          "glm-5.3" = {
+            name = "GLM 5.3";
+            limit = {
+              context = 1000000;
+              output = 65500;
+            };
+          };
           "qwen3.6-plus" = {
             name = "Qwen 3.6 Plus";
             limit = {
@@ -59,6 +66,20 @@ in {
           };
           "qwen3.6-flash" = {
             name = "Qwen 3.6 Flash";
+            limit = {
+              context = 1000000;
+              output = 65500;
+            };
+          };
+          "qwen3.8-flash" = {
+            name = "Qwen 3.8 Flash";
+            limit = {
+              context = 1000000;
+              output = 65500;
+            };
+          };
+          "deepseek-v4-pro" = {
+            name = "Deepseek V4 Pro";
             limit = {
               context = 1000000;
               output = 65500;

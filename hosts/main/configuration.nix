@@ -51,9 +51,12 @@
   hardware = {
     graphics = {
       enable = true;
-      package = pkgs.unstable.mesa.drivers;
+      package = pkgs.unstable.mesa;
     };
-    amdgpu.overdrive.enable = true;
+    amdgpu = {
+      overdrive.enable = true;
+      opencl.enable = true;
+    };
   };
 
   programs.niri.enable = true;
@@ -196,6 +199,9 @@
     unstable.go
     delve # go
     nodejs
+    unstable.temurin-bin-26 # JDK
+    ocl-icd
+    rocmPackages.clr
 
     #=== Rust
     rustc
