@@ -76,10 +76,10 @@
       allowedTCPPorts = [22];
     };
     proxy = {
-      default = "http://router.local:8118";
-      allProxy = "http://router.local:8118";
-      httpProxy = "http://router.local:8118";
-      httpsProxy = "http://router.local:8118";
+      # default = "http://router.local:8118";
+      # allProxy = "http://router.local:8118";
+      # httpProxy = "http://router.local:8118";
+      # httpsProxy = "http://router.local:8118";
     };
   };
 
