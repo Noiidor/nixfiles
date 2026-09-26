@@ -396,8 +396,8 @@
       substituters = [
         # "https://hyprland.cachix.org"
 
-        "https://mirror.yandex.ru/nixos?priority=1"
-        "https://cache.nixos.org?priority=2"
+        "https://cache.nixos.org?priority=1"
+        "https://mirror.yandex.ru/nixos?priority=2"
         # "https://cache.xd0.zip"
         # "https://cache.nixos.kz"
         # "https://nixos-cache-proxy.cofob.dev"
