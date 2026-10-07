@@ -257,7 +257,7 @@
 
     # LLM
     llmPkgs.opencode
-    unstable.codex
+    llmPkgs.codex
   ];
 
   programs = {
