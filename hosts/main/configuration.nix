@@ -11,6 +11,7 @@
     ../../scripts/scripts.nix
 
     inputs.aagl.nixosModules.default
+    inputs.spicetify-nix.nixosModules.spicetify
   ];
 
   boot = {
@@ -99,7 +100,9 @@
 
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6 = {
+    enable = true;
+  };
 
   services.xserver.xkb = {
     layout = "us";
@@ -127,6 +130,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    unstable.spotify
     # CLI utils
     usbutils
     inetutils
@@ -253,8 +257,23 @@
 
     # LLM
     llmPkgs.opencode
-    llmPkgs.pi
+    unstable.codex
   ];
+
+  programs = {
+    throne = {
+      enable = true;
+      tunMode.enable = true;
+    };
+  };
+
+  programs.spicetify = {
+    enable = false;
+    enabledExtensions = with pkgs.spicePkgs.extensions; [
+      adblockify
+      hidePodcasts
+    ];
+  };
 
   environment.variables = {
     EDITOR = "nvim";
