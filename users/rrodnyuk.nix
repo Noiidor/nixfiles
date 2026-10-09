@@ -61,7 +61,7 @@ in {
     nixd
     libreoffice-bin
     dbeaver-bin
-    unstable.logseq
+    mpv
 
     # LLM
     hermes-agent
