@@ -6,7 +6,6 @@
 }: {
   imports = [
     ../modules/home-manager/stylix/stylix.nix
-    ../modules/home-manager/spicetify/spicetify.nix
   ];
 
   home = {

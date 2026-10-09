@@ -124,6 +124,7 @@
         kopuz = inputs.kopuz.packages.${prev.stdenv.hostPlatform.system}.default;
         aaglPkgs = inputs.aagl.packages.${prev.stdenv.hostPlatform.system};
         hermes-agent = inputs.hermes.packages.${prev.stdenv.hostPlatform.system}.default;
+        spicePkgs = inputs.spicetify-nix.legacyPackages.${prev.stdenv.hostPlatform.system};
       })
     ];
 
@@ -169,6 +170,16 @@
         inherit pkgs;
         modules = [
           ./hosts/pc/configuration.nix
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
+      };
+
+      main = nixpkgs.lib.nixosSystem {
+        inherit pkgs;
+        modules = [
+          ./hosts/main/configuration.nix
         ];
         specialArgs = {
           inherit inputs;
