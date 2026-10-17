@@ -179,6 +179,7 @@
     mpv
     qbittorrent
     unstable.yt-dlp
+    kdePackages.kdenlive
 
     # Terminal
     zsh
