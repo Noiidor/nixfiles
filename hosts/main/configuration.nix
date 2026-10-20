@@ -179,6 +179,7 @@
     mpv
     qbittorrent
     unstable.yt-dlp
+    kdePackages.kdenlive
 
     # Terminal
     zsh
@@ -257,7 +258,7 @@
 
     # LLM
     llmPkgs.opencode
-    unstable.codex
+    llmPkgs.codex
   ];
 
   programs = {
