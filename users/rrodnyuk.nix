@@ -23,7 +23,6 @@ in {
     apple-sdk_26
     yazi
     xcode-install
-    unstable.go
     gopls
     # go_1_24
     golangci-lint
@@ -62,9 +61,9 @@ in {
     libreoffice-bin
     dbeaver-bin
     mpv
+    nodejs
 
     # LLM
-    hermes-agent
 
     zen-browser
     unstable.neovim

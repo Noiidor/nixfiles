@@ -57,6 +57,18 @@ vim.keymap.set("n", "<leader>lo", function()
 	vim.opt.scrolloff = 999 - vim.o.scrolloff
 end, { desc = "[LO]ck cursor in middle" })
 
+local function copy_file_location()
+	local path = vim.fn.expand("%:.")
+	if path == "" or vim.bo.buftype ~= "" then
+		vim.notify("Current buffer has no file", vim.log.levels.WARN)
+		return
+	end
+
+	vim.fn.setreg("+", path .. ":" .. vim.fn.line("."), "v")
+end
+
+vim.keymap.set("n", "<leader>yp", copy_file_location, { desc = "[Y]ank file [P]ath with line" })
+
 local function tmux_terminal_cwd(direction)
 	local cwd = vim.fn.expand("%:p:h")
 	if cwd == "" then
