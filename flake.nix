@@ -5,8 +5,6 @@
     nixpkgs.url = "nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
-    nur.url = "github:nix-community/NUR";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
     };
@@ -74,6 +72,7 @@
     };
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    selector4nix.url = "github:StarryReverie/selector4nix";
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -96,7 +95,6 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
@@ -110,21 +108,23 @@
       inputs.nix-cachyos-kernel.overlays.default
       inputs.eden-emulator.overlays.default
 
-      (final: prev: {
+      (_: prev: let
+        system = prev.stdenv.hostPlatform.system;
+      in {
         unstable = import nixpkgs-unstable {
-          system = prev.system;
+          inherit system;
           config.allowUnfree = true;
         };
 
-        neovim-nightly = inputs.neovim-nightly-overlay.packages.${prev.stdenv.hostPlatform.system}.default;
-        agenix = inputs.agenix.packages.${prev.stdenv.hostPlatform.system}.default;
-        zen-browser = inputs.zen-browser.packages.${prev.stdenv.hostPlatform.system}.default;
-        llmPkgs = inputs.llm-agents.packages.${prev.stdenv.hostPlatform.system};
-        freesm-launcher = inputs.freesm-launcher.packages.${prev.stdenv.hostPlatform.system}.default;
-        kopuz = inputs.kopuz.packages.${prev.stdenv.hostPlatform.system}.default;
-        aaglPkgs = inputs.aagl.packages.${prev.stdenv.hostPlatform.system};
-        hermes-agent = inputs.hermes.packages.${prev.stdenv.hostPlatform.system}.default;
-        spicePkgs = inputs.spicetify-nix.legacyPackages.${prev.stdenv.hostPlatform.system};
+        neovim-nightly = inputs.neovim-nightly-overlay.packages.${system}.default;
+        agenix = inputs.agenix.packages.${system}.default;
+        zen-browser = inputs.zen-browser.packages.${system}.default;
+        llmPkgs = inputs.llm-agents.packages.${system};
+        freesm-launcher = inputs.freesm-launcher.packages.${system}.default;
+        kopuz = inputs.kopuz.packages.${system}.default;
+        aaglPkgs = inputs.aagl.packages.${system};
+        hermes-agent = inputs.hermes.packages.${system}.default;
+        spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
       })
     ];
 
@@ -138,53 +138,30 @@
       config.allowUnfree = true;
       inherit overlays;
     };
-    # Meh
+
+    mkNixos = modules:
+      nixpkgs.lib.nixosSystem {
+        inherit pkgs modules;
+        specialArgs = {inherit inputs;};
+      };
   in {
     #===
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        inherit pkgs;
-        modules = [
-          ./hosts/laptop/configuration.nix
-          ./hosts/laptop/hardware-configuration-laptop.nix
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
+      nixos = mkNixos [
+        ./hosts/laptop/configuration.nix
+        ./hosts/laptop/hardware-configuration-laptop.nix
+      ];
 
-      test_vm = nixpkgs.lib.nixosSystem {
-        inherit pkgs;
-        modules = [
-          ./hosts/laptop/configuration.nix
-          ({modulesPath, ...}: {
-            imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
-          })
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
+      test_vm = mkNixos [
+        ./hosts/laptop/configuration.nix
+        ({modulesPath, ...}: {
+          imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
+        })
+      ];
 
-      pc = nixpkgs.lib.nixosSystem {
-        inherit pkgs;
-        modules = [
-          ./hosts/pc/configuration.nix
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
+      pc = mkNixos [./hosts/pc/configuration.nix];
 
-      main = nixpkgs.lib.nixosSystem {
-        inherit pkgs;
-        modules = [
-          ./hosts/main/configuration.nix
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
+      main = mkNixos [./hosts/main/configuration.nix];
     };
 
     homeConfigurations.noi = home-manager.lib.homeManagerConfiguration {
