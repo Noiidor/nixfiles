@@ -58,6 +58,7 @@
       overdrive.enable = true;
       opencl.enable = true;
     };
+    bluetooth.enable = true;
   };
 
   programs.niri.enable = true;
