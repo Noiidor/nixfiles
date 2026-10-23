@@ -192,6 +192,14 @@ vim.api.nvim_set_hl(0, "GitSignsAdd", { bg = "none" })
 vim.api.nvim_set_hl(0, "GitSignsDelete", { bg = "none" })
 vim.api.nvim_set_hl(0, "GitSignsChange", { bg = "none" })
 vim.api.nvim_set_hl(0, "GitSignsUntracked", { bg = "none" })
+-- Git diff previews: green additions and red deletions, with stronger word highlights.
+vim.api.nvim_set_hl(0, "GitSignsAddPreview", { bg = "#203b28" })
+vim.api.nvim_set_hl(0, "GitSignsDeletePreview", { bg = "#4a2228" })
+vim.api.nvim_set_hl(0, "GitSignsDeleteVirtLn", { link = "GitSignsDeletePreview" })
+vim.api.nvim_set_hl(0, "GitSignsAddInline", { bg = "#2d5238" })
+vim.api.nvim_set_hl(0, "GitSignsChangeInline", { link = "GitSignsAddInline" })
+vim.api.nvim_set_hl(0, "GitSignsDeleteInline", { bg = "#6b2b35" })
+vim.api.nvim_set_hl(0, "GitSignsDeleteVirtLnInLine", { link = "GitSignsDeleteInline" })
 vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { bg = "none" })
 vim.api.nvim_set_hl(0, "DiagnosticSignError", { bg = "none" })
 vim.api.nvim_set_hl(0, "DiagnosticSignOk", { bg = "none" })
@@ -231,6 +239,7 @@ vim.keymap.set("n", "<leader>f", function()
 end, { desc = "[F]ind [F]iles" })
 vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "[W]orkspace [S]earch(grep)" })
+vim.keymap.set("n", "<leader>Gs", builtin.git_status, { desc = "[G]it [s]tatus" })
 vim.keymap.set("n", "<leader>a", builtin.resume, { desc = "Search [A]gain" })
 vim.keymap.set("n", "<leader>t", builtin.treesitter, { desc = "Search [T]reesitter" })
 vim.keymap.set("n", "<leader>r", builtin.oldfiles, { desc = "Search [R]ecent Files" })
@@ -250,7 +259,12 @@ require("which-key").setup({
 	icons = { mappings = vim.g.have_nerd_font },
 })
 
-require("gitsigns").setup({ current_line_blame = true })
+local gitsigns = require("gitsigns")
+gitsigns.setup({ current_line_blame = true })
+vim.keymap.set("n", "<leader>Gb", gitsigns.blame, { desc = "[G]it [b]lame file" })
+vim.keymap.set("n", "<leader>Gd", function()
+	gitsigns.diffthis(nil, { unified = true })
+end, { desc = "[G]it unified [d]iff" })
 
 require("mini.icons").setup()
 MiniIcons.mock_nvim_web_devicons()
@@ -282,6 +296,12 @@ statusline.setup({ use_icons = vim.g.have_nerd_font })
 
 require("scrollbar").setup({
 	handle = { blend = 10, color = "#ff9999" },
+	handlers = { gitsigns = true },
+	marks = {
+		GitAdd = { color = "#5ac670" },
+		GitChange = { color = "#e5b567" },
+		GitDelete = { color = "#e06c75" },
+	},
 })
 
 require("conform").setup({
