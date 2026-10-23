@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   ...
@@ -46,6 +47,7 @@
     unrar
     unstable.yazi
     dragon-drop # Drag-n-drop utility
+    pigz
 
     # Networking
     wirelesstools
@@ -85,7 +87,7 @@
     unstable.tauon
 
     # Gaming
-    (unstable.bottles.override {removeWarningPopup = true;})
+    (bottles.override {removeWarningPopup = true;})
     freesm-launcher
 
     # Development
@@ -267,7 +269,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    kernelPackages = pkgs.unstable.linuxPackages_latest;
+    kernelPackages = inputs.niko-kernel.legacyPackages.x86_64-linux.linuxPackages-niko;
     kernelModules = [
       "nct6775"
       "i2c-dev"
@@ -314,7 +316,7 @@
   hardware = {
     graphics = {
       enable = true;
-      package = pkgs.unstable.mesa;
+      package = pkgs.mesa;
     };
     amdgpu = {
       overdrive.enable = true;
@@ -345,6 +347,7 @@
       # {url = "https://cache.garnix.io/";}
       {url = "https://kopuz.cachix.org/";}
       {url = "https://ezkea.cachix.org/";} # aagl pkgs
+      {url = "https://cache.numtide.com/";}
     ];
   };
 
@@ -359,13 +362,29 @@
   };
 
   nix = {
+    package = pkgs.nixVersions.stable.overrideScope (_: prev: {
+      nix-store = prev.nix-store.overrideAttrs (old: {
+        # select4nix fix against disabling entire substitutor
+        postPatch =
+          (old.postPatch or "")
+          + ''
+            # selector4nix handles upstream failover; keep its endpoint eligible.
+            substituteInPlace http-binary-cache-store.cc \
+              --replace-fail \
+                'if (state->enabled && settings.getWorkerSettings().tryFallback) {' \
+                'if (state->enabled && settings.getWorkerSettings().tryFallback
+                    && config->getHumanReadableURI() != "http://${config.services.selector4nix.settings.server.ip}:${toString config.services.selector4nix.settings.server.port}") {'
+          '';
+      });
+    });
+
     settings = {
       fallback = true;
       keep-going = true;
 
       http-connections = 128;
       max-substitution-jobs = 128;
-      stalled-download-timeout = 4;
+      stalled-download-timeout = 60;
       connect-timeout = 8;
 
       trusted-public-keys = [
@@ -373,10 +392,11 @@
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         "kopuz.cachix.org-1:J2X3AnAYhKTJW5S3aCLoA1ckonQXVNZMQvhZA0YAufw="
         "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+        "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       ];
 
-      cores = 8;
-      max-jobs = 4;
+      cores = 6;
+      max-jobs = 2;
     };
     optimise = {
       automatic = true;

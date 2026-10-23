@@ -75,6 +75,12 @@
     selector4nix.url = "github:StarryReverie/selector4nix";
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
+    niko-kernel = {
+      url = "github:NikoMalik/nix-niko-kernel";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
