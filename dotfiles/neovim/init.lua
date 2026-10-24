@@ -225,6 +225,16 @@ require("telescope").setup({
 	},
 	pickers = {
 		oldfiles = { cwd_only = true },
+		live_grep = {
+			-- Exclude generated Protobuf/gRPC files before ripgrep searches them.
+			glob_pattern = {
+				"!*.pb.*",
+				"!*_pb2.{py,pyi}",
+				"!*_pb2_grpc.{py,pyi}",
+				"!*_pb.{js,ts}",
+				"!*_pb.d.ts",
+			},
+		},
 	},
 	extensions = {
 		["ui-select"] = { require("telescope.themes").get_dropdown() },
