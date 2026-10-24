@@ -62,6 +62,7 @@ in {
     dbeaver-bin
     mpv
     nodejs
+    allure
 
     # LLM
 
