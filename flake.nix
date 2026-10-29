@@ -94,10 +94,6 @@
       url = "github:Daaboulex/eden-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    kopuz.url = "github:temidaradev/kopuz";
-
-    hermes.url = "github:nousresearch/hermes-agent";
   };
 
   outputs = {
