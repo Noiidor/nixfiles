@@ -136,7 +136,7 @@ vim.pack.add({
 	{ src = "https://github.com/j-hui/fidget.nvim" },
 	-- Highlight other uses of a word/object
 	{ src = "https://github.com/RRethy/vim-illuminate" },
-	{ src = "https://github.com/petertriho/nvim-scrollbar" },
+	{ src = "https://github.com/petertriho/nvim-scrollbar", version = "refactor/v2" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
 
 	-- Typst
@@ -305,12 +305,14 @@ local statusline = require("mini.statusline")
 statusline.setup({ use_icons = vim.g.have_nerd_font })
 
 require("scrollbar").setup({
-	handle = { blend = 10, color = "#ff9999" },
-	handlers = { gitsigns = true },
+	scrollbar = {
+		thumb = { blend = 10, highlight = { bg = "#ff9999" } },
+	},
+	providers = { gitsigns = true },
 	marks = {
-		GitAdd = { color = "#5ac670" },
-		GitChange = { color = "#e5b567" },
-		GitDelete = { color = "#e06c75" },
+		GitAdd = { highlight = { fg = "#5ac670" } },
+		GitChange = { highlight = { fg = "#e5b567" } },
+		GitDelete = { highlight = { fg = "#e06c75" } },
 	},
 })
 
@@ -345,10 +347,52 @@ require("conform").setup({
 	formatters = { sleek = { command = "sleek", args = { "$FILENAME" } } },
 })
 
-require("nvim-treesitter").setup({
-	auto_install = true,
-	highlight = { enable = true, additional_vim_regex_highlighting = { "ruby" } },
-	indent = { enable = true, disable = { "ruby", "yaml" } },
+local treesitter = require("nvim-treesitter")
+local treesitter_installs = {}
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("treesitter-auto-install", { clear = true }),
+	callback = function(event)
+		local filetype = vim.bo[event.buf].filetype
+		local lang = vim.treesitter.language.get_lang(filetype)
+		if not lang then
+			return
+		end
+
+		local function start()
+			if not vim.api.nvim_buf_is_loaded(event.buf) or vim.bo[event.buf].filetype ~= filetype then
+				return
+			end
+			vim.treesitter.start(event.buf, lang)
+			if filetype == "ruby" then
+				vim.bo[event.buf].syntax = "ON"
+			end
+			if filetype ~= "ruby" and filetype ~= "yaml" then
+				vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end
+		end
+
+		if vim.treesitter.get_parser(event.buf, lang) then
+			start()
+			return
+		end
+		local parser = require("nvim-treesitter.parsers")[lang]
+		if not parser or parser.tier == 4 then
+			return
+		end
+		if not treesitter_installs[lang] then
+			treesitter_installs[lang] = treesitter.install({ lang })
+		end
+		treesitter_installs[lang]:await(vim.schedule_wrap(function(err, installed)
+			treesitter_installs[lang] = nil
+			if err then
+				vim.notify("Treesitter: " .. tostring(err), vim.log.levels.ERROR)
+				return
+			end
+			if installed then
+				start()
+			end
+		end))
+	end,
 })
 
 require("todo-comments").setup({ signs = true })

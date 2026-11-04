@@ -71,6 +71,7 @@ in {
 
     zen-browser
     unstable.neovim
+    unstable.tree-sitter
   ];
 
   services.colima = {
