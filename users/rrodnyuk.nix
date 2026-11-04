@@ -63,8 +63,11 @@ in {
     mpv
     nodejs
     allure
+    uv
 
     # LLM
+    unstable.openspec
+    unstable.codegraph
 
     zen-browser
     unstable.neovim
