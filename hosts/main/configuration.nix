@@ -278,6 +278,7 @@
 
     kernelParams = [
       "amdgpu.gpu_recovery=1"
+      "zswap.enabled=0"
     ];
 
     kernel.sysctl = {
