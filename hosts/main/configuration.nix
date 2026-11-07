@@ -381,7 +381,7 @@
 
     settings = {
       fallback = true;
-      keep-going = true;
+      keep-going = false;
 
       http-connections = 128;
       max-substitution-jobs = 128;
