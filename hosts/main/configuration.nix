@@ -85,6 +85,7 @@
     kdePackages.kdenlive
     unstable.spotify
     unstable.tauon
+    obs-studio
 
     # Gaming
     (bottles.override {removeWarningPopup = true;})
