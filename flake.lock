@@ -1176,6 +1176,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-multiverse": {
+      "locked": {
+        "lastModified": 1795019436,
+        "narHash": "sha256-w2/eJdcKyrv3gTm/RMKusvtNWqOtTTI1aA8mjai4aIg=",
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "rev": "775a72ca88bb85da0d813f1f2590a2b912b7d2ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1794386569,
@@ -1378,6 +1393,7 @@
         "nix-flatpak": "nix-flatpak",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_6",
+        "nixpkgs-multiverse": "nixpkgs-multiverse",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "selector4nix": "selector4nix",
         "spicetify-nix": "spicetify-nix",

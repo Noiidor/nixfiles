@@ -49,6 +49,8 @@
     dragon-drop # Drag-n-drop utility
     pigz
 
+    (pin "go" "latest")
+
     # Networking
     wirelesstools
     wireguard-tools
@@ -264,6 +266,11 @@
 
   services.printing.enable = true;
   services.pcscd.enable = true;
+
+  services.udev.extraRules = ''
+    # Prevent all USB devices and hubs from waking the system.
+    ACTION=="add|change", SUBSYSTEM=="usb", TEST=="power/wakeup", ATTR{power/wakeup}="disabled"
+  '';
 
   # Boot and memory
   boot = {

@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs-multiverse.url = "github:fzakaria/nixpkgs-multiverse";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -97,22 +98,37 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
     nix-darwin,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-    system-darwin = "aarch64-darwin";
-
     overlays = [
       inputs.nix-cachyos-kernel.overlays.default
       inputs.eden-emulator.overlays.default
 
-      (_: prev: let
+      (final: prev: let
         system = prev.stdenv.hostPlatform.system;
+        fast = inputs.nixpkgs-multiverse.multiverse.${system}.fast;
       in {
+        pin = name: version:
+          if version == "latest"
+          then fast.latest.${name}
+          else fast.version name version;
+
+        # Install a pinned executable under a distinct command name.
+        pinAlias = {
+          alias,
+          name,
+          version,
+          bin ? name,
+        }:
+          final.writeShellScriptBin alias ''
+            exec ${final.lib.escapeShellArg "${final.pin name version}/bin/${bin}"} "$@"
+          '';
+
         unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
@@ -130,66 +146,67 @@
       })
     ];
 
-    pkgs = import nixpkgs {
-      inherit system overlays;
-      config.allowUnfree = true;
-    };
-
-    pkgsDarwin = import nixpkgs {
-      system = system-darwin;
-      config.allowUnfree = true;
-      inherit overlays;
-    };
-
-    mkNixos = modules:
-      nixpkgs.lib.nixosSystem {
-        inherit pkgs modules;
-        specialArgs = {inherit inputs;};
+    nixpkgsConfig = {
+      nixpkgs = {
+        inherit overlays;
+        config.allowUnfree = true;
       };
+    };
   in {
     #===
     nixosConfigurations = {
-      nixos = mkNixos [
-        ./hosts/laptop/configuration.nix
-        ./hosts/laptop/hardware-configuration-laptop.nix
-      ];
+      nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          nixpkgsConfig
+          ./hosts/laptop/configuration.nix
+          ./hosts/laptop/hardware-configuration-laptop.nix
+        ];
+      };
 
-      test_vm = mkNixos [
-        ./hosts/laptop/configuration.nix
-        ({modulesPath, ...}: {
-          imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
-        })
-      ];
+      test_vm = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          nixpkgsConfig
+          ./hosts/laptop/configuration.nix
+          ({modulesPath, ...}: {
+            imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
+            nixpkgs.hostPlatform = "x86_64-linux";
+          })
+        ];
+      };
 
-      pc = mkNixos [./hosts/pc/configuration.nix];
-
-      main = mkNixos [./hosts/main/configuration.nix];
-    };
-
-    homeConfigurations.noi = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        ./users/noi.nix
-      ];
-      extraSpecialArgs = {
-        inherit inputs;
+      main = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [nixpkgsConfig ./hosts/main/configuration.nix];
       };
     };
 
-    #===
-    darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
-      system = system-darwin;
-      modules = [./hosts/macbook/default.nix];
-      specialArgs = {
-        inherit inputs;
+    darwinConfigurations = {
+      macbook = nix-darwin.lib.darwinSystem {
+        modules = [nixpkgsConfig ./hosts/macbook/default.nix];
+        specialArgs = {
+          inherit inputs;
+        };
       };
     };
 
-    homeConfigurations.rrodnyuk = home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgsDarwin;
-      modules = [./users/rrodnyuk.nix];
-      extraSpecialArgs = {
-        inherit inputs;
+    homeConfigurations = {
+      noi = home-manager.lib.homeManagerConfiguration {
+        pkgs = self.nixosConfigurations.main.pkgs;
+        modules = [
+          ./users/noi.nix
+        ];
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+      };
+      rrodnyuk = home-manager.lib.homeManagerConfiguration {
+        pkgs = self.darwinConfigurations.macbook.pkgs;
+        modules = [./users/rrodnyuk.nix];
+        extraSpecialArgs = {
+          inherit inputs;
+        };
       };
     };
   };

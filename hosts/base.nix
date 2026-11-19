@@ -43,7 +43,7 @@
     fzf
     tmux
     git
-    go
+    # go
     bat
   ];
 
