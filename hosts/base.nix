@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   users.users.noi = {
     isNormalUser = true;
     description = "noi";
@@ -49,20 +53,7 @@
 
   nix = {
     channel.enable = false;
-    registry = {
-      unstable = {
-        from = {
-          id = "unstable";
-          type = "indirect";
-        };
-        to = {
-          type = "github";
-          owner = "NixOS";
-          repo = "nixpkgs";
-          ref = "nixos-unstable";
-        };
-      };
-    };
+    registry.unstable.flake = inputs.nixpkgs-unstable;
 
     settings = {
       trusted-users = ["noi"];

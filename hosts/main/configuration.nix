@@ -370,7 +370,11 @@
     };
   };
 
+  systemd.services.nix-daemon.serviceConfig.Nice = 10;
+
   nix = {
+    daemonCPUSchedPolicy = "batch";
+
     package = pkgs.nixVersions.stable.overrideScope (_: prev: {
       nix-store = prev.nix-store.overrideAttrs (old: {
         # select4nix fix against disabling entire substitutor
