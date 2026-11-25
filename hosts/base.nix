@@ -49,6 +49,7 @@
     git
     # go
     bat
+    dig
   ];
 
   nix = {
