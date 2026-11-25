@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -13,6 +14,17 @@
     inputs.aagl.nixosModules.default
     inputs.spicetify-nix.nixosModules.spicetify
     inputs.selector4nix.nixosModules.default
+
+    "${inputs.nixpkgs-unstable}/nixos/modules/programs/throne.nix"
+
+    # Bridge unstable Throne's polkit option to the NixOS 26.05 wrapper setting.
+    (lib.mkAliasOptionModule
+      ["security" "polkit" "enablePkexecWrapper"]
+      ["security" "wrappers" "pkexec" "enable"])
+  ];
+
+  disabledModules = [
+    "programs/throne.nix"
   ];
 
   # Packages
@@ -238,6 +250,7 @@
 
   programs.throne = {
     enable = true;
+    package = pkgs.unstable.throne;
     tunMode.enable = true;
   };
 
