@@ -78,7 +78,7 @@
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     niko-kernel = {
-      url = "github:NikoMalik/nix-niko-kernel";
+      url = "github:NikoMalik/nix-niko-kernel/main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 

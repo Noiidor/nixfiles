@@ -1011,15 +1011,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1795297624,
-        "narHash": "sha256-RD9R0TE3q+5jOJuQj194+DU9dNWW3N8xYJnkW9gJ6TU=",
+        "lastModified": 1795685121,
+        "narHash": "sha256-vG5RJs6ESvsdiu+iArCaF9g7Ex8js5chvJZhAtzSXQQ=",
         "owner": "NikoMalik",
         "repo": "nix-niko-kernel",
-        "rev": "5c51dafd7e33524bd081c4763f22d01e23ba2e01",
+        "rev": "4aa46ed94e62b94b70837e5318fcf4f6de0a7c3b",
         "type": "github"
       },
       "original": {
         "owner": "NikoMalik",
+        "ref": "main",
         "repo": "nix-niko-kernel",
         "type": "github"
       }

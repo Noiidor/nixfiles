@@ -285,12 +285,31 @@
     ACTION=="add|change", SUBSYSTEM=="usb", TEST=="power/wakeup", ATTR{power/wakeup}="disabled"
   '';
 
+  programs.ccache.enable = true;
+  nix.settings.extra-sandbox-paths = ["${config.programs.ccache.cacheDir}?"];
+
   # Boot and memory
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    kernelPackages = inputs.niko-kernel.legacyPackages.x86_64-linux.linuxPackages-niko;
+    kernelPackages = let
+      niko = inputs.niko-kernel;
+      kernel = niko.packages.x86_64-linux.default.override (old: {
+        stdenv = pkgs.unstable.ccacheStdenv.override {
+          inherit (old) stdenv;
+          extraConfig = ''
+            export CCACHE_DIR=${lib.escapeShellArg config.programs.ccache.cacheDir}
+            export CCACHE_UMASK=007
+            if [ ! -d "$CCACHE_DIR" ]; then
+              export CCACHE_DIR="$TMPDIR/ccache"
+              export CCACHE_DISABLE=1
+            fi
+          '';
+        };
+      });
+    in
+      niko.lib.mkPackages kernel;
     kernelModules = [
       "nct6775"
       "i2c-dev"
